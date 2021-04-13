@@ -35,7 +35,6 @@ const firstName = userInfo[0]
 const lastName = userInfo[1]
 const email = userInfo[2]
 const pass = userInfo[3]
-console.log(email)
 
 function submit() {
     create_acc_confirm_button.innerHTML = "Creating..."
@@ -49,6 +48,30 @@ function submit() {
     }
 
     const birthday = create_acc_content_form_date.value
+    const birthYear = create_acc_content_form_date.value.split("-")[0]
+    const dateObj = new Date
+    const currentYear = dateObj.getFullYear()
+
+    if (birthYear > currentYear) {
+        create_acc_empty_field.innerHTML = "Invalid year"
+        create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+        return 1
+    }
+
+    if (birthYear > currentYear - 18) {
+        create_acc_empty_field.innerHTML = "You have to be 18 or above to open an account"
+        create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+        return 1
+    }
+
+    if (birthYear < currentYear - 150) {
+        create_acc_empty_field.innerHTML = "Invalid year"
+        create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+        return 1
+    }
 
     var userGender = ""
     if (gender_indicator_text_female.checked) {

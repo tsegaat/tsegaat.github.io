@@ -150,7 +150,12 @@ function handleImage(e) {
 
 // Start email
 const profile_settings_email = document.getElementsByClassName("profile-settings-email")[0]
-profile_settings_email.innerHTML = localStorage["email"]
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        const email = user.email
+        profile_settings_email.innerHTML = email
+    }
+})
 // End email
 
 // Start of Name
