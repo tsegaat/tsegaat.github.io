@@ -1,0 +1,21 @@
+--------------------Ethioshare-----------------------
+
+
+            -------------First Phase-----------------
+1. Make the header (Done)
+2. Make the body (Done)
+3. Finish the frontend of the main site (Done)
+4. Make the all the buttons and links operational (Done)
+5. Build the sign-in and create account page (Done)
+6. Link the sign-in/create account page with all the buttons and anchors (Done)
+7. Ckeck if the inforamtion is valid before goning to the database (Done)
+8. Build and link a database to store all the emails and passwords and all the information from the sign-in or create account page (Done)
+9. Accpet or denay logins by checking the database( Done )
+
+
+          ----------------Secound Phase-------------------
+1. Make the navbar (Done)
+2. Make the search bar (Done)
+3. Build the content once clicked the photo (Done)
+4. Build the page and links inside the photo container
+5. Build the pages in the more-options container

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
+
+    <title>Exchange Ethiopian Shares – Ehtioshare</title>
+</head>
+
+<body>
+    <div>
+        <div class="navbar-container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" width="125px" alt=""></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li class="sign-in-btn"><a href="sign-in-page.html">Sign In</a></li>
+                        <li class="btn head-create-btn">Get Started</li>
+                    </ul>
+                </nav>
+                <img src="images/menu.png" class='menu-icon' width='28px' onclick="menutoggle()">
+            </div>
+        </div>
+        <hr style="border-color: #000;">
+    </div>
+    <div class="create-acc-mainbody row">
+        <div class="create-acc-title-container">
+            <div class="create-acc-title">
+                More Info About Yourself
+            </div>
+        </div>
+        <div class="create-acc-content-form-container">
+
+            <form action="">
+                <div class="create-acc-content-form"></div>
+                <div class="create-acc-content">
+                    <h3>Birthday</h3>
+                    <input class="create-acc-content-form-input create-acc-content-form-input-date" type="date">
+                </div>
+                <div class="create-acc-content password">
+                    <h3>Phone Number</h3>
+                    <input class="create-acc-content-form-input" type="tel" placeholder="Format: 0912345678">
+                </div>
+                <div class="create-acc-content">
+                    <div class="create-acc-content-checkbox">
+                        <div class="gender-indicator-container">
+                            <input class="gender-indicator-checkbox" type="checkbox">
+                            <div class="gender-indicator-text gender-indicator-text-male">Male</div>
+                        </div>
+                        <div class="gender-indicator-container">
+                            <input class="gender-indicator-checkbox" type="checkbox">
+                            <div class="gender-indicator-text gender-indicator-text-female">Female</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="create-acc-content">
+                    <p id="create-acc-empty-field"></p>
+                </div>
+                <!-- <div class="create-acc-2col create-acc-content">
+                    <div>
+                        <input class="create-acc-content-form-checkbox-button" type="checkbox">
+                    </div>
+
+                    <div>
+                        <p class="create-acc-content-form-end-text">I certify that I am 18 years of age or older,
+                            and agree to the <br> User Agreement and
+                            Privary Policy</p>
+                    </div>
+                </div> -->
+                <div class="create-acc-confirm-button-container">
+                    <div class="create-acc-confirm-button">Finish Creating Your Account
+                    </div>
+                </div>
+            </form>
+            <div class="create-acc-content">
+                <p class="create-acc-sign-in"><a href="sign-in-page.html">Sign in</a> to your Ethioshare account</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<style>
+    body {
+        background: radial-gradient(#fff, #1652f0);
+        background: linear-gradient(to left, #fff, #1652f0);
+    }
+
+    .sign-in-btn>a {
+        color: #000 !important;
+    }
+</style>
+
+<script>
+    var MenuItems = document.getElementById('MenuItems')
+
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        } else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+
+    var head_create_btn = document.getElementsByClassName("head-create-btn")[0]
+
+    head_create_btn.addEventListener("click", function () {
+        window.location.href = "create-acc-page.html"
+    })
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+<script src="create-more-acc.js"></script>
+
+</html>

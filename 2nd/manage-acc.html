@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manage-acc.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
+
+    <title>Ethioshare Account</title>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="manage-acc.html">Ethioshare Account</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li class="more-options-btn">
+                        <div></div>
+                    </li>
+                    <li class="profile-picture">
+                        <div id="profile-picture-nav"></div>
+                    </li>
+                </ul>
+                <div class="more-options-container">
+                    <li>Add Shares</li>
+                    <li>Active Clients</li>
+                    <li>My Shares</li>
+                    <li>History</li>
+                </div>
+                <div class="profile-settings-container">
+                    <li class="profile-settings-li">
+                        <div class="proflie-settings-profilepicture-container">
+                            <div class="proflie-settings-profilepicture"></div><i
+                                class="fa fa-camera profile-settings-camera-icon"></i>
+                            <input type="file" id="profile-settings-profilepicture-input" class="hidden"
+                                multiple="false" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                        <div class=" profile-settings-name"></div>
+                        <div class="profile-settings-email"></div>
+                        <div class="profile-settings-manage">Manage Your Account</div>
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal"><i
+                            class="fa fa-exclamation-circle"></i>Verify me
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal">Sign out</li>
+                </div>
+            </nav>
+            <img src="images/menu.png" class='menu-icon' width='28px' onclick="menutoggle()">
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="side-options-container">
+            <div class="side-options">
+                <div class="side-option selected">
+                    <i class="fa fa-address-card side-option-icon"></i> Personal Info
+                </div>
+                <div class="side-option"> <i class="fa fa-lock side-option-icon"></i> Security</div>
+                <div class="side-option"> <i class="fa fa-info-circle side-option-icon"></i>About</div>
+            </div>
+        </div>
+        <div class="personal-info-container">
+            <div class="personal-info">
+                <div class="head-intro">
+                    <h1 class="head-title">Personal Info</h1>
+                    <p class="head-additonal-info">Basic info, like your name and photo, that you use for Ethioshare</p>
+                </div>
+                <div class="basic-info-container container">
+                    <div class="basic-info">
+                        <div class="basic-info-title">Basic Info</div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">Photo</div>
+                            <div class="basic-info-type-value basic-info-type-value-photo">A photo helps personalize
+                                your account</div>
+                            <div class="basic-info-type-profile-picture-container">
+                                <div class="basic-info-type-profile-picture"><i
+                                        class="fa fa-camera basic-info-type-profile-picture-icon"></i></div>
+                                <input type="file" id="basic-info-type-profile-picture-input" class="hidden"
+                                    multiple="false" accept="image/x-png,image/gif,image/jpeg">
+                            </div>
+                        </div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">Name</div>
+                            <div class="basic-info-type-value"></div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">Birthday</div>
+                            <div class="basic-info-type-value">Add a birthday</div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">Gender</div>
+                            <div class="basic-info-type-value">Add a gender</div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">Password</div>
+                            <div class="basic-info-type-value">
+                                <div class="basic-info-type-password-last-change">
+                                    Change your password
+                                </div>
+                            </div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basic-info-container container">
+                    <div class="basic-info">
+                        <div class="basic-info-title">Contact Info</div>
+                        <div class="basic-info-types-contact" id="basic-info-type-contact-email">
+                            <div class="basic-info-type-name">Email</div>
+                            <div class="basic-info-type-value">
+                                <div class="basic-info-type-value2">
+                                </div>
+                            </div>
+
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                        <div class="basic-info-types-contact" id="basic-info-type-contact-phone">
+                            <div class="basic-info-type-name">Phone</div>
+                            <div class="basic-info-type-value">0939936610</div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="personal-info-container" style="display: none;">
+            <div class="personal-info">
+                <div class="head-intro">
+                    <h1 class="head-title">Security</h1>
+                    <p class="head-additonal-info">Settings and recommendations to help you keep your account secure</p>
+                </div>
+                <div class="basic-info-container container">
+                    <div class="basic-info">
+                        <div class="basic-info-title basic-info-title-security">
+                            <div class="">Signing in to Ethioshare</div>
+                            <div class="basic-info-security-image"></div>
+                        </div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">Password</div>
+                            <div class="basic-info-type-value">
+                                Change your password</div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                        <div class="basic-info-types">
+                            <div class="basic-info-type-name">2-step Verification</div>
+                            <div class="basic-info-type-value-2FA">
+                                <i class="fa fa-minus-circle basic-info-type-value-2FA-icon"></i>
+                                <div class="basic-info-type-value-2FA-value">Off</div>
+                            </div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 
+                <div class="basic-info-container container">
+                    <div class="basic-info">
+                        <div class="basic-info-title">Contact Info</div>
+                        <div class="basic-info-types-contact">
+                            <div class="basic-info-type-name">Email</div>
+                            <div class="basic-info-type-value">Tsega207@gmail.com <br />
+                                gsssucks41@gmail.com</div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                        <div class="basic-info-types-contact">
+                            <div class="basic-info-type-name">Phone</div>
+                            <div class="basic-info-type-value">0939936610</div>
+                            <div class="basic-info-type-change"><i class="fa fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var MenuItems = document.getElementById('MenuItems')
+
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        } else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+<script src="manage-acc.js"></script>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="manage-acc.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
+
+    <title>Ethioshare Account</title>
+</head>
+
+<body>
+    <div id="main-profile-settings-container">
+        <div class="name-settings-title-container">
+            <div class="name-settings-title"></i>User Verification
+            </div>
+        </div>
+        <div class="personal-info-container">
+            <div class="personal-info">
+                <div class="basic-info-container container">
+                    <div class="head-intro">
+                        <p class="head-additonal-info user-verification-head-additonal-info">Hi,
+                        </p>
+                    </div>
+                    <div class="basic-info basic-info-verification">
+                        <div class="basic-info-title settings-basic-info-title">To continue, first verify it’s you</div>
+                        <hr>
+                        <div class="create-acc-content">
+                            <div class="create-acc-content-form-user-email"></div>
+                        </div>
+                        <div class="create-acc-content password">
+                            <input class="create-acc-content-form-input" type="password" placeholder="Password">
+                            <i class="fa fa-eye field-icon show"></i>
+                            <i class="fa fa-eye-slash field-icon hide" style="display: none;"></i>
+                        </div>
+                        <div class="create-acc-content">
+                            <p id="create-acc-empty-field"></p>
+                        </div>
+                        <div class="settings-create-acc-confirm-button-container">
+                            <div class="user-verification-confirm-button"> Next
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- <script>
+    var MenuItems = document.getElementById('MenuItems')
+
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        } else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+</script> -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+<script src="verification_page.js"></script>
+
+</html>

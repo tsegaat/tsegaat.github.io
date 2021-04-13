@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
+    <title>Ehtioshare – Exchange Ethiopian Shares</title>
+</head>
+
+<body id="body">
+    <div class="header">
+        <div class="navbar">
+            <nav>
+                <ul id="MenuItems">
+                    <li class="more-options-btn">
+                        <div></div>
+                    </li>
+                    <li class="profile-picture">
+                        <div id="profile-picture-nav"></div>
+                    </li>
+                </ul>
+                <div class="more-options-container">
+                    <li>Add Shares</li>
+                    <li>Active Clients</li>
+                    <li>My Shares</li>
+                    <li>History</li>
+                </div>
+                <div class="profile-settings-container">
+                    <li class="profile-settings-li">
+                        <div class="proflie-settings-profilepicture-container">
+                            <div class="proflie-settings-profilepicture"></div><i
+                                class="fa fa-camera profile-settings-camera-icon"></i>
+                            <input type="file" id="profile-settings-profilepicture-input" class="hidden"
+                                multiple="false" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                        <div class=" profile-settings-name"></div>
+                        <div class="profile-settings-email"></div>
+                        <div class="profile-settings-manage">Manage Your Account</div>
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal"><i
+                            class="fa fa-exclamation-circle"></i>Verify me
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal">Sign out</li>
+                </div>
+            </nav>
+            <img src="images/menu.png" class='menu-icon' width='28px' onclick="menutoggle()">
+        </div>
+    </div>
+    <div class="row">
+        <div class="head-intro">
+            <h1 class="head-title">Ethioshare</h1>
+        </div>
+        <div class="on-head-create">
+            <form action="">
+                <div class="col">
+                    <div class="head-create-email-containter"><input class="head-create-email" type="text"
+                            list="match-list" placeholder="Company Name"></div>
+
+                    <div class="head-submit-email-containter">
+                        <div class="head-submit-email btn" id="head-submit-email">Search
+                        </div>
+                    </div>
+                </div>
+                <datalist id="match-list">
+                    <option class="options"></option>
+                    <option class="options"></option>
+                    <option class="options"></option>
+                    <option class="options"></option>
+                    <option class="options"></option>
+                </datalist>
+            </form>
+            <div id="create-acc-empty-field" class="main-page-status-element"></div>
+        </div>
+
+    </div>
+    <footer>
+        <!-- TODO: Lower Brush -->
+        <div class="main-page-icon-container" style="display: flex;">
+            <i class="fa fa-paint-brush">
+            </i>
+            <div class="main-page-icon-hover-text">Change background</div>
+            <input type="file" class="hidden input-file" multiple="false" accept="image/x-png,image/gif,image/jpeg">
+
+        </div>
+
+    </footer>
+
+</body>
+<script>
+    var MenuItems = document.getElementById('MenuItems')
+
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        } else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+<script src="main.js"></script>
+
+</html>
