@@ -244,7 +244,9 @@ if (value == "Name") {
             }).then(() => {
                 setting_create_acc_save_button.innerHTML = "Save"
                 setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                window.location.href = "manage-acc.html"
+                swal("Success", "Name is updated", "success").then(() => {
+                    window.location.href = "manage-acc.html"
+                })
             })
                 // TODO: Fix this internet off error handleing
                 .catch((error) => {
@@ -336,7 +338,9 @@ else if (value == "Birthday") {
             }).then(() => {
                 setting_create_acc_save_button.innerHTML = "Save"
                 setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                window.location.href = "manage-acc.html"
+                swal("Success", "Birthday is updated", "success").then(() => {
+                    window.location.href = "manage-acc.html"
+                })
             })
                 // TODO: Fix this internet off error handleing
                 .catch((error) => {
@@ -432,7 +436,9 @@ else if (value == "Gender") {
             }).then(() => {
                 setting_create_acc_save_button.innerHTML = "Save"
                 setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                window.location.href = "manage-acc.html"
+                swal("Success", "Gender is updated", "success").then(() => {
+                    window.location.href = "manage-acc.html"
+                })
             })
                 // TODO: Fix this internet off error handleing
                 .catch((error) => {
@@ -569,13 +575,17 @@ else if (value == "Phone") {
             }).then(() => {
                 setting_create_acc_save_button.innerHTML = "Save"
                 setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                window.location.href = "manage-acc.html"
+                swal("Success", "Phone number is updated", "success").then(() => {
+                    window.location.href = "manage-acc.html"
+                })
+
             })
                 // TODO: Fix this internet off error handleing
                 .catch((error) => {
                     setting_create_acc_save_button.innerHTML = "Save"
                     setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
                     create_acc_empty_field.innerHTML = "Network failed please try agin"
+                    console.log(error)
                 })
         }
 
@@ -588,6 +598,10 @@ else if (value == "Phone") {
         localStorage["clickedValue"] = ""
         window.location.href = "manage-acc.html"
     })
+}
+
+if (value == "2fa") {
+
 }
 
 // making the site dependant on the privous site

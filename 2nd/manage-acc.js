@@ -291,4 +291,13 @@ basic_info_type_security_password.addEventListener("click", () => {
     localStorage['verificationValue'] = "password"
     window.location.href = "verification_page.html"
 })
+
+basic_info_type_security_2fa.addEventListener("click", () => {
+    localStorage['clickedValue'] = "2fa"
+    if (auth.currentUser.emailVerified) {
+        window.location.href = "profile-settings-detail.html"
+    } else {
+        swal("Oops...", "You must verify your email before trying to activate 2FA", "error");
+    }
+})
 // End on linking buttons to another page

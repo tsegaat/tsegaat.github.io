@@ -309,7 +309,9 @@ if (value == "password") {
 
                     user.updatePassword(create_acc_content_form_input_new.value).then(() => {
                         create_acc_empty_field.innerHTML = ""
-                        window.location.href = "manage-acc.html"
+                        swal("Success", "Password is updated", "success").then(() => {
+                            window.location.href = "manage-acc.html"
+                        })
                     }).catch((error) => {
                         if (error.code = "auth/requires-recent-login") {
                             user.reauthenticateWithCredential(credential)
@@ -406,7 +408,9 @@ else if (value == "recoveryEmail") {
             firebase.auth().onAuthStateChanged(function (user) {
                 user.updateEmail(create_acc_content_form_input_email.value).then(() => {
                     create_acc_empty_field.innerHTML = ""
-                    window.location.href = "manage-acc.html"
+                    swal("Success", "Email is updated", "success").then(() => {
+                        window.location.href = "manage-acc.html"
+                    })
                 }).catch((error) => {
                     if (error.code = "auth/email-already-in-use") {
                         create_acc_empty_field.innerHTML = "Email already in use"

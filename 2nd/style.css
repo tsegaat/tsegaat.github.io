@@ -219,8 +219,8 @@ option {
 .fa-paint-brush{
     font-size: 18px !important;
     cursor: pointer;
-    height: 30px;
-    width: 33px;
+    height: 25px;
+    width: 22px;
     text-align: center;
     padding: 9px;
 }
@@ -240,6 +240,7 @@ option {
     bottom: -40px;
     padding-left: 10px;
     padding-right: 20px;
+    padding-bottom: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -248,8 +249,8 @@ option {
     position: relative;
     bottom: -10px;
     font-size: 14px;
-    margin-left: 10px;
-    transform: translateY(-15%)
+    margin-left: 12px;
+    transform: translateY(-25%)
 }
 
 .main-page-icon-container:hover{
