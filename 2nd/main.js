@@ -125,12 +125,12 @@ more_options_btn.addEventListener("click", () => {
 // End of More Options
 
 // Start of Backgrund changer
-const fa_paint_brush = document.getElementsByClassName("fa-paint-brush")[0]
+const main_page_icon_container = document.getElementsByClassName("main-page-icon-container")[0]
 const input_file = document.getElementsByClassName("input-file")[0]
 const body = document.querySelector("#body")
 
 
-fa_paint_brush.addEventListener("click", () => {
+main_page_icon_container.addEventListener("click", () => {
     input_file.click()
 })
 

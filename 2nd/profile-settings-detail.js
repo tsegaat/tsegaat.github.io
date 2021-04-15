@@ -59,7 +59,12 @@ more_options_btn.addEventListener("click", () => {
 
 // Start email
 const profile_settings_email = document.getElementsByClassName("profile-settings-email")[0]
-profile_settings_email.innerHTML = localStorage["email"]
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        const email = user.email
+        profile_settings_email.innerHTML = email
+    }
+})
 // End email
 
 // Start of Name
@@ -233,7 +238,7 @@ if (value == "Name") {
         fixed_lastName = fixed_lastName.charAt(0).toUpperCase() + fixed_lastName.slice(1);
 
         if (correctNameBool) {
-            firebase.firestore().collection('users').doc(auth.currentUser.uid).set({
+            firebase.firestore().collection('users').doc(auth.currentUser.uid).update({
                 firstName: fixed_firstName,
                 lastName: fixed_lastName
             }).then(() => {
@@ -294,26 +299,53 @@ else if (value == "Birthday") {
     const setting_create_acc_save_button = document.getElementsByClassName("settings-create-acc-confirm-button")[1]
     const create_acc_empty_field = document.getElementById("create-acc-empty-field")
     setting_create_acc_save_button.addEventListener("click", () => {
-        const create_acc_content_form_input_date = document.getElementsByClassName("create-acc-content-form-input-date")[0]
+        const create_acc_content_form_date = document.getElementsByClassName("create-acc-content-form-input-date")[0]
         setting_create_acc_save_button.innerHTML = "Changing..."
         setting_create_acc_save_button.style.backgroundColor = "rgb(55, 109, 247)"
 
-        const birthdayValue = create_acc_content_form_input_date.value
+        const birthday = create_acc_content_form_date.value
+        const birthYear = create_acc_content_form_date.value.split("-")[0]
+        const dateObj = new Date
+        const currentYear = dateObj.getFullYear()
 
-        firebase.firestore().collection('users').doc(auth.currentUser.uid).update({
-            birthDay: birthdayValue,
-        }).then(() => {
+        var checkBirthday = true;
+        if (birthYear > currentYear) {
+            create_acc_empty_field.innerHTML = "Invalid year"
             setting_create_acc_save_button.innerHTML = "Save"
             setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-            window.location.href = "manage-acc.html"
-        })
-            // TODO: Fix this internet off error handleing
-            .catch((error) => {
+            checkBirthday = false
+        }
+
+        if (birthYear > currentYear - 18) {
+            create_acc_empty_field.innerHTML = "You have to be 18 or above"
+            setting_create_acc_save_button.innerHTML = "Save"
+            setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+            checkBirthday = false
+        }
+
+        if (birthYear < currentYear - 150) {
+            create_acc_empty_field.innerHTML = "Invalid year"
+            setting_create_acc_save_button.innerHTML = "Save"
+            setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+            checkBirthday = false
+        }
+
+        if (checkBirthday) {
+            firebase.firestore().collection('users').doc(auth.currentUser.uid).update({
+                birthday: birthday,
+            }).then(() => {
                 setting_create_acc_save_button.innerHTML = "Save"
                 setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                create_acc_empty_field.innerHTML = "Network failed please try agin"
-                console.log("tsega  ", error)
+                window.location.href = "manage-acc.html"
             })
+                // TODO: Fix this internet off error handleing
+                .catch((error) => {
+                    setting_create_acc_save_button.innerHTML = "Save"
+                    setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                    create_acc_empty_field.innerHTML = "Network failed please try agin"
+                    console.log("tsega  ", error)
+                })
+        }
 
     })
     // E Adding onclick listener to the back button
@@ -511,6 +543,22 @@ else if (value == "Phone") {
             create_acc_empty_field.innerHTML = "Invalid phone number"
             setting_create_acc_save_button.innerHTML = "Save"
             setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+        }
+
+        // console.log(create_acc_content_form_input.value[0].toString() != "0")
+
+        if (create_acc_content_form_input.value[0].toString() != "0") {
+            create_acc_empty_field.innerHTML = "Invalid phone number"
+            setting_create_acc_save_button.innerHTML = "Save"
+            setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+            phoneCheck = false;
+        }
+
+        if (create_acc_content_form_input.value[1].toString() != "9" && create_acc_content_form_input.value[1].toString() != "1") {
+            create_acc_empty_field.innerHTML = "Invalid phone number"
+            setting_create_acc_save_button.innerHTML = "Save"
+            setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+            phoneCheck = false;
         }
 
         const phoneNumber = create_acc_content_form_input.value

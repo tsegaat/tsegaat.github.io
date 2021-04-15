@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "News Cycle";
+    font-family: "News Cycle", "Segoe UI";
 }
 
 a{
@@ -191,14 +191,12 @@ body{
 .head-title{
     font-size: 100px;
     font-weight: 600;
-    font-family: "News Cycle";
     text-align: center;
 }
 
 datalist {
     position: absolute;
     background-color: rgb(231 231 231);;
-    font-family: "News Cycle";
     font-size: 0.8rem;
     width: 100%;
     border-radius: 15px;
@@ -221,7 +219,7 @@ option {
 .fa-paint-brush{
     font-size: 18px !important;
     cursor: pointer;
-    height: 35px;
+    height: 30px;
     width: 33px;
     text-align: center;
     padding: 9px;
@@ -235,28 +233,27 @@ option {
 }
 
 .main-page-icon-container{
-    display: inline-block;
+    display: flex;
+    background-color: #fff;
     border-radius: 50px;
     position: absolute;
-    bottom: 0;
+    bottom: -40px;
+    padding-left: 10px;
+    padding-right: 20px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
 .main-page-icon-hover-text{
-    /* display: none; */
-    position: absolute;
-    bottom: 0;
-    left: 60px;
+    position: relative;
+    bottom: -10px;
     font-size: 14px;
-    color: #fff;
+    margin-left: 10px;
+    transform: translateY(-15%)
 }
 
 .main-page-icon-container:hover{
-    background-color: rgb(231 231 231);
-}
-
-.main-page-icon-container:hover + .main-page-icon-hover-text{
-    display: block;
+    color: hsl(214deg 82% 51%)
 }
 
 .fa-exclamation-circle{

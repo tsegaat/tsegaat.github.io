@@ -60,7 +60,7 @@ function submit() {
     }
 
     if (birthYear > currentYear - 18) {
-        create_acc_empty_field.innerHTML = "You have to be 18 or above to open an account"
+        create_acc_empty_field.innerHTML = "You have to be 18 or above"
         create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
         create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         return 1
@@ -98,6 +98,20 @@ function submit() {
         create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
         create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         return 1
+    }
+
+    if (create_acc_content_form_input.value[0].toString() != "0") {
+        create_acc_empty_field.innerHTML = "Invalid phone number"
+        create_acc_confirm_button.innerHTML = "Save"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+        phoneCheck = false;
+    }
+
+    if (create_acc_content_form_input.value[1].toString() != "9" && create_acc_content_form_input.value[1].toString() != "1") {
+        create_acc_empty_field.innerHTML = "Invalid phone number"
+        create_acc_confirm_button.innerHTML = "Save"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+        phoneCheck = false;
     }
 
     const phone = create_acc_content_form_input.value
