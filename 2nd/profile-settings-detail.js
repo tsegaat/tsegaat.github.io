@@ -600,10 +600,6 @@ else if (value == "Phone") {
     })
 }
 
-if (value == "2fa") {
-
-}
-
 // making the site dependant on the privous site
 
 

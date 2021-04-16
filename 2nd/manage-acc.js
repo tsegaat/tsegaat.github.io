@@ -294,10 +294,22 @@ basic_info_type_security_password.addEventListener("click", () => {
 
 basic_info_type_security_2fa.addEventListener("click", () => {
     localStorage['clickedValue'] = "2fa"
+    console.log(auth.currentUser)
     if (auth.currentUser.emailVerified) {
         window.location.href = "profile-settings-detail.html"
     } else {
-        swal("Oops...", "You must verify your email before trying to activate 2FA", "error");
+        swal("Oops...", "You must verify your email before trying to activate 2FA", "error").then((value) => {
+            if (value == true) {
+                swal("Email Verification", "Click the button below to get a verification link!", "info", {
+                    button: "Send link"
+                }).then((secValue) => {
+                    if (secValue == true) {
+                        auth.currentUser.sendEmailVerification()
+                        swal("Sent", "Verification link was sent to your email", "success")
+                    }
+                })
+            }
+        })
     }
 })
 // End on linking buttons to another page
