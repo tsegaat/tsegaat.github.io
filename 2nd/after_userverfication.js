@@ -440,4 +440,49 @@ else if (value == "recoveryEmail") {
 
 }
 
+else if (value == "2fa") {
+    const HTML = `        <div class="name-settings-title-container">
+            <div class="name-settings-title"><i class="fa fa-arrow-left" id="name-settings-title-icon"></i>2-step Verification
+            </div>
+        </div>
+        <div class="personal-info-container">
+            <div class="personal-info">
+                <div class="basic-info-container container">
+                    <div class="head-intro">
+                        <p class="head-additonal-info settings-head-additonal-info">Add 2-step verification to your account for each time you log-in <br/> you have to put in an OTP code that will be sent to your phone.
+                        </p>
+                    </div>
+                    <div class="basic-info">
+                        <div class="basic-info-title settings-basic-info-title">Write the OTP code sent to your phone</div>
+                        <div class="create-acc-content password">
+                            <input class="create-acc-content-form-input" type="text">
+                        </div>
+                        <div class="create-acc-content">
+                            <p id="create-acc-empty-field"></p>
+                        </div>
+                        <div id="recaptchaVerifer"></div>
+                        <div class="settings-create-acc-confirm-button-container">
+                            <div class="settings-create-acc-confirm-button"> Cancel
+                            </div>
+                            <div class="settings-create-acc-confirm-button"> Next
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+
+    main_profile_settings_container.innerHTML = HTML
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptchaVerifer');
+
+    // S Adding onclick listener to the back button
+    const name_settings_title_icon = document.getElementById("name-settings-title-icon")
+    name_settings_title_icon.addEventListener("click", () => {
+        localStorage['clickedValue'] = ""
+        localStorage["verificationValue"] = ""
+        window.location.href = "manage-acc.html"
+    })
+    // E Adding onclick listener to the back button
+}
+
 

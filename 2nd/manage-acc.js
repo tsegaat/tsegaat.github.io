@@ -293,10 +293,10 @@ basic_info_type_security_password.addEventListener("click", () => {
 })
 
 basic_info_type_security_2fa.addEventListener("click", () => {
-    localStorage['clickedValue'] = "2fa"
+    localStorage['verificationValue'] = "2fa"
     console.log(auth.currentUser)
     if (auth.currentUser.emailVerified) {
-        window.location.href = "profile-settings-detail.html"
+        window.location.href = "verification_page.html"
     } else {
         swal("Oops...", "You must verify your email before trying to activate 2FA", "error").then((value) => {
             if (value == true) {

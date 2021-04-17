@@ -73,6 +73,10 @@ user_verification_confirm_button.addEventListener("click", () => {
     );
 
     user.reauthenticateWithCredential(credential).then(() => {
+        if (localStorage['verificationValue'] == "2fa") {
+            // TODO: Send the code!!!!
+            console.log("Number sent")
+        }
         user_verification_confirm_button.innerHTML = "Next"
         user_verification_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         window.location.href = "after_user_verfication.html"
@@ -85,4 +89,5 @@ user_verification_confirm_button.addEventListener("click", () => {
         user_verification_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
     });
 })
+
 
