@@ -242,7 +242,6 @@ option {
     padding-right: 20px;
     padding-bottom: 5px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 .main-page-icon-hover-text{
@@ -363,15 +362,19 @@ option {
     text-decoration: none;
 }
 
-/* 
+.home-btn{
+    text-align: left;
+    position: fixed;
+    cursor: pointer;
+}   
 
+.home-btn > i {
+    font-size: 25px;
+}
 
-
+/*
 
 Create Account CSS
-
-
-
 
 */
 .navbar-container{

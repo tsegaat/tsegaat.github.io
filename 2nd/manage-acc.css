@@ -312,7 +312,6 @@ nav ul li{
 
 .basic-info-type-change{
     text-align: right;
-    cursor: pointer;
 }
 
 .hidden {
@@ -553,6 +552,16 @@ nav ul li{
     text-decoration: none;
 }
 
+.home-btn{
+    text-align: left;
+    position: fixed;
+    cursor: pointer;
+}   
+
+.home-btn > i {
+    font-size: 25px;
+}
+
 /*Create Account CSS*/
 
 .create-acc-mainbody{
@@ -749,6 +758,18 @@ nav ul li{
     transform: translateX(-200%);
     top: 20px;
     cursor: pointer;
+}
+
+
+.basic-info-types-emailverified{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;    
+    border-bottom: 1px #dfe0e4 solid;
+    border-collapse: collapse;
+    border-radius: 10px;
+    width: 767.39px;
+    background-color: #a6b4f3;
 }
 
 /* Main Index Body */

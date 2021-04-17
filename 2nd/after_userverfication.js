@@ -126,6 +126,20 @@ function handleProfilePicture(e) {
 }
 // End of profile pic change
 
+// Verify me start
+const profile_settings_li_normal_verify = document.getElementsByClassName("profile-settings-li-normal")[0]
+profile_settings_li_normal_verify.addEventListener("click", () => {
+    window.location.href = "verify_me.html"
+})
+// Verify me end
+
+// Start of home bottom
+const home_btn = document.getElementsByClassName("home-btn")[0]
+home_btn.addEventListener("click", () => {
+    window.location.href = "main-page.html"
+})
+// End of home button
+
 // Start of going to manage account page
 const profile_settings_manage = document.getElementsByClassName("profile-settings-manage")[0]
 profile_settings_manage.addEventListener("click", () => {
