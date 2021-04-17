@@ -67,7 +67,7 @@ searchBtn.addEventListener('click', () => {
                 searchBtn.innerHTML = "Search"
                 searchBtn.style.backgroundColor = "#1652f0"
                 localStorage["company"] = val
-                window.location.href = "buysell_page.html"
+                window.location.href = "../3rth/buysell_page.html"
                 return 0;
             }
         }
@@ -75,7 +75,7 @@ searchBtn.addEventListener('click', () => {
         searchBtn.innerHTML = "Search"
         searchBtn.style.backgroundColor = "#1652f0"
 
-        main_acc_page_empty_field.innerHTML = "Company not found!"
+        swal("Company not found", "Make sure you have the exact value from the dropdown", "error")
     }
 })
 
@@ -146,15 +146,6 @@ main_page_icon_container.addEventListener("click", () => {
     input_file.click()
 })
 
-
-
-input_file.addEventListener("change", handleProfilePicture)
-
-main_page_icon_container.addEventListener("click", () => {
-    input_file.click()
-})
-
-input_file.addEventListener("change", handleWallpaper)
 function handleWallpaper(e) {
     const file = input_file.files[0]
     const photoid = auth.currentUser.uid
@@ -170,9 +161,8 @@ function handleWallpaper(e) {
             body.setAttribute("style", `background-image: url(${url})`)
         })
 }
-// function handleImage(e) {
 
-// }
+input_file.addEventListener("change", handleWallpaper)
 // End of Background changer
 
 // Start email
