@@ -221,8 +221,6 @@ personal_info.addEventListener("click", () => {
     if (personal_info.classList[1] != "selected") {
         security.removeAttribute("class")
         security.setAttribute("class", "side-option")
-        about.removeAttribute("class")
-        about.setAttribute("class", "side-option")
         personal_info.setAttribute("class", "side-option selected")
         security_container.style.display = "none"
         personal_info_container.style.display = "block";
@@ -233,21 +231,9 @@ security.addEventListener("click", () => {
     if (security.classList[1] != "selected") {
         personal_info.removeAttribute("class")
         personal_info.setAttribute("class", "side-option")
-        about.removeAttribute("class")
-        about.setAttribute("class", "side-option")
         security.setAttribute("class", "side-option selected")
         security_container.style.display = "block"
         personal_info_container.style.display = "none";
-    }
-})
-
-about.addEventListener("click", () => {
-    if (about.classList[1] != "selected") {
-        personal_info.removeAttribute("class")
-        personal_info.setAttribute("class", "side-option")
-        security.removeAttribute("class")
-        security.setAttribute("class", "side-option")
-        about.setAttribute("class", "side-option selected")
     }
 })
 // End check which is selected in side options
