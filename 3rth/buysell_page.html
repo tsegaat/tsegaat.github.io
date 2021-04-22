@@ -57,13 +57,55 @@
 
         </div>
     </div>
+    <hr style="color: #000">
+    <div class="buy-sell-title-container container">
+        <div class="buy-sell-title">
+            Companies List
+        </div>
+        <div class="buy-sell-searchbar-container">
+            <div class="buy-sell-searchbar">
+                <i class="fa fa-search buy-sell-input-icon"></i>
+                <input class="buy-sell-input-field" type="name" placeholder="Search company...">
+            </div>
+        </div>
+    </div>
+    <div class="buy-sell-selected-company-container container">
+        <div class="buy-sell-selected-company">
+            <div><span><img src="images/bigar.png" alt="ZmnLogo" class="table-company-logo"></span></div>
+            <div>
+                <span class="table-company-name">Zemen
+                    Bank</span>
+            </div>
+            <div>Finance</div>
+            <div>224.3 ETB</div>
+            <div>80%</div>
+            <div><button class="table-trade-btn btn">Exchange</button></div>
+        </div>
+    </div>
     <div class="share-price-table-container container">
+        <div class="buy-sell-sector-filter-container">
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector buy-sell-sector-selected">All Companies</div>
+            </div>
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector">Finance</div>
+            </div>
+
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector">Resource</div>
+            </div>
+
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector">Other</div>
+            </div>
+        </div>
         <table class="share-price-table">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Logo</th>
                     <th>Name</th>
+                    <th>Sector</th>
                     <th>Price</th>
                     <th>Exchange Score</th>
                     <th>Exchange</th>
@@ -77,6 +119,7 @@
                         <span class="table-company-name">Zemen
                             Bank</span>
                     </td>
+                    <td>Finance</td>
                     <td>224.3 ETB</td>
                     <td>80%</td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
@@ -89,6 +132,7 @@
                         <span class="table-company-name">Coca
                             Cola</span>
                     </td>
+                    <td>Finance</td>
                     <td>532.1 ETB</td>
                     <td>50%</td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
@@ -101,6 +145,7 @@
                         <span class="table-company-name">Coca
                             Cola</span>
                     </td>
+                    <td>Resources</td>
                     <td>532.1 ETB</td>
                     <td>30%</td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
@@ -113,6 +158,7 @@
                         <span class="table-company-name">Coca
                             Cola</span>
                     </td>
+                    <td>Finance</td>
                     <td>532.1 ETB</td>
                     <td>10%</td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
@@ -125,6 +171,7 @@
                         <span class="table-company-name">Coca
                             Cola</span>
                     </td>
+                    <td>Other</td>
                     <td>532.1 ETB</td>
                     <td>90%</td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
@@ -132,6 +179,33 @@
             </tbody>
         </table>
     </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row-col">
+                <div class="footer-col-4">
+                    <span>Contact Us</span>
+                </div>
+                <div class="footer-col-4">
+                    <div class="icons">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="contacts"><a href="tel: +251 939936610"> +251 939936610</a></div>
+                </div>
+                <div class="footer-col-4">
+                    <div class="icons">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="contacts">
+                        <a href="mailto: tsega207@gmail.com">tsega207@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-col-4">
+                    <img src="images/logo.png" width="150px" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>

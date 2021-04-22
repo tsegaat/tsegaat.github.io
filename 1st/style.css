@@ -407,12 +407,10 @@ Create Account CSS
 }
 
 .header{
-    background: radial-gradient(#fff, #1652f0);
     background: linear-gradient(to left, #fff, #1652f0);
 }
 
 .footer{
-    background: radial-gradient(#fff, #1652f0);
     background: linear-gradient(to left, #fff, #1652f0);
 }
 
