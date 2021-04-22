@@ -1,0 +1,33 @@
+
+.share-price-table-container{
+    padding-top: 52px;
+    padding-bottom: 52px;
+}
+
+.table-company-logo{
+    height: 36px;
+    aspect-ratio: auto 36 / 36;
+    width: 36px;
+}
+
+.table-company-name{
+    color: rgb(5, 15, 25);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+tbody{
+    font-size: 15px;
+}
+
+tbody > tr{
+    cursor: pointer;
+}
+
+tbody > tr:hover{
+    background: rgba(17, 51, 83, 0.02);
+}
+
+.table-trade-btn{
+    font-size: 15px;
+}
