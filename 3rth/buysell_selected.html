@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Product - Iway Computing Solutions</title>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="manage-acc.html">Ethioshare</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li class="more-options-btn">
+                        <div></div>
+                    </li>
+                    <li class="profile-picture">
+                        <div id="profile-picture-nav"></div>
+                    </li>
+                </ul>
+                <div class="more-options-container">
+                    <li>Add Shares</li>
+                    <li>Active Clients</li>
+                    <li>My Shares</li>
+                    <li>History</li>
+                </div>
+                <div class="profile-settings-container">
+                    <li class="profile-settings-li">
+                        <div class="home-btn"><i class="fa fa-home"></i></i></div>
+                        <div class="proflie-settings-profilepicture-container">
+                            <div class="proflie-settings-profilepicture"></div><i
+                                class="fa fa-camera profile-settings-camera-icon"></i>
+                            <input type="file" id="profile-settings-profilepicture-input" class="hidden"
+                                multiple="false" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                        <div class=" profile-settings-name"></div>
+                        <div class="profile-settings-email"></div>
+                        <div class="profile-settings-manage">Manage Your Account</div>
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal"><i
+                            class="fa fa-exclamation-circle"></i>Verify me
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal">Sign out</li>
+                </div>
+            </nav>
+            <img src="images/menu.png" class='menu-icon' width='28px' onclick="menutoggle()">
+
+        </div>
+    </div>
+    <hr style="color: #000">
+    <!-- ------ product deatils -------- -->
+    <div class="product_deatils">
+
+        <div class="small-container single-product">
+            <div class="buysell-row">
+                <div class="col-2">
+                    <img src="images/bigar.png" width="100%" alt="" id="changeImg">
+                </div>
+                <div class="col-2">
+                    <h1 id="changeName">Zemen Bank</h1>
+                    <h4 id="changePrice">234</h4>
+                    <input id="quantity" type="number" value="1" min="1">
+                    <span class="btn" id="cartBtn"><a href="cart.html">Add To Cart</a></span>
+                    <h4 id="added"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row-col">
+                <div class="footer-col-4">
+                    <span>Contact Us</span>
+                </div>
+                <div class="footer-col-4">
+                    <div class="icons">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="contacts"><a href="tel: +251 939936610"> +251 939936610</a></div>
+                </div>
+                <div class="footer-col-4">
+                    <div class="icons">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="contacts">
+                        <a href="mailto: tsega207@gmail.com">tsega207@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-col-4">
+                    <img src="images/logo.png" width="150px" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // For the menu dropdown
+        var MenuItems = document.getElementById('MenuItems')
+
+        MenuItems.style.maxHeight = "0px"
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            } else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="buysell_selected.js"></script>
+</body>
+
+
+
+</html>

@@ -1073,3 +1073,7 @@ tr td a{
     color: rgb(22, 82, 240);
 }
 
+.buysell-row{
+    display: flex;
+    align-items: center;
+}

@@ -161,6 +161,6 @@ profile_settings_li_normal.addEventListener("click", () => {
 const selectd_trade_btn = document.getElementsByClassName("selectd-trade-btn")[0]
 
 selectd_trade_btn.addEventListener("click", () => {
-    window.location.href = "busell_selected.html"
+    window.location.href = "buysell_selected.html"
 })
 // Taking to the selected-buy/sell page end
