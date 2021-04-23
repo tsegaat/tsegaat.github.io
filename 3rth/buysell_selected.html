@@ -9,14 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <title>Product - Iway Computing Solutions</title>
+    <title>Ehtioshare – Exchange Ethiopian Shares</title>
 </head>
 
 <body>
     <div class="navbar-container">
         <div class="navbar">
             <div class="logo">
-                <a href="manage-acc.html">Ethioshare</a>
+                <div id="ethiosharelogo">Ethioshare</div>
+                <script>
+                    document.getElementById("ethiosharelogo").style.cursor = "pointer"
+                    document.getElementById("ethiosharelogo").addEventListener("click", () => {
+                        window.location.href = "../2nd/main-page.html"
+                    })
+                </script>
             </div>
             <nav>
                 <ul id="MenuItems">
@@ -66,13 +72,25 @@
                     <img src="images/bigar.png" width="100%" alt="" id="changeImg">
                 </div>
                 <div class="col-2">
-                    <h1 id="changeName">Zemen Bank</h1>
-                    <h4 id="changePrice">234</h4>
-                    <input id="quantity" type="number" value="1" min="1">
-                    <span class="btn" id="cartBtn"><a href="cart.html">Add To Cart</a></span>
-                    <h4 id="added"></h4>
+                    <div id="changeName">Zemen Bank</div>
+                    <div id="changePrice">Par Price: <span>234</span> birr</div>
+                    <div class="premium-container">
+                        <div id="premium"><span>Premium:</span><input id="premium-input" type="number"
+                                placeholder="____"><span>birr</span>
+                        </div>
+                    </div>
+                    <div class="quantity-container">
+                        <div class="quantity">
+                            <span>Shares:</span>
+                            <input id="quantity" type="number" value="1" min="1">
+                        </div>
+                    </div>
+                    <div id="total-price">Total: <span>234</span> birr</div>
+                    <div class="btn buy-sell-btn" id="submitBtn">Submit Offer</div>
                 </div>
+
             </div>
+
         </div>
     </div>
 

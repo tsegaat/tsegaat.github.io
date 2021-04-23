@@ -156,3 +156,13 @@ profile_settings_li_normal.addEventListener("click", () => {
     })
 })
 // End of signout option
+
+// The submit button start
+const submitBtn = document.getElementById("submitBtn")
+
+submitBtn.addEventListener("click", () => {
+    swal("Your offer has been submitted", "A seller will contact if your request is accepted", "success").then(() => {
+        window.location.href = "../2nd/main-page.html"
+    })
+})
+// The submit button end

@@ -1034,7 +1034,7 @@ tr td a{
 }
 
 .buy-sell-selected-company{
-    border: 1px solid rgba(223, 211, 211, 0.884);;
+    border: 1px solid rgba(223, 211, 211, 0.884);
     display: flex;
     justify-content: space-between;
     align-items:center;
@@ -1076,4 +1076,96 @@ tr td a{
 .buysell-row{
     display: flex;
     align-items: center;
+}
+
+#changePrice{
+    border: 1px solid rgb(219, 219, 219);
+    font-size: 20px;
+    display: inline-block;
+    transform: translateY(-50px);
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+#changeName{
+    font-size: 60px;
+    transform: translateY(-100px);
+}
+
+#quantity{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    display: block;
+}
+
+.buy-sell-btn{
+    background: #e7ebf5;
+    padding: 15px 20px;
+    color: black;
+    display: block;
+    width: 300px;
+    text-align: center;
+}
+
+.buy-sell-btn:hover{
+    color: rgb(22, 82, 240);
+}
+
+#premium{
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 10px
+}
+
+#premium > input{
+    width: 40px;
+    font-size: 18px;
+    border: none;
+}
+
+#premium > input:focus{
+    outline: none;
+}
+
+#premium > input[type=number]::-webkit-inner-spin-button, 
+#premium > input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+#premium > input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#premium > span:first-child{
+    margin-right: 10px;
+}
+
+.quantity{
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 10px;
+    margin-right: 20px;
+}
+
+.premium-container{
+    transform: translateY(-25px);
+}    
+
+.quantity > input{
+    margin-top: 5px;
+}
+
+.quantity-container{
+    display: inline-block;
+}
+
+#total-price{
+    border: 1px solid rgb(219, 219, 219);
+    font-size: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 10px;
 }
