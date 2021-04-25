@@ -1143,8 +1143,6 @@ tr td a{
 }
 
 .quantity{
-    border: 1px solid rgb(219, 219, 219);
-    border-radius: 5px;
     display: inline-block;
     padding: 10px 10px;
     margin-right: 20px;

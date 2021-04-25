@@ -434,6 +434,29 @@ Create Account CSS
     width: 100%;
 }
 
+.fa-stack{
+    vertical-align: inherit !important;
+    text-align: center;
+}
+
+.col-3-seller{
+    display: flex;
+    flex-direction: column;
+}
+
+.info-title-sellers{
+    font-family: inherit;
+}
+
+.info-additional-info-sellers{
+    font-size: 20px;
+    font-family: inherit;
+}
+
+.info-text-seller{
+    line-height: 30px;
+}
+
 .small-container{
     max-width: 1080px;
     margin: auto;

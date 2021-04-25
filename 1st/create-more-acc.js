@@ -128,8 +128,6 @@ function submit() {
 
             }).then(() => {
                 create_acc_empty_field.innerHTML = ""
-                create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
-                create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
                 c.user.sendEmailVerification()
                 firebase.auth().signInWithEmailAndPassword(email, pass)
                     .then(() => {
