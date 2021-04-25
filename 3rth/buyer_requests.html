@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ehtioshare – Exchange Ethiopian Shares</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="navbar-container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="manage-acc.html">Ethioshare</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li class="more-options-btn">
+                        <div></div>
+                    </li>
+                    <li class="profile-picture">
+                        <div id="profile-picture-nav"></div>
+                    </li>
+                </ul>
+                <div class="more-options-container">
+                    <li>Add Shares</li>
+                    <li>Active Clients</li>
+                    <li>My Shares</li>
+                    <li>History</li>
+                </div>
+                <div class="profile-settings-container">
+                    <li class="profile-settings-li">
+                        <div class="home-btn"><i class="fa fa-home"></i></i></div>
+                        <div class="proflie-settings-profilepicture-container">
+                            <div class="proflie-settings-profilepicture"></div><i
+                                class="fa fa-camera profile-settings-camera-icon"></i>
+                            <input type="file" id="profile-settings-profilepicture-input" class="hidden"
+                                multiple="false" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                        <div class=" profile-settings-name"></div>
+                        <div class="profile-settings-email"></div>
+                        <div class="profile-settings-manage">Manage Your Account</div>
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal"><i
+                            class="fa fa-exclamation-circle"></i>Verify me
+                    </li>
+                    <li class="profile-settings-li profile-settings-li-normal">Sign out</li>
+                </div>
+            </nav>
+            <img src="images/menu.png" class='menu-icon' width='28px' onclick="menutoggle()">
+
+        </div>
+    </div>
+    <hr style="color: #000">
+    <div class="buy-sell-title-container container">
+        <div class="buy-sell-title">
+            Companies List
+        </div>
+        <div class="buy-sell-searchbar-container">
+            <div class="buy-sell-searchbar">
+                <i class="fa fa-search buy-sell-input-icon"></i>
+                <input class="buy-sell-input-field" type="name" placeholder="Search company...">
+            </div>
+        </div>
+    </div>
+    <div class="buy-sell-selected-company-container container">
+        <div class="buy-sell-selected-company">
+            <div><span><img src="images/bigar.png" alt="ZmnLogo" class="table-company-logo"></span></div>
+            <div>
+                <span class="table-company-name">Zemen
+                    Bank</span>
+            </div>
+            <div>Finance</div>
+            <div>224.3 ETB</div>
+            <div>80%</div>
+            <div><button class="table-trade-btn selectd-trade-btn btn">Exchange</button></div>
+        </div>
+    </div>
+    <div class="share-price-table-container container">
+        <div class="buy-sell-sector-filter-container">
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector buy-sell-sector-selected">All Companies</div>
+            </div>
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector">Finance</div>
+            </div>
+
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector">Resource</div>
+            </div>
+
+            <div class="buy-sell-sector-filter">
+                <div class="buy-sell-sector">Other</div>
+            </div>
+        </div>
+        <table class="share-price-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>User</th>
+                    <th>Logo</th>
+                    <th>Name</th>
+                    <th>Sector</th>
+                    <th>Price</th>
+                    <th>Exchange Score</th>
+                    <th>Exchange</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td><span><img src="images/bigar.png" alt="ZmnLogo" class="table-company-logo"></span></td>
+                    <td>
+                        <span class="table-company-name">Zemen
+                            Bank</span>
+                    </td>
+                    <td>Finance</td>
+                    <td>224.3 ETB</td>
+                    <td>80%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>Finance</td>
+                    <td>532.1 ETB</td>
+                    <td>50%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>Resources</td>
+                    <td>532.1 ETB</td>
+                    <td>30%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>Finance</td>
+                    <td>532.1 ETB</td>
+                    <td>10%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>Other</td>
+                    <td>532.1 ETB</td>
+                    <td>90%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row-col">
+                <div class="footer-col-4">
+                    <span>Contact Us</span>
+                </div>
+                <div class="footer-col-4">
+                    <div class="icons">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="contacts"><a href="tel: +251 939936610"> +251 939936610</a></div>
+                </div>
+                <div class="footer-col-4">
+                    <div class="icons">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="contacts">
+                        <a href="mailto: tsega207@gmail.com">tsega207@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-col-4">
+                    <img src="images/logo.png" width="150px" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="buyer_requests.js"></script>
+
+</html>

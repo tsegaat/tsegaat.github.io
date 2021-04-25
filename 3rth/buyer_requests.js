@@ -16,73 +16,6 @@ const auth = firebase.auth();
 const dbf = firebase.firestore();
 const dbs = firebase.storage();
 
-// Start Of Search Bar JS
-const searchBar = document.querySelector(".head-create-email")
-const matchList = document.getElementById("match-list")
-const options = document.getElementsByClassName("options")
-const searchBtn = document.getElementById("head-submit-email")
-const main_acc_page_empty_field = document.getElementById("create-acc-empty-field")
-
-function outputToHtml(companies) {
-    if (companies.length > 0) {
-        for (var i = 0; i < companies.length; i++) {
-            const company = companies[i].name
-            options[i].setAttribute("value", company)
-        }
-    }
-}
-
-const searchCompanies = async searchText => {
-    const res = await fetch("companies.json")
-    const companies = await res.json()
-
-    let matches = companies.filter(company => {
-        const regex = new RegExp(`^${searchText}`, 'gi')
-        return company.name.match(regex)
-    })
-
-    if (searchText.length === 0) {
-        matches = []
-    }
-
-    outputToHtml(matches)
-}
-searchBtn.addEventListener('click', () => {
-
-    searchBtn.innerHTML = "Searching"
-    searchBtn.style.backgroundColor = "rgb(55, 109, 247)"
-
-    if (searchBar.value != "") {
-        var val = searchBar.value;
-        var nonEmptyOptionsArray = []
-        for (var i = 0; i < options.length; i++) {
-            if (options[i].value != "") {
-                nonEmptyOptionsArray.push(options[i])
-                matchList.display = 'none'
-            }
-        }
-        for (var i = 0; i < options.length; i++) {
-            if (options[i].value.toLowerCase() == val.toLowerCase()) {
-                main_acc_page_empty_field.innerHTML = ""
-                searchBtn.innerHTML = "Search"
-                searchBtn.style.backgroundColor = "#1652f0"
-                localStorage["company"] = val
-                window.location.href = "../3rth/buysell_page.html"
-                return 0;
-            }
-        }
-
-        searchBtn.innerHTML = "Search"
-        searchBtn.style.backgroundColor = "#1652f0"
-
-        swal("Company not found", "Make sure you have the exact value from the dropdown", "error")
-    }
-})
-
-
-searchBar.addEventListener('input', () => searchCompanies(searchBar.value))
-// End of Search Bar JS
-
 
 // Start of More Options and profile settings
 const more_options_container = document.getElementsByClassName("more-options-container")[0]
@@ -122,71 +55,7 @@ more_options_btn.addEventListener("click", () => {
         }
     })
 })
-
-var seller;
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        // console.log(firebase.auth().currentUser)
-        dbf.collection("users").doc(user.uid).get().then((doc) => {
-            seller = doc.data().seller
-            if (seller) {
-                const newListElement = document.createElement("li")
-                newListElement.innerHTML = "Buyers Requests"
-
-                more_options_container.insertBefore(newListElement, more_options_container.children[1])
-                newListElement.addEventListener("click", () => {
-                    window.location.href = "../3rth/buyer_requests.html"
-                })
-            }
-        })
-    }
-});
-
-
-
-
 // End of More Options
-
-// Start of Backgrund changer
-const main_page_icon_container = document.getElementsByClassName("main-page-icon-container")[0]
-const input_file = document.getElementsByClassName("input-file")[0]
-const body = document.querySelector("#body")
-
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        const photoid = auth.currentUser.uid
-        const ref = dbs.ref()
-        ref.child("user_backgrounds/" + photoid).getDownloadURL().then((url) => {
-            body.setAttribute("style", `background-image: url(${url})`)
-        }).catch(() => {
-            body.setAttribute("style", "background-image: url('wallpaper.jpg')")
-        })
-
-    }
-})
-
-main_page_icon_container.addEventListener("click", () => {
-    input_file.click()
-})
-
-function handleWallpaper(e) {
-    const file = input_file.files[0]
-    const photoid = auth.currentUser.uid
-    const ref = dbs.ref()
-    const metatype = {
-        contentType: file.type
-    }
-
-    const task = ref.child("user_backgrounds/" + photoid).put(file, metatype)
-    task
-        .then(snapshot => snapshot.ref.getDownloadURL())
-        .then(url => {
-            body.setAttribute("style", `background-image: url(${url})`)
-        })
-}
-
-input_file.addEventListener("change", handleWallpaper)
-// End of Background changer
 
 // Start email
 const profile_settings_email = document.getElementsByClassName("profile-settings-email")[0]
@@ -197,13 +66,6 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 })
 // End email
-
-// Start of home bottom
-const home_btn = document.getElementsByClassName("home-btn")[0]
-home_btn.addEventListener("click", () => {
-    window.location.href = "main-page.html"
-})
-// End of home button
 
 // Start of Name
 const profile_settings_name = document.getElementsByClassName("profile-settings-name")[0]
@@ -265,25 +127,32 @@ function handleProfilePicture(e) {
 }
 // End of profile pic change
 
+// Start of home bottom
+const home_btn = document.getElementsByClassName("home-btn")[0]
+home_btn.addEventListener("click", () => {
+    window.location.href = "../2nd/main-page.html"
+})
+// End of home button
+
+// Verify me start
+const profile_settings_li_normal_verify = document.getElementsByClassName("profile-settings-li-normal")[0]
+profile_settings_li_normal_verify.addEventListener("click", () => {
+    window.location.href = "../2nd/verify_me.html"
+})
+// Verify me end
+
 // Start of going to manage account page
 const profile_settings_manage = document.getElementsByClassName("profile-settings-manage")[0]
 profile_settings_manage.addEventListener("click", () => {
-    window.location.href = "manage-acc.html"
+    window.location.href = "../2nd/manage-acc.html"
 })
 // End of going to manage account page
 
 // Start of signout option
-var profile_settings_li_normal_signout = document.getElementsByClassName("profile-settings-li-normal")[1]
-profile_settings_li_normal_signout.addEventListener("click", () => {
+var profile_settings_li_normal = document.getElementsByClassName("profile-settings-li-normal")[1]
+profile_settings_li_normal.addEventListener("click", () => {
     auth.signOut().then(() => {
         window.location.href = "../1st/index.html";
     })
 })
 // End of signout option
-
-// Verify me start
-const profile_settings_li_normal_verify = document.getElementsByClassName("profile-settings-li-normal")[0]
-profile_settings_li_normal_verify.addEventListener("click", () => {
-    window.location.href = "verify_me.html"
-})
-// Verify me end

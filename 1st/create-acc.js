@@ -22,9 +22,10 @@ var hide_icon = document.getElementsByClassName("hide")
 
 var firstName = create_acc_content_form_input[0]
 var lastName = create_acc_content_form_input[1]
-var email = create_acc_content_form_input[2]
-var password = create_acc_content_form_input[3]
-var repeat_password = create_acc_content_form_input[4]
+var username = create_acc_content_form_input[2]
+var email = create_acc_content_form_input[3]
+var password = create_acc_content_form_input[4]
+var repeat_password = create_acc_content_form_input[5]
 var show_password1 = show_icon[0]
 var hide_password1 = hide_icon[0]
 var show_password2 = show_icon[1]
@@ -81,7 +82,7 @@ function submit() {
         return 1
     }
 
-    emailValue = email.value
+    const emailValue = email.value
     if (emailValue.includes("@") == false) {
         create_acc_empty_field.innerHTML = "Enter a valid email"
         return 1
@@ -89,6 +90,30 @@ function submit() {
 
     if (emailValue.includes(".") == false) {
         create_acc_empty_field.innerHTML = "Enter a valid email"
+        return 1
+    }
+
+    const userName = username.value.toLowerCase()
+    const dbf = firebase.firestore()
+    dbf.collection("users").where("username", "==", userName).get().then((q) => {
+        q.forEach(() => {
+            create_acc_empty_field.innerHTML = "Username already exits"
+            return 1
+        })
+    }).catch((err) => {
+        if (err.code == "auth/network-request-failed") {
+            create_acc_empty_field.innerHTML = "Network failed please try again"
+            return 1
+        }
+    })
+
+    if (!(/[a-z]/.test(userName))) {
+        create_acc_empty_field.innerHTML = "Username must have at least on letter"
+        return 1
+    }
+
+    if (userName.includes("@") || userName.includes("?") || userName.includes(">") || userName.includes("<") || userName.includes("\\") || userName.includes("/")) {
+        create_acc_empty_field.innerHTML = "Invalid username"
         return 1
     }
 
@@ -119,7 +144,7 @@ function submit() {
 
     fixed_email = email.value.trim().toLowerCase();
 
-    localStorage["userInfo"] = [fixed_firstName, fixed_lastName, fixed_email, password.value]
+    localStorage["userInfo"] = [fixed_firstName, fixed_lastName, userName, fixed_email, password.value]
     window.location.href = "create-more-acc.html"
 
     // firebase.auth().createUserWithEmailAndPassword(fixed_email, password.value)

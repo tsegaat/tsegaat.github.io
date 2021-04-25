@@ -33,8 +33,9 @@ const userInfo = localStorage.getItem("userInfo").split(",");
 
 const firstName = userInfo[0]
 const lastName = userInfo[1]
-const email = userInfo[2]
-const pass = userInfo[3]
+const username = userInfo[2]
+const email = userInfo[3]
+const pass = userInfo[4]
 
 function submit() {
     create_acc_confirm_button.innerHTML = "Creating..."
@@ -122,6 +123,7 @@ function submit() {
             firebase.firestore().collection('users').doc(c.user.uid).set({
                 firstName: firstName,
                 lastName: lastName,
+                username: username,
                 phone: phone,
                 birthday: birthday,
                 gender: userGender
