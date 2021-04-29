@@ -194,9 +194,8 @@ const searchCompanies = async searchText => {
     const ref = dbs.ref()
     ref.child("company_logos/" + rawCompanyName + ".png").getDownloadURL().then((url) => {
         selected_table_company_logo.setAttribute("style", `background-image: url(${url})`)
-    }).catch((e) => {
-        console.log(rawCompanyName)
-        console.log(e)
+    }).catch(() => {
+        selected_table_company_logo.innerHTML = companyAltLogo
     })
 
     table_selected_company_name.innerHTML = companyName
