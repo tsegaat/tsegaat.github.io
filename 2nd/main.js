@@ -21,12 +21,15 @@ const searchBar = document.querySelector(".head-create-email")
 const matchList = document.getElementById("match-list")
 const options = document.getElementsByClassName("options")
 const searchBtn = document.getElementById("head-submit-email")
-const main_acc_page_empty_field = document.getElementById("create-acc-empty-field")
 
 function outputToHtml(companies) {
     if (companies.length > 0) {
         for (var i = 0; i < companies.length; i++) {
-            const company = companies[i].name
+            var company = companies[i].name
+            var firstPartCompany = company.slice(" ")
+
+            var firstCompany = firstPartCompany[0].toUpperCase() + firstPartCompany.slice(1);
+            company = firstCompany
             options[i].setAttribute("value", company)
         }
     }
@@ -63,7 +66,6 @@ searchBtn.addEventListener('click', () => {
         }
         for (var i = 0; i < options.length; i++) {
             if (options[i].value.toLowerCase() == val.toLowerCase()) {
-                main_acc_page_empty_field.innerHTML = ""
                 searchBtn.innerHTML = "Search"
                 searchBtn.style.backgroundColor = "#1652f0"
                 localStorage["company"] = val

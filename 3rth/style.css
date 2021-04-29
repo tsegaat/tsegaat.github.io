@@ -314,9 +314,8 @@ option {
 }
 
 .table-company-logo{
-    height: 36px;
-    aspect-ratio: auto 36 / 36;
-    width: 36px;
+    height: 60px;
+    width: 50px;
 }
 
 .table-company-name{

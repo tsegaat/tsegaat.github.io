@@ -164,3 +164,36 @@ selectd_trade_btn.addEventListener("click", () => {
     window.location.href = "buysell_selected.html"
 })
 // Taking to the selected-buy/sell page end
+
+// Making the search bar value the main thing in the page start
+
+const selectedCompanies = localStorage["company"].toLowerCase()
+
+const searchCompanies = async searchText => {
+    const res = await fetch("../2nd/companies.json")
+    const companies = await res.json()
+
+    let matches = companies.filter(company => {
+        const regex = new RegExp(`^${searchText}`, 'gi')
+        return company.name.match(regex)
+    })
+
+    // selectedCompanyProperties['name'] = 
+    // selectedCompanyProperties['sector'] = 
+    var companyName = matches[0]["name"][0].toUpperCase() + matches[0]["name"].slice(1)
+    var companySector = matches[0]["sector"][0].toUpperCase() + matches[0]["sector"].slice(1)
+    var companyPrice = matches[0]["price"]
+
+    const table_selected_company_name = document.getElementsByClassName("table-company-name")[0]
+    const selected_table_company_sector = document.getElementById("selected_table_company_sector")
+    const selected_table_company_price = document.getElementById("selected_table_company_price")
+    const selected_table_company_exchangescore = document.getElementById("selected_table_company_exchangescore")
+
+    table_selected_company_name.innerHTML = companyName
+    selected_table_company_sector.innerHTML = companySector
+    selected_table_company_price.innerHTML = companyPrice
+}
+
+searchCompanies(selectedCompanies)
+
+// Making the search bar value the main thing in the page end

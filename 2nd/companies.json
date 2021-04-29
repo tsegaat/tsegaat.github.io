@@ -1,11 +1,17 @@
 [
     {
-        "name": "Zemen Bank"
+        "name": "zemen bank",
+        "sector": "finance",
+        "price": "200 ETB"
     },
     {
-        "name": "Awash Bank"
+        "name": "atk",
+        "sector": "other",
+        "price": "100 ETB"
     },
     {
-        "name": "ATK"
+        "name": "awash bank",
+        "sector": "finance",
+        "price": "250 ETB"
     }
 ]
