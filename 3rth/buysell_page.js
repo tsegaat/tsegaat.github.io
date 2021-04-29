@@ -178,16 +178,26 @@ const searchCompanies = async searchText => {
         return company.name.match(regex)
     })
 
-    // selectedCompanyProperties['name'] = 
-    // selectedCompanyProperties['sector'] = 
-    var companyName = matches[0]["name"][0].toUpperCase() + matches[0]["name"].slice(1)
-    var companySector = matches[0]["sector"][0].toUpperCase() + matches[0]["sector"].slice(1)
-    var companyPrice = matches[0]["price"]
+    const companyName = matches[0]["name"][0].toUpperCase() + matches[0]["name"].slice(1)
+    const companySector = matches[0]["sector"][0].toUpperCase() + matches[0]["sector"].slice(1)
+    const companyPrice = matches[0]["price"]
+    const companyAltLogo = matches[0]["altLogo"]
+
+    const rawCompanyName = matches[0]["name"]
 
     const table_selected_company_name = document.getElementsByClassName("table-company-name")[0]
     const selected_table_company_sector = document.getElementById("selected_table_company_sector")
     const selected_table_company_price = document.getElementById("selected_table_company_price")
     const selected_table_company_exchangescore = document.getElementById("selected_table_company_exchangescore")
+    const selected_table_company_logo = document.getElementsByClassName("table-company-logo")[0]
+
+    const ref = dbs.ref()
+    ref.child("company_logos/" + rawCompanyName + ".png").getDownloadURL().then((url) => {
+        selected_table_company_logo.setAttribute("style", `background-image: url(${url})`)
+    }).catch((e) => {
+        console.log(rawCompanyName)
+        console.log(e)
+    })
 
     table_selected_company_name.innerHTML = companyName
     selected_table_company_sector.innerHTML = companySector

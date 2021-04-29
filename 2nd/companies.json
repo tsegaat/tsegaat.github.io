@@ -2,16 +2,19 @@
     {
         "name": "zemen bank",
         "sector": "finance",
-        "price": "200 ETB"
+        "price": "200 ETB",
+        "altLogo": "ZmnLogo"
     },
     {
         "name": "atk",
         "sector": "other",
-        "price": "100 ETB"
+        "price": "100 ETB",
+        "altLogo": "AtkLogo"
     },
     {
         "name": "awash bank",
         "sector": "finance",
-        "price": "250 ETB"
+        "price": "250 ETB",
+        "altLogo": "AwshLogo"
     }
 ]
