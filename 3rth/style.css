@@ -318,6 +318,9 @@ option {
     width: 70px;
     background-repeat: no-repeat;
     background-size: cover;
+    text-align: center;
+    transform: translateY(18px);
+    color: #1652f0;
 }
 
 .table-company-name{
