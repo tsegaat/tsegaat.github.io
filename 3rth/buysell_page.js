@@ -181,8 +181,8 @@ const searchCompanies = async searchText => {
     const companyName = matches[0]["name"][0].toUpperCase() + matches[0]["name"].slice(1)
     const companySector = matches[0]["sector"][0].toUpperCase() + matches[0]["sector"].slice(1)
     const companyPrice = matches[0]["price"]
+    const companyExchangescore = matches[0]["exchangescore"]
     const companyAltLogo = matches[0]["altLogo"]
-
     const rawCompanyName = matches[0]["name"]
 
     const table_selected_company_name = document.getElementsByClassName("table-company-name")[0]
@@ -202,6 +202,7 @@ const searchCompanies = async searchText => {
     table_selected_company_name.innerHTML = companyName
     selected_table_company_sector.innerHTML = companySector
     selected_table_company_price.innerHTML = companyPrice
+    selected_table_company_exchangescore.innerHTML = companyExchangescore
 }
 
 searchCompanies(selectedCompanies)
@@ -243,6 +244,21 @@ other_buy_sell_sector.addEventListener("click", () => {
 })
 // Making the tab filter end
 
-// Getting all the information from the db and JSON and put it somewhere start 
+// Getting all the information from the db and JSON and put it somewhere start fun
+async function getAllCompanies() {
+    const res = await fetch("../2nd/companies.json")
+    const companies = await res.json()
 
+    let matches = companies.filter(company => {
+        const regex = new RegExp('')
+        return company
+    })
+
+    for (var i = 0; i < matches.length; i++) {
+
+    }
+
+}
+
+getAllCompanies()
 // Getting all the information from the db and JSON and put it somewhere end
