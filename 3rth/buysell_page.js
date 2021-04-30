@@ -209,41 +209,6 @@ searchCompanies(selectedCompanies)
 
 // Making the search bar value the main thing in the page end
 
-// Making the tab filter start
-const all_comp_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[0]
-const finance_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[1]
-const resource_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[2]
-const other_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[3]
-
-all_comp_buy_sell_sector.addEventListener("click", () => {
-    all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
-    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-})
-
-finance_buy_sell_sector.addEventListener("click", () => {
-    finance_buy_sell_sector.classList.add("buy-sell-sector-selected")
-    all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-})
-
-resource_buy_sell_sector.addEventListener("click", () => {
-    resource_buy_sell_sector.classList.add("buy-sell-sector-selected")
-    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-})
-
-other_buy_sell_sector.addEventListener("click", () => {
-    other_buy_sell_sector.classList.add("buy-sell-sector-selected")
-    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-    all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-})
-// Making the tab filter end
-
 // Getting all the information from the db and JSON and put it somewhere start fun
 
 const table_row_container = document.getElementById("table-row-container")
@@ -288,7 +253,13 @@ async function getAllCompanies() {
             company_logos.push(url)
         })
     }
+    // TODO: The image getting shit is not working
+    // console.log(company_logos)
 
+    for (var j = 0; j < company_logos.length; j++) {
+        console.log(company_logos)
+        table_company_logo[j].innerHTML = "tsega"
+    }
     for (var i = 0; i < matches.length; i++) {
         table_company_name[i].innerHTML = matches[i]["name"][0].toUpperCase() + matches[i]["name"].slice(1)
         table_company_sector[i].innerHTML = matches[i]["sector"][0].toUpperCase() + matches[i]["sector"].slice(1)
@@ -301,3 +272,216 @@ async function getAllCompanies() {
 
 getAllCompanies()
 // Getting all the information from the db and JSON and put it somewhere end
+
+// Making the tab filter start
+const all_comp_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[0]
+const finance_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[1]
+const resource_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[2]
+const other_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[3]
+
+async function returnCompnaySectors() {
+    const res = await fetch("../2nd/companies.json")
+    const companies = await res.json()
+
+    let matches = companies.filter(company => {
+        return company
+    })
+    const table_row_container = document.getElementById("table-row-container")
+    all_comp_buy_sell_sector.addEventListener("click", () => {
+        table_row_container.innerHTML = ''
+        all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
+        finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+
+        const all_companies = []
+        for (var i = 0; i < matches.length; i++) {
+            all_companies.push(matches[i])
+        }
+
+        for (var i = 0; i < all_companies.length; i++) {
+            const HTML = `<tr>
+                <td class="table_company_number"></td>
+                <td><span>
+                        <div class="table-company-logo"></div>
+                    </span></td>
+                <td>
+                    <span class="table-company-name"></span>
+                </td>
+                <td class="table_company_sector"></td>
+                <td class="table_company_price"></td>
+                <td class="table_company_exchangescore"></td>
+                <td><button class="table-trade-btn btn">Exchange</button></td>
+            </tr>`
+
+            table_row_container.innerHTML += HTML
+
+            const table_company_number = document.getElementsByClassName("table_company_number")
+            const table_company_logo = document.getElementsByClassName("table-company-logo")
+            const table_company_name = document.getElementsByClassName("table-company-name")
+            const table_company_sector = document.getElementsByClassName("table_company_sector")
+            const table_company_price = document.getElementsByClassName("table_company_price")
+            const table_company_exchangescore = document.getElementsByClassName("table_company_exchangescore")
+
+            table_company_name[i].innerHTML = all_companies[i]["name"][0].toUpperCase() + all_companies[i]["name"].slice(1)
+            table_company_sector[i].innerHTML = all_companies[i]["sector"][0].toUpperCase() + all_companies[i]["sector"].slice(1)
+            table_company_price[i].innerHTML = all_companies[i]["price"]
+            table_company_exchangescore[i].innerHTML = all_companies[i]["exchangescore"]
+            table_company_number[i].innerHTML = i + 1
+
+        }
+
+
+    })
+
+    finance_buy_sell_sector.addEventListener("click", () => {
+        table_row_container.innerHTML = ''
+        finance_buy_sell_sector.classList.add("buy-sell-sector-selected")
+        all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+
+        const finance_compnaies = []
+        for (var i = 0; i < matches.length; i++) {
+            if (matches[i]['sector'] == "finance") {
+                finance_compnaies.push(matches[i])
+            }
+        }
+
+        for (var i = 0; i < finance_compnaies.length; i++) {
+            const HTML = `<tr>
+                    <td class="table_company_number"></td>
+                    <td><span>
+                            <div class="table-company-logo"></div>
+                        </span></td>
+                    <td>
+                        <span class="table-company-name"></span>
+                    </td>
+                    <td class="table_company_sector"></td>
+                    <td class="table_company_price"></td>
+                    <td class="table_company_exchangescore"></td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>`
+
+            table_row_container.innerHTML += HTML
+
+            const table_company_number = document.getElementsByClassName("table_company_number")
+            const table_company_logo = document.getElementsByClassName("table-company-logo")
+            const table_company_name = document.getElementsByClassName("table-company-name")
+            const table_company_sector = document.getElementsByClassName("table_company_sector")
+            const table_company_price = document.getElementsByClassName("table_company_price")
+            const table_company_exchangescore = document.getElementsByClassName("table_company_exchangescore")
+
+
+            table_company_name[i].innerHTML = finance_compnaies[i]["name"][0].toUpperCase() + finance_compnaies[i]["name"].slice(1)
+            table_company_sector[i].innerHTML = finance_compnaies[i]["sector"][0].toUpperCase() + finance_compnaies[i]["sector"].slice(1)
+            table_company_price[i].innerHTML = finance_compnaies[i]["price"]
+            table_company_exchangescore[i].innerHTML = finance_compnaies[i]["exchangescore"]
+            table_company_number[i].innerHTML = i + 1
+
+        }
+
+
+
+    })
+
+    resource_buy_sell_sector.addEventListener("click", () => {
+        table_row_container.innerHTML = ''
+        resource_buy_sell_sector.classList.add("buy-sell-sector-selected")
+        finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+
+        const resource_compnaies = []
+        for (var i = 0; i < matches.length; i++) {
+            if (matches[i]['sector'] == "resource") {
+                resource_compnaies.push(matches[i])
+            }
+        }
+
+        for (var i = 0; i < resource_compnaies.length; i++) {
+            const HTML = `<tr>
+                <td class="table_company_number"></td>
+                <td><span>
+                        <div class="table-company-logo"></div>
+                    </span></td>
+                <td>
+                    <span class="table-company-name"></span>
+                </td>
+                <td class="table_company_sector"></td>
+                <td class="table_company_price"></td>
+                <td class="table_company_exchangescore"></td>
+                <td><button class="table-trade-btn btn">Exchange</button></td>
+            </tr>`
+
+            table_row_container.innerHTML += HTML
+
+            const table_company_number = document.getElementsByClassName("table_company_number")
+            const table_company_logo = document.getElementsByClassName("table-company-logo")
+            const table_company_name = document.getElementsByClassName("table-company-name")
+            const table_company_sector = document.getElementsByClassName("table_company_sector")
+            const table_company_price = document.getElementsByClassName("table_company_price")
+            const table_company_exchangescore = document.getElementsByClassName("table_company_exchangescore")
+
+            table_company_name[i].innerHTML = resource_compnaies[i]["name"][0].toUpperCase() + resource_compnaies[i]["name"].slice(1)
+            table_company_sector[i].innerHTML = resource_compnaies[i]["sector"][0].toUpperCase() + resource_compnaies[i]["sector"].slice(1)
+            table_company_price[i].innerHTML = resource_compnaies[i]["price"]
+            table_company_exchangescore[i].innerHTML = resource_compnaies[i]["exchangescore"]
+            table_company_number[i].innerHTML = i + 1
+
+        }
+
+    })
+
+    other_buy_sell_sector.addEventListener("click", () => {
+        table_row_container.innerHTML = ''
+        other_buy_sell_sector.classList.add("buy-sell-sector-selected")
+        finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+
+        const other_companies = []
+        for (var i = 0; i < matches.length; i++) {
+            if (matches[i]['sector'] == "other") {
+                other_companies.push(matches[i])
+            }
+        }
+
+        for (var i = 0; i < other_companies.length; i++) {
+            const HTML = `<tr>
+                <td class="table_company_number"></td>
+                <td><span>
+                        <div class="table-company-logo"></div>
+                    </span></td>
+                <td>
+                    <span class="table-company-name"></span>
+                </td>
+                <td class="table_company_sector"></td>
+                <td class="table_company_price"></td>
+                <td class="table_company_exchangescore"></td>
+                <td><button class="table-trade-btn btn">Exchange</button></td>
+            </tr>`
+
+            table_row_container.innerHTML += HTML
+
+            const table_company_number = document.getElementsByClassName("table_company_number")
+            const table_company_logo = document.getElementsByClassName("table-company-logo")
+            const table_company_name = document.getElementsByClassName("table-company-name")
+            const table_company_sector = document.getElementsByClassName("table_company_sector")
+            const table_company_price = document.getElementsByClassName("table_company_price")
+            const table_company_exchangescore = document.getElementsByClassName("table_company_exchangescore")
+
+            for (var i = 0; i < matches.length; i++) {
+                table_company_name[i].innerHTML = other_companies[i]["name"][0].toUpperCase() + other_companies[i]["name"].slice(1)
+                table_company_sector[i].innerHTML = other_companies[i]["sector"][0].toUpperCase() + other_companies[i]["sector"].slice(1)
+                table_company_price[i].innerHTML = other_companies[i]["price"]
+                table_company_exchangescore[i].innerHTML = other_companies[i]["exchangescore"]
+                table_company_number[i].innerHTML = i + 1
+            }
+        }
+
+    })
+}
+returnCompnaySectors()
+
+// Making the tab filter end
