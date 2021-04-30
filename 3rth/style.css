@@ -323,6 +323,16 @@ option {
     color: #1652f0;
 }
 
+#selected_table_company_logo{
+    height: 60px;
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    background-position: center;
+    color: #1652f0;
+}
+
 .table-company-name{
     color: rgb(5, 15, 25);
     font-size: 16px;

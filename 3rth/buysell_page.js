@@ -185,11 +185,11 @@ const searchCompanies = async searchText => {
     const companyAltLogo = matches[0]["altLogo"]
     const rawCompanyName = matches[0]["name"]
 
-    const table_selected_company_name = document.getElementsByClassName("table-company-name")[0]
+    const selected_table_company_name = document.getElementById("selected_table_company_name")
     const selected_table_company_sector = document.getElementById("selected_table_company_sector")
     const selected_table_company_price = document.getElementById("selected_table_company_price")
     const selected_table_company_exchangescore = document.getElementById("selected_table_company_exchangescore")
-    const selected_table_company_logo = document.getElementsByClassName("table-company-logo")[0]
+    const selected_table_company_logo = document.getElementById("selected_table_company_logo")
 
     const ref = dbs.ref()
     ref.child("company_logos/" + rawCompanyName + ".png").getDownloadURL().then((url) => {
@@ -199,7 +199,7 @@ const searchCompanies = async searchText => {
         selected_table_company_logo.setAttribute("style", "transform: translateY(18px)")
     })
 
-    table_selected_company_name.innerHTML = companyName
+    selected_table_company_name.innerHTML = companyName
     selected_table_company_sector.innerHTML = companySector
     selected_table_company_price.innerHTML = companyPrice
     selected_table_company_exchangescore.innerHTML = companyExchangescore
