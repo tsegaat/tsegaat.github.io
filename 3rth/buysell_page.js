@@ -196,6 +196,7 @@ const searchCompanies = async searchText => {
         selected_table_company_logo.setAttribute("style", `background-image: url(${url})`)
     }).catch(() => {
         selected_table_company_logo.innerHTML = companyAltLogo
+        selected_table_company_logo.setAttribute("style", "transform: translateY(18px)")
     })
 
     table_selected_company_name.innerHTML = companyName
@@ -206,3 +207,42 @@ const searchCompanies = async searchText => {
 searchCompanies(selectedCompanies)
 
 // Making the search bar value the main thing in the page end
+
+// Making the tab filter start
+const all_comp_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[0]
+const finance_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[1]
+const resource_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[2]
+const other_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[3]
+
+all_comp_buy_sell_sector.addEventListener("click", () => {
+    all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
+    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+})
+
+finance_buy_sell_sector.addEventListener("click", () => {
+    finance_buy_sell_sector.classList.add("buy-sell-sector-selected")
+    all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+})
+
+resource_buy_sell_sector.addEventListener("click", () => {
+    resource_buy_sell_sector.classList.add("buy-sell-sector-selected")
+    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+})
+
+other_buy_sell_sector.addEventListener("click", () => {
+    other_buy_sell_sector.classList.add("buy-sell-sector-selected")
+    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+})
+// Making the tab filter end
+
+// Getting all the information from the db and JSON and put it somewhere start 
+
+// Getting all the information from the db and JSON and put it somewhere end
