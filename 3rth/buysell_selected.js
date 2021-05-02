@@ -166,3 +166,18 @@ submitBtn.addEventListener("click", () => {
     })
 })
 // The submit button end
+
+// Getting the selected company and putting out there start
+
+const selectedCompany = localStorage['selectedCompany']
+console.log(selectedCompany)
+const companyName = selectedCompany[0]
+const companyPrice = selectedCompany[1]
+
+const domCompName = document.getElementById("changeName")
+const domCompPrice = document.getElementById("actualPrice")
+
+domCompName.innerHTML = companyName
+domCompPrice.innerHTML = companyPrice
+
+// Getting the selected company and putting out there end

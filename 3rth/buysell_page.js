@@ -157,14 +157,6 @@ profile_settings_li_normal.addEventListener("click", () => {
 })
 // End of signout option
 
-// Taking to the selected-buy/sell page start
-const selectd_trade_btn = document.getElementsByClassName("selectd-trade-btn")[0]
-
-selectd_trade_btn.addEventListener("click", () => {
-    window.location.href = "buysell_selected.html"
-})
-// Taking to the selected-buy/sell page end
-
 // Making the search bar value the main thing in the page start
 
 const selectedCompanies = localStorage["company"].toLowerCase()
@@ -203,11 +195,21 @@ const searchCompanies = async searchText => {
     selected_table_company_sector.innerHTML = companySector
     selected_table_company_price.innerHTML = companyPrice
     selected_table_company_exchangescore.innerHTML = companyExchangescore
+    selectd_trade_btn.addEventListener("click", () => {
+        localStorage['selectedCompany'] = [companyName, companyPrice]
+        window.location.href = "buysell_selected.html"
+    })
 }
 
 searchCompanies(selectedCompanies)
 
 // Making the search bar value the main thing in the page end
+
+// Taking to the selected-buy/sell page start
+const selectd_trade_btn = document.getElementsByClassName("selectd-trade-btn")[0]
+
+
+// Taking to the selected-buy/sell page end
 
 // Getting all the information from the db and JSON and put it somewhere start fun
 
@@ -282,12 +284,6 @@ async function getAllCompanies() {
 
 
     }
-
-
-    // companyLogos.forEach((arr, i) => {
-
-    //     table_company_logo[i].setAttribute("style", `background-image: url(${arr})`)
-    // })
 
 
 }
