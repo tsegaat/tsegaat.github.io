@@ -169,15 +169,49 @@ submitBtn.addEventListener("click", () => {
 
 // Getting the selected company and putting out there start
 
-const selectedCompany = localStorage['selectedCompany']
-console.log(selectedCompany)
+const selectedCompany = localStorage['selectedCompany'].split(",");
+
 const companyName = selectedCompany[0]
 const companyPrice = selectedCompany[1]
 
 const domCompName = document.getElementById("changeName")
 const domCompPrice = document.getElementById("actualPrice")
+const domCompTotal = document.getElementById("total-price-text")
 
 domCompName.innerHTML = companyName
 domCompPrice.innerHTML = companyPrice
 
+const companyTotalPrice = companyPrice.split(" ")[0]
+domCompTotal.innerHTML = companyTotalPrice
+
+const domCompImg = document.getElementById("changeImg")
+dbs.ref().child("company_logos/" + companyName.toLowerCase() + ".png").getDownloadURL().then((url) => {
+    domCompImg.setAttribute("style", `background-image: url(${url})`)
+})
+
 // Getting the selected company and putting out there end
+
+// Making the shares interactive with the total price start
+
+const quantity = document.getElementById("quantity")
+const premium_input = document.getElementById("premium-input")
+
+premium_input.addEventListener("input", () => {
+    var premiumAmount = Number(premium_input.value)
+    var compPrice = Number(companyTotalPrice)
+    var premiumCompPrice = premiumAmount + compPrice
+
+    domCompTotal.innerHTML = premiumCompPrice
+})
+
+quantity.addEventListener("input", () => {
+    var quantityAmount = Number(quantity.value)
+    var premiumAmount = Number(premium_input.value)
+    var compPrice = Number(companyTotalPrice)
+
+    var premiumCompPrice = premiumAmount + compPrice
+
+    domCompTotal.innerHTML = premiumCompPrice * quantityAmount
+})
+
+// Making the shares interactive with the total price end

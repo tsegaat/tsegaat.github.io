@@ -1099,9 +1099,11 @@ tr td a{
     transform: translateY(-50px);
     border-radius: 5px;
     padding: 8px 10px;
+    font-style: italic;
 }
 
 #changeName{
+    margin-top: 110px;
     font-size: 60px;
     transform: translateY(-100px);
 }
@@ -1153,7 +1155,9 @@ tr td a{
 }
 
 #premium > span:first-child{
-    margin-right: 10px;
+    border-right: 1px solid #000;
+    padding-right: 5px;
+    font-size: 18px;
 }
 
 .quantity{
@@ -1180,4 +1184,36 @@ tr td a{
     display: inline-block;
     border-radius: 5px;
     padding: 8px 10px;
+}
+
+#changeImg{
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#total-text{
+    border-right: 1px solid #000;
+    padding-right: 5px;
+}
+
+#total-price-text{
+    /* font-style: bold; */
+    font-family: "arial"
+}
+
+#currency-text{
+    font-size: 15px;
+}
+
+#premium-input{
+    border-left: 1px solid #000;
+    padding-left: 5px;
+}
+
+#shares-text{
+    font-size: 18px;
+    font-weight: bold;
 }

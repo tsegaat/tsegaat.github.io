@@ -69,24 +69,30 @@
         <div class="small-container single-product">
             <div class="buysell-row">
                 <div class="col-2">
-                    <img src="images/zemen bank.png" width="100%" alt="" id="changeImg">
+                    <div id="changeImg" style="background-image: url('images\zemen bank.png')"></div>
                 </div>
                 <div class="col-2">
                     <div id="changeName"></div>
-                    <div id="changePrice">Par Price: <span id="actualPrice"></span> birr</div>
-                    <div class="premium-container">
-                        <div id="premium"><span>Premium:</span><input id="premium-input" type="number"
-                                placeholder="____"><span>birr</span>
+                    <div>
+                        <div id="changePrice">Par Price: <span id="actualPrice"></span></div>
+                        <div class="premium-container">
+                            <div id="premium"><span id="total-text">Premium</span><input id="premium-input"
+                                    type="number" placeholder="____"><span id="currency-text">ETB</span>
+                            </div>
                         </div>
                     </div>
+
                     <div class="quantity-total-price-container">
                         <div class="quantity-container">
                             <div class="quantity">
-                                <span>Shares:</span>
+                                <span id="shares-text">Shares</span>
                                 <input id="quantity" type="number" value="1" min="1">
                             </div>
                         </div>
-                        <div id="total-price">Total: <span>234</span> birr</div>
+                        <div id="total-price">
+                            <span id="total-text">Total</span> <span id="total-price-text"></span> <span
+                                id="currency-text">ETB</span>
+                        </div>
                     </div>
 
                     <div class="btn buy-sell-btn" id="submitBtn">Submit Offer</div>
