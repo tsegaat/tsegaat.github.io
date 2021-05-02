@@ -247,26 +247,48 @@ async function getAllCompanies() {
     const table_company_price = document.getElementsByClassName("table_company_price")
     const table_company_exchangescore = document.getElementsByClassName("table_company_exchangescore")
 
-    const company_logos = []
+    var companyLogos = []
+    var array = []
+    for (var i = 0; i < table_company_logo.length; i++) {
+        array.push(table_company_logo[i])
+    }
+
+
+
+
+    // TODO: The Logo getter is not working
+
+
+
+
     for (var i = 0; i < matches.length; i++) {
         ref.child("company_logos/" + matches[i]["name"] + ".png").getDownloadURL().then((url) => {
-            company_logos.push(url)
+            console.log(url)
+            companyLogos.push(url)
+            setTimeout(() => {
+                array.forEach((val, j) => {
+                    console.log(val)
+                    console.log(j)
+                    val.setAttribute("style", `background-image: url(${companyLogos[j]})`)
+                })
+            }, 3000)
         })
-    }
-    // TODO: The image getting shit is not working
-    // console.log(company_logos)
 
-    for (var j = 0; j < company_logos.length; j++) {
-        console.log(company_logos)
-        table_company_logo[j].innerHTML = "tsega"
-    }
-    for (var i = 0; i < matches.length; i++) {
         table_company_name[i].innerHTML = matches[i]["name"][0].toUpperCase() + matches[i]["name"].slice(1)
         table_company_sector[i].innerHTML = matches[i]["sector"][0].toUpperCase() + matches[i]["sector"].slice(1)
         table_company_price[i].innerHTML = matches[i]["price"]
         table_company_exchangescore[i].innerHTML = matches[i]["exchangescore"]
         table_company_number[i].innerHTML = i + 1
+
+
     }
+
+
+    // companyLogos.forEach((arr, i) => {
+
+    //     table_company_logo[i].setAttribute("style", `background-image: url(${arr})`)
+    // })
+
 
 }
 
