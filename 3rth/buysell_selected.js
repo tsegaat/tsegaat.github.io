@@ -107,9 +107,9 @@ profile_settings_camera_icon.addEventListener("click", () => {
     profile_settings_profilepicture_input.click()
 })
 
-profile_settings_profilepicture_input.addEventListener("change", handleProfilePicture, false)
+profile_settings_profilepicture_input.addEventListener("change", handleProfilePicture)
 
-function handleProfilePicture(e) {
+function handleProfilePicture() {
     const file = profile_settings_profilepicture_input.files[0]
     const photoid = auth.currentUser.uid
     const ref = dbs.ref()
@@ -157,15 +157,7 @@ profile_settings_li_normal.addEventListener("click", () => {
 })
 // End of signout option
 
-// The submit button start
-const submitBtn = document.getElementById("submitBtn")
 
-submitBtn.addEventListener("click", () => {
-    swal("Your offer has been submitted", "A seller will contact if your request is accepted", "success").then(() => {
-        window.location.href = "../2nd/main-page.html"
-    })
-})
-// The submit button end
 
 // Getting the selected company and putting out there start
 
@@ -178,12 +170,11 @@ const domCompName = document.getElementById("changeName")
 const domCompPrice = document.getElementById("actualPrice")
 const domCompTotal = document.getElementById("total-price-text")
 
-domCompName.innerHTML = companyName
-domCompPrice.innerHTML = companyPrice
-
 const companyTotalPrice = companyPrice.split(" ")[0]
-domCompTotal.innerHTML = companyTotalPrice
 
+domCompTotal.innerHTML = companyTotalPrice
+domCompName.innerHTML = companyName
+domCompPrice.innerHTML = companyTotalPrice
 const domCompImg = document.getElementById("changeImg")
 dbs.ref().child("company_logos/" + companyName.toLowerCase() + ".png").getDownloadURL().then((url) => {
     domCompImg.setAttribute("style", `background-image: url(${url})`)
@@ -215,3 +206,35 @@ quantity.addEventListener("input", () => {
 })
 
 // Making the shares interactive with the total price end
+
+
+// The submit button start
+// If the share is negative and 0 throw an error start
+const submitOfferBtn = document.getElementById("submitBtn")
+// TODO: Make the quantity input bar not accept negative or 0
+submitOfferBtn.addEventListener("click", () => {
+    if (quantity.value < "1") {
+        swal("Invalid Shares", "Shares can't be negative or 0", "error")
+    } else {
+        var aboutRequestInfo = {}
+        const userId = auth.currentUser.uid
+        dbf.collection("users").doc(userId).get().then((doc) => {
+            aboutRequestInfo['username'] = doc.username
+        })
+        aboutRequestInfo['companyName'] = companyName.toLowerCase()
+        aboutRequestInfo['userPremium'] = Number(premium_input.value)
+        aboutRequestInfo['shareQuantity'] = Number(quantity.value)
+        const date = new Date()
+        const fullDate = date.getDate() + "/" + Number(date.getMonth() + 1) + "/" + date.getFullYear()
+        aboutRequestInfo['requestedDate'] = fullDate
+
+        dbf.collection("buyers_requests").doc().set(aboutRequestInfo).then(() => {
+            swal("Your offer has been submitted", "Interest personal will contact if your request is accepted", "success").then(() => {
+                window.location.href = "../2nd/main-page.html"
+            })
+        })
+    }
+})
+
+// The submit button end
+
