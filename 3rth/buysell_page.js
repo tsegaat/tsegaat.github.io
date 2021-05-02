@@ -263,12 +263,12 @@ async function getAllCompanies() {
 
     for (var i = 0; i < matches.length; i++) {
         ref.child("company_logos/" + matches[i]["name"] + ".png").getDownloadURL().then((url) => {
-            console.log(url)
+            // console.log(url)
             companyLogos.push(url)
             setTimeout(() => {
                 array.forEach((val, j) => {
-                    console.log(val)
-                    console.log(j)
+                    // console.log(val)
+                    // console.log(j)
                     val.setAttribute("style", `background-image: url(${companyLogos[j]})`)
                 })
             }, 3000)
@@ -507,3 +507,52 @@ async function returnCompnaySectors() {
 returnCompnaySectors()
 
 // Making the tab filter end
+
+// Search bar start
+const buy_sell_input_field = document.getElementsByClassName("buy-sell-input-field")[0]
+
+const buysellSearchCompanies = async searchText => {
+    table_row_container.innerHTML = ""
+
+    all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
+    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+
+    const res = await fetch("../2nd/companies.json")
+    const companies = await res.json()
+
+    let matches = companies.filter(company => {
+        const regex = new RegExp(`^${searchText}`, 'gi')
+        return company.name.match(regex)
+    })
+
+    if (buy_sell_input_field.length === 0) {
+        matches = []
+    }
+
+    console.log(matches)
+
+    for (var i = 0; matches.length; i++) {
+
+        const HTML = `<tr>
+                <td class="table_company_number">${i}</td>
+                <td><span>
+                        <div class="table-company-logo"></div>
+                    </span></td>
+                <td>
+                    <span class="table-company-name">${matches[i]["name"][0].toUpperCase() + matches[i]["name"].slice(1)}</span>
+                </td>
+                <td class="table_company_sector">${matches[i]["sector"][0].toUpperCase() + matches[i]["sector"].slice(1)}</td>
+                <td class="table_company_price">${matches[i]['price']}</td>
+                <td class="table_company_exchangescore">${matches[i]['exchangescore']}</td>
+                <td><button class="table-trade-btn btn">Exchange</button></td>
+            </tr>`
+
+        table_row_container.innerHTML += HTML
+    }
+
+}
+
+buy_sell_input_field.addEventListener("input", () => buysellSearchCompanies(buy_sell_input_field.value))
+// Search bar end
