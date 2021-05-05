@@ -205,7 +205,7 @@ async function getRequests() {
                 table_username[i].innerHTML = allBuyerRequests[i]['username']
                 table_company_name[i].innerHTML = allBuyerRequests[i]['companyName'][0].toUpperCase() + allBuyerRequests[i]['companyName'].slice(1)
                 table_company_sector[i].innerHTML = allBuyerRequests[i]["companySector"][0].toUpperCase() + allBuyerRequests[i]["companySector"].slice(1)
-                table_company_price[i].innerHTML = matches[i]["price"]
+                table_company_price[i].innerHTML = allBuyerRequests[i]["companyPrice"]
                 table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
                 table_company_userpremium[i].innerHTML = allBuyerRequests[i]['userPremium'] + " " + "ETB"
                 table_company_number[i].innerHTML = i + 1
@@ -287,8 +287,8 @@ async function returnCompnaySectors() {
                     table_username[i].innerHTML = allBuyerRequestsNofilter[i]['username']
                     table_company_name[i].innerHTML = allBuyerRequestsNofilter[i]['companyName'][0].toUpperCase() + allBuyerRequestsNofilter[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsNofilter[i]["companySector"][0].toUpperCase() + allBuyerRequestsNofilter[i]["companySector"].slice(1)
-                    table_company_price[i].innerHTML = matches[i]["price"]
-                    table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
+                    table_company_price[i].innerHTML = allBuyerRequestsNofilter[i]["companyPrice"]
+                    table_company_quantity[i].innerHTML = allBuyerRequestsNofilter[i]['shareQuantity']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsNofilter[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -360,8 +360,8 @@ async function returnCompnaySectors() {
                     table_username[i].innerHTML = allBuyerRequestsFinance[i]['username']
                     table_company_name[i].innerHTML = allBuyerRequestsFinance[i]['companyName'][0].toUpperCase() + allBuyerRequestsFinance[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsFinance[i]["companySector"][0].toUpperCase() + allBuyerRequestsFinance[i]["companySector"].slice(1)
-                    table_company_price[i].innerHTML = matches[i]["price"]
-                    table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
+                    table_company_price[i].innerHTML = allBuyerRequestsFinance[i]["companyPrice"]
+                    table_company_quantity[i].innerHTML = allBuyerRequestsFinance[i]['shareQuantity']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsFinance[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -430,8 +430,8 @@ async function returnCompnaySectors() {
                     table_username[i].innerHTML = allBuyerRequestsResource[i]['username']
                     table_company_name[i].innerHTML = allBuyerRequestsResource[i]['companyName'][0].toUpperCase() + allBuyerRequestsResource[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsResource[i]["companySector"][0].toUpperCase() + allBuyerRequestsResource[i]["companySector"].slice(1)
-                    table_company_price[i].innerHTML = matches[i]["price"]
-                    table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
+                    table_company_price[i].innerHTML = allBuyerRequestsResource[i]["companyPrice"]
+                    table_company_quantity[i].innerHTML = allBuyerRequestsResource[i]['shareQuantity']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsResource[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -501,7 +501,7 @@ async function returnCompnaySectors() {
                     table_username[i].innerHTML = allBuyerRequestsOther[i]['username']
                     table_company_name[i].innerHTML = allBuyerRequestsOther[i]['companyName'][0].toUpperCase() + allBuyerRequestsOther[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsOther[i]["companySector"][0].toUpperCase() + allBuyerRequestsOther[i]["companySector"].slice(1)
-                    table_company_price[i].innerHTML = matches[i]["price"]
+                    table_company_price[i].innerHTML = allBuyerRequestsOther[i]["companyPrice"]
                     table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsOther[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1

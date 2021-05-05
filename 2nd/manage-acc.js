@@ -199,6 +199,18 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 // End of manage name
 
+// Start of manage username
+const basic_info_type_value_username = document.getElementsByClassName("basic-info-type-value")[2]
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        dbf.collection("users").doc(user.uid).get().then((doc) => {
+            basic_info_type_value_username.innerHTML = doc.data().username
+        })
+    }
+});
+// End of manage username
+
 // TODO: Password last changed node.js
 
 // Start of signout option
@@ -241,24 +253,30 @@ security.addEventListener("click", () => {
 
 auth.onAuthStateChanged(function (user) {
     if (user) {
-        const basic_info_type_value1 = document.getElementsByClassName("basic-info-type-value")[5]
+        const basic_info_type_value1 = document.getElementsByClassName("basic-info-type-value")[6]
         basic_info_type_value1.innerHTML += auth.currentUser.email
     }
 });
 
 // Start on linking buttons to another page
 const basic_info_type_name = document.getElementsByClassName("basic-info-types")[1]
-const basic_info_type_birthday = document.getElementsByClassName("basic-info-types")[2]
-const basic_info_type_gender = document.getElementsByClassName("basic-info-types")[3]
-const basic_info_type_password = document.getElementsByClassName("basic-info-types")[4]
-const basic_info_type_security_password = document.getElementsByClassName("basic-info-types")[5]
-const basic_info_type_security_2fa = document.getElementsByClassName("basic-info-types")[6]
+const basic_info_type_username = document.getElementsByClassName("basic-info-types")[2]
+const basic_info_type_birthday = document.getElementsByClassName("basic-info-types")[3]
+const basic_info_type_gender = document.getElementsByClassName("basic-info-types")[4]
+const basic_info_type_password = document.getElementsByClassName("basic-info-types")[5]
+const basic_info_type_security_password = document.getElementsByClassName("basic-info-types")[6]
+const basic_info_type_security_2fa = document.getElementsByClassName("basic-info-types")[7]
 const basic_info_type_contact_email = document.getElementById("basic-info-type-contact-email")
 const basic_info_type_contact_phone = document.getElementById("basic-info-type-contact-phone")
 
 
 basic_info_type_name.addEventListener("click", () => {
     localStorage['clickedValue'] = "Name"
+    window.location.href = "profile-settings-detail.html"
+})
+
+basic_info_type_username.addEventListener("click", () => {
+    localStorage['clickedValue'] = "Username"
     window.location.href = "profile-settings-detail.html"
 })
 

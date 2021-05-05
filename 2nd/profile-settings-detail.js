@@ -220,18 +220,18 @@ if (value == "Name") {
     setting_create_acc_save_button.addEventListener("click", () => {
         setting_create_acc_save_button.innerHTML = "Changing..."
         setting_create_acc_save_button.style.backgroundColor = "rgb(55, 109, 247)"
-        const entered_first_name = create_acc_content_form_input_firstName.value
+        const entered_username = create_acc_content_form_input_firstName.value
         const entered_last_name = create_acc_content_form_input_lastName.value
 
         var correctNameBool = true
 
-        if (entered_first_name == "" || entered_last_name == "") {
+        if (entered_username == "" || entered_last_name == "") {
             setting_create_acc_save_button.innerHTML = "Save"
             setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
             create_acc_empty_field.innerHTML = "Cannot be empty"
         }
 
-        if (!(/^[a-zA-Z]+$/.test(entered_first_name))) {
+        if (!(/^[a-zA-Z]+$/.test(entered_username))) {
             setting_create_acc_save_button.innerHTML = "Save"
             setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
             create_acc_empty_field.innerHTML = "Name can only contain letters"
@@ -245,7 +245,7 @@ if (value == "Name") {
             correctNameBool = false
         }
 
-        var fixed_firstName = entered_first_name.toLowerCase()
+        var fixed_firstName = entered_username.toLowerCase()
         var fixed_lastName = entered_last_name.toLowerCase()
 
         fixed_firstName = fixed_firstName.charAt(0).toUpperCase() + fixed_firstName.slice(1);
@@ -268,6 +268,106 @@ if (value == "Name") {
                     setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
                     create_acc_empty_field.innerHTML = "Network failed please try agin"
                     console.log("tsega  ", error)
+                })
+
+        }
+    })
+
+    // E Adding onclick listener to the back button
+    const setting_create_acc_cancel_button = document.getElementsByClassName("settings-create-acc-confirm-button")[0]
+    setting_create_acc_cancel_button.addEventListener("click", () => {
+        localStorage["clickedValue"] = ""
+        window.location.href = "manage-acc.html"
+    })
+}
+else if (value == "Username") {
+    // filling name
+
+    const profile_container_div = document.querySelector("#main-profile-settings-container")
+
+    const HTML = `    <div class="personal-info-container">
+        <div class="personal-info">
+            <div class="basic-info-container container">
+                <div class="head-intro">
+                    <p class="head-additonal-info settings-head-additonal-info">Changes to your name will be reflected
+                        on your Ethioshare Account.
+                    </p>
+                </div>
+                <div class="basic-info">
+                    <div class="basic-info-title settings-basic-info-title">Change Username</div>
+                    <div class="create-acc-content">
+                        <input class="create-acc-content-form-input" type="text" placeholder="New username">
+                    </div>
+                    <div class="create-acc-content">
+                        <p id="create-acc-empty-field"></p>
+                    </div>
+                    <div class="settings-create-acc-confirm-button-container">
+                        <div class="settings-create-acc-confirm-button"> Cancel
+                        </div>
+                        <div class="settings-create-acc-confirm-button"> Save
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
+
+    profile_container_div.innerHTML += HTML
+
+    const name_settings_title = document.getElementsByClassName("name-settings-title")[0]
+    name_settings_title.innerHTML += localStorage["clickedValue"]
+    const create_acc_content_form_input_username = document.getElementsByClassName("create-acc-content-form-input")[0]
+    const create_acc_empty_field = document.getElementById("create-acc-empty-field")
+
+    // filling username
+    const setting_create_acc_save_button = document.getElementsByClassName("settings-create-acc-confirm-button")[1]
+    setting_create_acc_save_button.addEventListener("click", () => {
+        setting_create_acc_save_button.innerHTML = "Changing..."
+        setting_create_acc_save_button.style.backgroundColor = "rgb(55, 109, 247)"
+        const entered_username = create_acc_content_form_input_username.value
+
+        var correctNameBool = true
+
+        var fixed_username = entered_username.toLowerCase()
+        // TODO: Not handling errors 
+        dbf.collection("users").where("username", "==", fixed_username).get().then((q) => {
+            if (entered_username == "") {
+                setting_create_acc_save_button.innerHTML = "Save"
+                setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                create_acc_empty_field.innerHTML = "Cannot be empty"
+                correctNameBool = false
+            }
+
+            if (entered_username.includes("@") || entered_username.includes("\\") || entered_username.includes("'") || entered_username.includes("\"") || entered_username.includes("#")) {
+                setting_create_acc_save_button.innerHTML = "Save"
+                setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                create_acc_empty_field.innerHTML = "Cannot contain illegal characters"
+                correctNameBool = false
+            }
+
+            q.forEach(() => {
+                create_acc_empty_field.innerHTML = "Username already exits"
+                correctNameBool = false
+            })
+        })
+
+
+
+        if (correctNameBool) {
+            firebase.firestore().collection('users').doc(auth.currentUser.uid).update({
+                username: fixed_username
+            }).then(() => {
+                setting_create_acc_save_button.innerHTML = "Save"
+                setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                swal("Success", "Username is updated", "success").then(() => {
+                    window.location.href = "manage-acc.html"
+                })
+            })
+                // TODO: Fix this internet off error handleing
+                .catch((error) => {
+                    setting_create_acc_save_button.innerHTML = "Save"
+                    setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                    create_acc_empty_field.innerHTML = "Network failed please try agin"
                 })
 
         }

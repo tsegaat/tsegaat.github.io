@@ -243,6 +243,7 @@ submitOfferBtn.addEventListener("click", () => {
                     return company.name.match(regex)
                 })
 
+                aboutRequestInfo['companyPrice'] = matches[0]['price']
                 aboutRequestInfo['companySector'] = matches[0]['sector']
                 dbf.collection("buyers_requests").doc().set(aboutRequestInfo).then(() => {
                     submitOfferBtn.innerHTML = "Submit Offer"
