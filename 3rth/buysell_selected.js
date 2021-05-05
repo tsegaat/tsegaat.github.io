@@ -213,6 +213,8 @@ quantity.addEventListener("input", () => {
 const submitOfferBtn = document.getElementById("submitBtn")
 // TODO: Make the quantity input bar not accept negative or 0
 submitOfferBtn.addEventListener("click", () => {
+    submitOfferBtn.innerHTML = "Submiting..."
+    submitOfferBtn.style.backgroundColor = "#dbdbdb"
     if (quantity.value < "1") {
         swal("Invalid Shares", "Shares can't be negative or 0", "error")
     } else {
@@ -228,11 +230,33 @@ submitOfferBtn.addEventListener("click", () => {
         const fullDate = date.getDate() + "/" + Number(date.getMonth() + 1) + "/" + date.getFullYear()
         aboutRequestInfo['requestedDate'] = fullDate
 
-        dbf.collection("buyers_requests").doc().set(aboutRequestInfo).then(() => {
-            swal("Your offer has been submitted", "Interest personal will contact if your request is accepted", "success").then(() => {
-                window.location.href = "../2nd/main-page.html"
+
+        async function getSectorFromJSON() {
+            const res = await fetch("../2nd/companies.json")
+            const companies = await res.json()
+            const uid = auth.currentUser.uid
+            dbf.collection("users").doc(uid).get().then((doc) => {
+                const username = doc.data().username
+                aboutRequestInfo['username'] = username
+                let matches = companies.filter(company => {
+                    const regex = new RegExp(`^${companyName.toLowerCase()}`, 'gi')
+                    return company.name.match(regex)
+                })
+
+                aboutRequestInfo['companySector'] = matches[0]['sector']
+                dbf.collection("buyers_requests").doc().set(aboutRequestInfo).then(() => {
+                    submitOfferBtn.innerHTML = "Submit Offer"
+                    submitOfferBtn.style.backgroundColor = "#e7ebf5"
+                    swal("Your offer has been submitted", "Interested personal will contact if your request is accepted", "success").then(() => {
+                        window.location.href = "../2nd/main-page.html"
+                    })
+                })
             })
-        })
+
+        }
+        getSectorFromJSON()
+
+
     }
 })
 

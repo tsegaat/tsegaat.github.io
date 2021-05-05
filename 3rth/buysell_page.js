@@ -211,8 +211,7 @@ const selectd_trade_btn = document.getElementsByClassName("selectd-trade-btn")[0
 
 // Taking to the selected-buy/sell page end
 
-// Getting all the information from the db and JSON and put it somewhere start fun
-
+// Getting all the information from the db and JSON and put it somewhere start
 const table_row_container = document.getElementById("table-row-container")
 
 async function getAllCompanies() {
@@ -501,7 +500,6 @@ async function returnCompnaySectors() {
     })
 }
 returnCompnaySectors()
-
 // Making the tab filter end
 
 // Search bar start
@@ -526,8 +524,6 @@ const buysellSearchCompanies = async searchText => {
     if (buy_sell_input_field.length === 0) {
         matches = []
     }
-
-    console.log(matches)
 
     for (var i = 0; matches.length; i++) {
 

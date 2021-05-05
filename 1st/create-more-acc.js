@@ -74,6 +74,10 @@ function submit() {
         return 1
     }
 
+
+    // TODO: The month can go more than 12 fix that 
+    // TODO: Check for the username to be unique and phonenumber to be also unique 
+
     var userGender = ""
     if (gender_indicator_text_female.checked) {
         userGender = "female"

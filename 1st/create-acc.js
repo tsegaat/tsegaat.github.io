@@ -96,7 +96,9 @@ function submit() {
     const userName = username.value.toLowerCase()
     const dbf = firebase.firestore()
     dbf.collection("users").where("username", "==", userName).get().then((q) => {
+        console.log(q)
         q.forEach(() => {
+
             create_acc_empty_field.innerHTML = "Username already exits"
             return 1
         })
@@ -107,6 +109,7 @@ function submit() {
         }
     })
 
+    // return 1
     if (!(/[a-z]/.test(userName))) {
         create_acc_empty_field.innerHTML = "Username must have at least on letter"
         return 1
@@ -147,6 +150,8 @@ function submit() {
     localStorage["userInfo"] = [fixed_firstName, fixed_lastName, userName, fixed_email, password.value]
     window.location.href = "create-more-acc.html"
 
+    // TODO: Make the firebase checking here and show the user
+
     // firebase.auth().createUserWithEmailAndPassword(fixed_email, password.value)
     //     .then((c) => {
     //         firebase.firestore().collection('users').doc(c.user.uid).set({
@@ -181,8 +186,6 @@ function submit() {
     //             create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
     //         }
     //     });
-
-    // TODO: Build the stay logged in checkbutton
 
 }
 create_acc_confirm_button.addEventListener("click", function () { submit() })
