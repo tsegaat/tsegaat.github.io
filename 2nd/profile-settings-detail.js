@@ -329,7 +329,9 @@ else if (value == "Username") {
         var correctNameBool = true
 
         var fixed_username = entered_username.toLowerCase()
+
         // TODO: Not handling errors 
+        // TODO: change the buyer requests username 
         dbf.collection("users").where("username", "==", fixed_username).get().then((q) => {
             if (entered_username == "") {
                 setting_create_acc_save_button.innerHTML = "Save"

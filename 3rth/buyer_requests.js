@@ -173,6 +173,7 @@ async function getRequests() {
             <td class="table_company_sector"></td>
             <td class="table_company_price"></td>
             <td class="table_company_quantity"></td>
+            <td class="table_company_date"></td>
             <td class="table_company_userpremium"></td>
             <td><button class="table-trade-btn btn">Exchange</button></td>
         </tr>`
@@ -184,6 +185,7 @@ async function getRequests() {
     const table_company_sector = document.getElementsByClassName("table_company_sector")
     const table_company_quantity = document.getElementsByClassName("table_company_quantity")
     const table_company_price = document.getElementsByClassName("table_company_price")
+    const table_company_date = document.getElementsByClassName("table_company_date")
     const table_company_userpremium = document.getElementsByClassName("table_company_userpremium")
 
     dbf.collection('buyers_requests').get().then((snapshot) => {
@@ -207,6 +209,7 @@ async function getRequests() {
                 table_company_sector[i].innerHTML = allBuyerRequests[i]["companySector"][0].toUpperCase() + allBuyerRequests[i]["companySector"].slice(1)
                 table_company_price[i].innerHTML = allBuyerRequests[i]["companyPrice"]
                 table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
+                table_company_date[i].innerHTML = allBuyerRequests[i]['requestedDate']
                 table_company_userpremium[i].innerHTML = allBuyerRequests[i]['userPremium'] + " " + "ETB"
                 table_company_number[i].innerHTML = i + 1
 
@@ -231,10 +234,12 @@ const all_comp_buy_sell_sector = document.getElementsByClassName("buy-sell-secto
 const finance_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[1]
 const resource_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[2]
 const other_buy_sell_sector = document.getElementsByClassName("buy-sell-sector")[3]
+const buy_sell_input_field = document.getElementsByClassName("buy-sell-input-field")[0]
 
 async function returnCompnaySectors() {
     const table_row_container = document.getElementById("table-row-container")
     all_comp_buy_sell_sector.addEventListener("click", () => {
+        buy_sell_input_field.value = ""
         table_row_container.innerHTML = ''
         all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
         finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
@@ -253,6 +258,7 @@ async function returnCompnaySectors() {
         <td class="table_company_sector"></td>
         <td class="table_company_price"></td>
         <td class="table_company_quantity"></td>
+        <td class="table_company_date"></td>
         <td class="table_company_userpremium"></td>
         <td><button class="table-trade-btn btn">Exchange</button></td>
     </tr>`
@@ -264,6 +270,7 @@ async function returnCompnaySectors() {
         const table_company_sector = document.getElementsByClassName("table_company_sector")
         const table_company_quantity = document.getElementsByClassName("table_company_quantity")
         const table_company_price = document.getElementsByClassName("table_company_price")
+        const table_company_date = document.getElementsByClassName("table_company_date")
         const table_company_userpremium = document.getElementsByClassName("table_company_userpremium")
 
         dbf.collection('buyers_requests').get().then((snapshot) => {
@@ -289,6 +296,7 @@ async function returnCompnaySectors() {
                     table_company_sector[i].innerHTML = allBuyerRequestsNofilter[i]["companySector"][0].toUpperCase() + allBuyerRequestsNofilter[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsNofilter[i]["companyPrice"]
                     table_company_quantity[i].innerHTML = allBuyerRequestsNofilter[i]['shareQuantity']
+                    table_company_date[i].innerHTML = allBuyerRequestsNofilter[i]['requestedDate']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsNofilter[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -307,6 +315,7 @@ async function returnCompnaySectors() {
 
     finance_buy_sell_sector.addEventListener("click", () => {
         table_row_container.innerHTML = ''
+        buy_sell_input_field.value = ""
         finance_buy_sell_sector.classList.add("buy-sell-sector-selected")
         all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
         resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
@@ -320,6 +329,7 @@ async function returnCompnaySectors() {
         const table_company_sector = document.getElementsByClassName("table_company_sector")
         const table_company_quantity = document.getElementsByClassName("table_company_quantity")
         const table_company_price = document.getElementsByClassName("table_company_price")
+        const table_company_date = document.getElementsByClassName("table_company_date")
         const table_company_userpremium = document.getElementsByClassName("table_company_userpremium")
 
         dbf.collection('buyers_requests').get().then((snapshot) => {
@@ -341,6 +351,7 @@ async function returnCompnaySectors() {
                     <td class="table_company_sector"></td>
                     <td class="table_company_price"></td>
                     <td class="table_company_quantity"></td>
+                    <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
                 </tr>`
@@ -361,6 +372,7 @@ async function returnCompnaySectors() {
                     table_company_name[i].innerHTML = allBuyerRequestsFinance[i]['companyName'][0].toUpperCase() + allBuyerRequestsFinance[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsFinance[i]["companySector"][0].toUpperCase() + allBuyerRequestsFinance[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsFinance[i]["companyPrice"]
+                    table_company_date[i].innerHTML = allBuyerRequestsFinance[i]['requestedDate']
                     table_company_quantity[i].innerHTML = allBuyerRequestsFinance[i]['shareQuantity']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsFinance[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
@@ -378,6 +390,7 @@ async function returnCompnaySectors() {
 
     resource_buy_sell_sector.addEventListener("click", () => {
         table_row_container.innerHTML = ''
+        buy_sell_input_field.value = ""
         resource_buy_sell_sector.classList.add("buy-sell-sector-selected")
         all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
         finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
@@ -390,6 +403,7 @@ async function returnCompnaySectors() {
         const table_company_sector = document.getElementsByClassName("table_company_sector")
         const table_company_quantity = document.getElementsByClassName("table_company_quantity")
         const table_company_price = document.getElementsByClassName("table_company_price")
+        const table_company_date = document.getElementsByClassName("table_company_date")
         const table_company_userpremium = document.getElementsByClassName("table_company_userpremium")
 
         dbf.collection('buyers_requests').get().then((snapshot) => {
@@ -411,6 +425,7 @@ async function returnCompnaySectors() {
                     <td class="table_company_sector"></td>
                     <td class="table_company_price"></td>
                     <td class="table_company_quantity"></td>
+                    <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
                     <td><button class="table-trade-btn btn">Exchange</button></td>
                 </tr>`
@@ -432,6 +447,7 @@ async function returnCompnaySectors() {
                     table_company_sector[i].innerHTML = allBuyerRequestsResource[i]["companySector"][0].toUpperCase() + allBuyerRequestsResource[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsResource[i]["companyPrice"]
                     table_company_quantity[i].innerHTML = allBuyerRequestsResource[i]['shareQuantity']
+                    table_company_date[i].innerHTML = allBuyerRequestsResource[i]['requestedDate']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsResource[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -449,6 +465,7 @@ async function returnCompnaySectors() {
 
     other_buy_sell_sector.addEventListener("click", () => {
         table_row_container.innerHTML = ''
+        buy_sell_input_field.value = ""
         other_buy_sell_sector.classList.add("buy-sell-sector-selected")
         all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
         resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
@@ -460,6 +477,7 @@ async function returnCompnaySectors() {
         const table_company_name = document.getElementsByClassName("table-company-name")
         const table_company_sector = document.getElementsByClassName("table_company_sector")
         const table_company_quantity = document.getElementsByClassName("table_company_quantity")
+        const table_company_date = document.getElementsByClassName("table_company_date")
         const table_company_price = document.getElementsByClassName("table_company_price")
         const table_company_userpremium = document.getElementsByClassName("table_company_userpremium")
 
@@ -481,6 +499,7 @@ async function returnCompnaySectors() {
                             <td class="table_company_sector"></td>
                             <td class="table_company_price"></td>
                             <td class="table_company_quantity"></td>
+                            <td class="table_company_date"></td>
                             <td class="table_company_userpremium"></td>
                             <td><button class="table-trade-btn btn">Exchange</button></td>
                         </tr>`
@@ -503,6 +522,7 @@ async function returnCompnaySectors() {
                     table_company_sector[i].innerHTML = allBuyerRequestsOther[i]["companySector"][0].toUpperCase() + allBuyerRequestsOther[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsOther[i]["companyPrice"]
                     table_company_quantity[i].innerHTML = allBuyerRequests[i]['shareQuantity']
+                    table_company_date[i].innerHTML = allBuyerRequests[i]['requestedDate']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsOther[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -522,51 +542,125 @@ returnCompnaySectors()
 
 // Configuring the filters end
 
-// // Search bar start
-// const buy_sell_input_field = document.getElementsByClassName("buy-sell-input-field")[0]
+// Search bar start
+const buysellSearchCompanies = async searchText => {
+    table_row_container.innerHTML = ""
 
-// const buysellSearchCompanies = async searchText => {
-//     table_row_container.innerHTML = ""
+    all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
+    finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
 
-//     all_comp_buy_sell_sector.classList.add("buy-sell-sector-selected")
-//     finance_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-//     resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-//     other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+    buy_sell_input_field.addEventListener("input", () => {
+        const fieldValue = buy_sell_input_field.value
+        const fieldBool = /^[a-zA-Z]+$/.test(fieldValue)
+        // console.log(fieldBool)
+        if (!(fieldBool)) {
+            var modifiedVal = fieldValue.slice(0, -1)
+            buy_sell_input_field.value = modifiedVal
+        }
+    })
+    // TODO: The search field value is taking the old value before modfication
+    console.log(buy_sell_input_field.value)
+    dbf.collection('buyers_requests').get().then((snapshot) => {
+        const allBuyerRequests = snapshot.docs.map(doc => doc.data())
+        let matches = allBuyerRequests.filter(company => {
+            const regex = new RegExp(`^${searchText}`, 'gi')
+            return company.companyName.match(regex)
+        })
+        if (buy_sell_input_field.value.length === 0) {
+            matches = []
+        }
 
-//     if (buy_sell_input_field.length === 0) {
-//         matches = []
-//     }
-//     dbf.collection('buyers_requests').get().then((snapshot) => {
-//         const allBuyerRequests = snapshot.docs.map(doc => doc.data())
-//         const res = await fetch("../2nd/companies.json")
-//         const companies = await res.json()
+        if (buy_sell_input_field.value == "") {
+            const HTML = `<tr>
+                <td class="table_company_number"></td>
+                <td class="table_username"></td>
+                <td><span>
+                        <div class="table-company-logo"></div>
+                    </span></td>
+                <td>
+                    <span class="table-company-name"></span>
+                </td>
+                <td class="table_company_sector"></td>
+                <td class="table_company_price"></td>
+                <td class="table_company_quantity"></td>
+                <td class="table_company_date"></td>
+                <td class="table_company_userpremium"></td>
+                <td><button class="table-trade-btn btn">Exchange</button></td>
+            </tr>`
 
-//         let matches = companies.filter(company => {
-//             const regex = new RegExp(`^${searchText}`, 'gi')
-//             return company.name.match(regex)
-//         })
-//         console.log(allBuyerRequests)
-//         for (var i = 0; matches.length; i++) {
-//             const HTML = `<tr>
-//                 <td class="table_company_number">${i}</td>
-//                 <td class="table_username">${allBuyerRequests[i]['username']}</td>
-//                 <td><span>
-//                                 <div class="table-company-logo"></div>
-//                                 </span></td>
-//                             <td>
-//                                 <span class="table-company-name">${allBuyerRequests[i]['companyName'][0].toUpperCase() + allBuyerRequests[i]['companyName'].slice(1)}</span>
-//                             </td>
-//                             <td class="table_company_sector">${allBuyerRequests[i]["companySector"][0].toUpperCase() + allBuyerRequests[i]["companySector"].slice(1)}</td>
-//                             <td class="table_company_price">${matches[i]["price"]}</td>
-//                             <td class="table_company_userpremium">${allBuyerRequests[i]['userPremium'] + " " + "ETB"}</td>
-//                             <td><button class="table-trade-btn btn">Exchange</button></td>
-//                         </tr>`
+            const table_company_number = document.getElementsByClassName("table_company_number")
+            const table_username = document.getElementsByClassName("table_username")
+            const table_company_logo = document.getElementsByClassName("table-company-logo")
+            const table_company_name = document.getElementsByClassName("table-company-name")
+            const table_company_sector = document.getElementsByClassName("table_company_sector")
+            const table_company_quantity = document.getElementsByClassName("table_company_quantity")
+            const table_company_price = document.getElementsByClassName("table_company_price")
+            const table_company_date = document.getElementsByClassName("table_company_date")
+            const table_company_userpremium = document.getElementsByClassName("table_company_userpremium")
 
-//             table_row_container.innerHTML += HTML
-//         }
-//     })
+            dbf.collection('buyers_requests').get().then((snapshot) => {
+                const allBuyerRequestsNofilter = []
+                const allBuyerRequests = snapshot.docs.map(doc => doc.data())
 
-// }
+                for (var i = 0; i < allBuyerRequests.length; i++) {
+                    table_row_container.innerHTML += HTML
+                    allBuyerRequestsNofilter.push(allBuyerRequests[i])
+                }
+                const all_companies = []
+                async function getJson() {
+                    const res = await fetch("../2nd/companies.json")
+                    const companies = await res.json()
 
-// buy_sell_input_field.addEventListener("input", () => buysellSearchCompanies(buy_sell_input_field.value))
-// // Search bar end
+                    let matches = companies.filter(company => {
+                        return company
+                    })
+
+                    for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
+                        table_username[i].innerHTML = allBuyerRequestsNofilter[i]['username']
+                        table_company_name[i].innerHTML = allBuyerRequestsNofilter[i]['companyName'][0].toUpperCase() + allBuyerRequestsNofilter[i]['companyName'].slice(1)
+                        table_company_sector[i].innerHTML = allBuyerRequestsNofilter[i]["companySector"][0].toUpperCase() + allBuyerRequestsNofilter[i]["companySector"].slice(1)
+                        table_company_price[i].innerHTML = allBuyerRequestsNofilter[i]["companyPrice"]
+                        table_company_quantity[i].innerHTML = allBuyerRequestsNofilter[i]['shareQuantity']
+                        table_company_date[i].innerHTML = allBuyerRequestsNofilter[i]['requestedDate']
+                        table_company_userpremium[i].innerHTML = allBuyerRequestsNofilter[i]['userPremium'] + " " + "ETB"
+                        table_company_number[i].innerHTML = i + 1
+
+                        // TODO: Logo not working
+                        // const ref = dbs.ref()
+                        // ref.child("company_logos/" + allBuyerRequestsNofilter[i]['companyName'] + ".png").getDownloadURL().then((url) => {
+                        //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
+                        // })
+                    }
+                }
+                getJson()
+            })
+
+        }
+        for (var i = 0; i < matches.length; i++) {
+            const HTML = `<tr>
+                <td class="table_company_number">${i + 1}</td>
+                <td class="table_username">${matches[i]['username']}</td>
+                <td><span>
+                                <div class="table-company-logo"></div>
+                                </span></td>
+                            <td>
+                                <span class="table-company-name">${matches[i]['companyName'][0].toUpperCase() + matches[i]['companyName'].slice(1)}</span>
+                            </td>
+                            <td class="table_company_sector">${matches[i]["companySector"][0].toUpperCase() + matches[i]["companySector"].slice(1)}</td>
+                            <td class="table_company_price">${matches[i]["companyPrice"]}</td>
+                            <td class="table_company_quantity">${matches[i]["shareQuantity"]}</td>
+                            <td class="table_company_date">${matches[i]["requestedDate"]}</td>
+                            <td class="table_company_userpremium">${matches[i]['userPremium'] + " " + "ETB"}</td>
+                            <td><button class="table-trade-btn btn">Exchange</button></td>
+                        </tr>`
+
+            table_row_container.innerHTML += HTML
+        }
+    })
+
+}
+
+buy_sell_input_field.addEventListener("input", () => buysellSearchCompanies(buy_sell_input_field.value))
+// Search bar end

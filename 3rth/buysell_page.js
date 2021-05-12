@@ -207,8 +207,6 @@ searchCompanies(selectedCompanies)
 
 // Taking to the selected-buy/sell page start
 const selectd_trade_btn = document.getElementsByClassName("selectd-trade-btn")[0]
-
-
 // Taking to the selected-buy/sell page end
 
 // Getting all the information from the db and JSON and put it somewhere start
@@ -223,21 +221,22 @@ async function getAllCompanies() {
         return company
     })
 
-    const HTML = `<tr>
+
+
+    for (var i = 0; i < matches.length; i++) {
+        var HTML = `<tr>
             <td class="table_company_number"></td>
             <td><span>
                     <div class="table-company-logo"></div>
                 </span></td>
             <td>
-                <span class="table-company-name"></span>
+                <span class="table-company-name" id="company_name_${i}"></span>
             </td>
             <td class="table_company_sector"></td>
-            <td class="table_company_price"></td>
+            <td class="table_company_price" id="company_price_${i}"></td>
             <td class="table_company_exchangescore"></td>
-            <td><button class="table-trade-btn btn">Exchange</button></td>
+            <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
         </tr>`
-
-    for (var i = 0; i < matches.length; i++) {
         table_row_container.innerHTML += HTML
     }
 
@@ -280,8 +279,17 @@ async function getAllCompanies() {
         table_company_price[i].innerHTML = matches[i]["price"]
         table_company_exchangescore[i].innerHTML = matches[i]["exchangescore"]
         table_company_number[i].innerHTML = i + 1
+    }
 
+    for (var i = 0; i < matches.length; i++) {
+        const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+        const companyName = document.getElementById(`company_name_${i}`)
+        const companyPrice = document.getElementById(`company_price_${i}`)
+        exchangeBtn.addEventListener("click", () => {
 
+            localStorage['selectedCompany'] = [companyName.innerHTML, companyPrice.innerHTML]
+            window.location.href = "buysell_selected.html"
+        })
     }
 
 
@@ -317,18 +325,18 @@ async function returnCompnaySectors() {
         }
 
         for (var i = 0; i < all_companies.length; i++) {
-            const HTML = `<tr>
+            const HTML = `<tr id="company_number_${i}">
                 <td class="table_company_number"></td>
                 <td><span>
                         <div class="table-company-logo"></div>
                     </span></td>
                 <td>
-                    <span class="table-company-name"></span>
+                    <span class="table-company-name" id="company_name_${i}"></span>
                 </td>
                 <td class="table_company_sector"></td>
-                <td class="table_company_price"></td>
+                <td class="table_company_price" id="company_price_${i}"></td>
                 <td class="table_company_exchangescore"></td>
-                <td><button class="table-trade-btn btn">Exchange</button></td>
+                <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
             </tr>`
 
             table_row_container.innerHTML += HTML
@@ -346,6 +354,17 @@ async function returnCompnaySectors() {
             table_company_exchangescore[i].innerHTML = all_companies[i]["exchangescore"]
             table_company_number[i].innerHTML = i + 1
 
+        }
+
+        for (var i = 0; i < all_companies.length; i++) {
+            const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+            const companyName = document.getElementById(`company_name_${i}`)
+            const companyPrice = document.getElementById(`company_price_${i}`)
+            exchangeBtn.addEventListener("click", () => {
+
+                localStorage['selectedCompany'] = [companyName.innerHTML, companyPrice.innerHTML]
+                window.location.href = "buysell_selected.html"
+            })
         }
 
 
@@ -366,18 +385,18 @@ async function returnCompnaySectors() {
         }
 
         for (var i = 0; i < finance_compnaies.length; i++) {
-            const HTML = `<tr>
+            const HTML = `<tr id="company_number_${i}">
                     <td class="table_company_number"></td>
                     <td><span>
                             <div class="table-company-logo"></div>
                         </span></td>
                     <td>
-                        <span class="table-company-name"></span>
+                        <span class="table-company-name" id="company_name_${i}"></span>
                     </td>
                     <td class="table_company_sector"></td>
-                    <td class="table_company_price"></td>
+                    <td class="table_company_price" id="company_price_${i}"></td>
                     <td class="table_company_exchangescore"></td>
-                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                    <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
 
             table_row_container.innerHTML += HTML
@@ -398,6 +417,16 @@ async function returnCompnaySectors() {
 
         }
 
+        for (var i = 0; i < finance_compnaies.length; i++) {
+            const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+            const companyName = document.getElementById(`company_name_${i}`)
+            const companyPrice = document.getElementById(`company_price_${i}`)
+            exchangeBtn.addEventListener("click", () => {
+
+                localStorage['selectedCompany'] = [companyName.innerHTML, companyPrice.innerHTML]
+                window.location.href = "buysell_selected.html"
+            })
+        }
 
 
     })
@@ -417,18 +446,18 @@ async function returnCompnaySectors() {
         }
 
         for (var i = 0; i < resource_compnaies.length; i++) {
-            const HTML = `<tr>
+            const HTML = `<tr id="company_number_${i}">
                 <td class="table_company_number"></td>
                 <td><span>
                         <div class="table-company-logo"></div>
                     </span></td>
                 <td>
-                    <span class="table-company-name"></span>
+                    <span class="table-company-name" id="company_name_${i}"></span>
                 </td>
                 <td class="table_company_sector"></td>
-                <td class="table_company_price"></td>
+                <td class="table_company_price" id="company_price_${i}"></td>
                 <td class="table_company_exchangescore"></td>
-                <td><button class="table-trade-btn btn">Exchange</button></td>
+                <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
             </tr>`
 
             table_row_container.innerHTML += HTML
@@ -448,6 +477,17 @@ async function returnCompnaySectors() {
 
         }
 
+        for (var i = 0; i < resource_compnaies.length; i++) {
+            const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+            const companyName = document.getElementById(`company_name_${i}`)
+            const companyPrice = document.getElementById(`company_price_${i}`)
+            exchangeBtn.addEventListener("click", () => {
+
+                localStorage['selectedCompany'] = [companyName.innerHTML, companyPrice.innerHTML]
+                window.location.href = "buysell_selected.html"
+            })
+        }
+
     })
 
     other_buy_sell_sector.addEventListener("click", () => {
@@ -465,18 +505,18 @@ async function returnCompnaySectors() {
         }
 
         for (var i = 0; i < other_companies.length; i++) {
-            const HTML = `<tr>
+            const HTML = `<tr id="company_number_${i}">
                 <td class="table_company_number"></td>
                 <td><span>
                         <div class="table-company-logo"></div>
                     </span></td>
                 <td>
-                    <span class="table-company-name"></span>
+                    <span class="table-company-name" id="company_name_${i}"></span>
                 </td>
                 <td class="table_company_sector"></td>
-                <td class="table_company_price"></td>
+                <td class="table_company_price" id="company_price_${i}"></td>
                 <td class="table_company_exchangescore"></td>
-                <td><button class="table-trade-btn btn">Exchange</button></td>
+                <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
             </tr>`
 
             table_row_container.innerHTML += HTML
@@ -488,12 +528,24 @@ async function returnCompnaySectors() {
             const table_company_price = document.getElementsByClassName("table_company_price")
             const table_company_exchangescore = document.getElementsByClassName("table_company_exchangescore")
 
-            for (var i = 0; i < matches.length; i++) {
+            for (var i = 0; i < other_companies.length; i++) {
                 table_company_name[i].innerHTML = other_companies[i]["name"][0].toUpperCase() + other_companies[i]["name"].slice(1)
                 table_company_sector[i].innerHTML = other_companies[i]["sector"][0].toUpperCase() + other_companies[i]["sector"].slice(1)
                 table_company_price[i].innerHTML = other_companies[i]["price"]
                 table_company_exchangescore[i].innerHTML = other_companies[i]["exchangescore"]
                 table_company_number[i].innerHTML = i + 1
+            }
+
+
+            for (var i = 0; i < other_companies.length; i++) {
+                const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                const companyName = document.getElementById(`company_name_${i}`)
+                const companyPrice = document.getElementById(`company_price_${i}`)
+                exchangeBtn.addEventListener("click", () => {
+
+                    localStorage['selectedCompany'] = [companyName.innerHTML, companyPrice.innerHTML]
+                    window.location.href = "buysell_selected.html"
+                })
             }
         }
 
@@ -527,21 +579,33 @@ const buysellSearchCompanies = async searchText => {
 
     for (var i = 0; matches.length; i++) {
 
-        const HTML = `<tr>
-                <td class="table_company_number">${i}</td>
+        //TODO: Error in the HTML says that the name is undefined so the code at the bottom won't run
+        const HTML = `<tr id="company_number_${i}">
+                <td class="table_company_number">${i + 1}</td>
                 <td><span>
                         <div class="table-company-logo"></div>
                     </span></td>
                 <td>
-                    <span class="table-company-name">${matches[i]["name"][0].toUpperCase() + matches[i]["name"].slice(1)}</span>
+                    <span class="table-company-name" id="company_name_${i}">${matches[i]["name"][0].toUpperCase() + matches[i]["name"].slice(1)}</span>
                 </td>
                 <td class="table_company_sector">${matches[i]["sector"][0].toUpperCase() + matches[i]["sector"].slice(1)}</td>
-                <td class="table_company_price">${matches[i]['price']}</td>
+                <td class="table_company_price" id="company_price_${i}">${matches[i]['price']}</td>
                 <td class="table_company_exchangescore">${matches[i]['exchangescore']}</td>
-                <td><button class="table-trade-btn btn">Exchange</button></td>
+                <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
             </tr>`
 
         table_row_container.innerHTML += HTML
+    }
+
+    for (var i = 0; i < matches.length; i++) {
+        const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+        const companyName = document.getElementById(`company_name_${i}`)
+        const companyPrice = document.getElementById(`company_price_${i}`)
+        exchangeBtn.addEventListener("click", () => {
+
+            localStorage['selectedCompany'] = [companyName.innerHTML, companyPrice.innerHTML]
+            window.location.href = "buysell_selected.html"
+        })
     }
 
 }
