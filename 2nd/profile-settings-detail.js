@@ -319,13 +319,13 @@ else if (value == "Username") {
     const create_acc_content_form_input_username = document.getElementsByClassName("create-acc-content-form-input")[0]
     const create_acc_empty_field = document.getElementById("create-acc-empty-field")
 
+
     // filling username
     const setting_create_acc_save_button = document.getElementsByClassName("settings-create-acc-confirm-button")[1]
     setting_create_acc_save_button.addEventListener("click", () => {
         setting_create_acc_save_button.innerHTML = "Changing..."
         setting_create_acc_save_button.style.backgroundColor = "rgb(55, 109, 247)"
         const entered_username = create_acc_content_form_input_username.value
-
         var correctNameBool = true
 
         var fixed_username = entered_username.toLowerCase()
@@ -333,7 +333,7 @@ else if (value == "Username") {
         // TODO: Not handling errors 
         // TODO: change the buyer requests username 
         dbf.collection("users").where("username", "==", fixed_username).get().then((q) => {
-            if (entered_username == "") {
+            if (entered_username.trim() == "") {
                 setting_create_acc_save_button.innerHTML = "Save"
                 setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
                 create_acc_empty_field.innerHTML = "Cannot be empty"
@@ -348,31 +348,45 @@ else if (value == "Username") {
             }
 
             q.forEach(() => {
+                setting_create_acc_save_button.innerHTML = "Save"
+                setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
                 create_acc_empty_field.innerHTML = "Username already exits"
                 correctNameBool = false
             })
-        })
 
+            const user = auth.currentUser.uid
 
+            dbf.collection("users").doc(user).get().then((doc) => {
+                const currentUsername = doc.data().username
+                if (correctNameBool) {
+                    console.log(currentUsername)
+                    firebase.firestore().collection('users').doc(user).update({
+                        username: fixed_username
+                    }).then(() => {
+                        dbf.collection('buyers_requests').where("username", "==", currentUsername).get().then((doc) => {
 
-        if (correctNameBool) {
-            firebase.firestore().collection('users').doc(auth.currentUser.uid).update({
-                username: fixed_username
-            }).then(() => {
-                setting_create_acc_save_button.innerHTML = "Save"
-                setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                swal("Success", "Username is updated", "success").then(() => {
-                    window.location.href = "manage-acc.html"
-                })
+                            console.log(doc.data)
+                        })
+                        // .then(() => {
+                        //     setting_create_acc_save_button.innerHTML = "Save"
+                        //     setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                        //     swal("Success", "Username is updated", "success").then(() => {
+                        //         window.location.href = "manage-acc.html"
+                        //     })
+                        // })
+                    })
+                        // TODO: Fix this internet off error handleing
+                        .catch((error) => {
+                            console.log(error)
+                            setting_create_acc_save_button.innerHTML = "Save"
+                            setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
+                            create_acc_empty_field.innerHTML = "Network failed please try agin"
+                        })
+                }
             })
-                // TODO: Fix this internet off error handleing
-                .catch((error) => {
-                    setting_create_acc_save_button.innerHTML = "Save"
-                    setting_create_acc_save_button.style.backgroundColor = "rgb(22, 82, 240)"
-                    create_acc_empty_field.innerHTML = "Network failed please try agin"
-                })
 
-        }
+
+        })
     })
 
     // E Adding onclick listener to the back button

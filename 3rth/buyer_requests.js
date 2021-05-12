@@ -260,7 +260,7 @@ async function returnCompnaySectors() {
         <td class="table_company_quantity"></td>
         <td class="table_company_date"></td>
         <td class="table_company_userpremium"></td>
-        <td><button class="table-trade-btn btn">Exchange</button></td>
+        <td><button class="table-trade-btn btn"><a href="seller_wanted.html">Exchange</a></button></td>
     </tr>`
 
         const table_company_number = document.getElementsByClassName("table_company_number")
