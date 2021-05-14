@@ -53,6 +53,72 @@ const searchCompanies = async searchText => {
 
         tbody_container.innerHTML += HTML
     }
+
+    if (gmail_from_homepage.value.trim() === "") {
+        const HTML = `
+        <tr>
+                    <td>1</td>
+                    <td><span><img src="images/bigar.png" alt="ZmnLogo" class="table-company-logo"></span></td>
+                    <td>
+                        <span class="table-company-name">Zemen
+                            Bank</span>
+                    </td>
+                    <td>224.3 ETB</td>
+                    <td>80%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>532.1 ETB</td>
+                    <td>50%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>532.1 ETB</td>
+                    <td>30%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>532.1 ETB</td>
+                    <td>10%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><span><img src="images/logo-coca-cola.png" alt="CokeLogo" class="table-company-logo"></span>
+                    </td>
+                    <td>
+                        <span class="table-company-name">Coca
+                            Cola</span>
+                    </td>
+                    <td>532.1 ETB</td>
+                    <td>90%</td>
+                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                </tr>
+        `
+
+        tbody_container.innerHTML += HTML
+    }
 }
 // searchBtn.addEventListener('click', () => {
 
