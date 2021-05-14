@@ -224,7 +224,10 @@ async function getRequests() {
             })
 
             for (var i = 0; i < allBuyerRequests.length; i++) {
-                table_username[i].innerHTML = allBuyerRequests[i]['username']
+                var fullUsername = allBuyerRequests[i]['username']
+                const strlen = fullUsername.length - 3
+                var cutUsername = fullUsername.substring(0, strlen) + "***"
+                table_username[i].innerHTML = cutUsername
                 table_company_name[i].innerHTML = allBuyerRequests[i]['companyName'][0].toUpperCase() + allBuyerRequests[i]['companyName'].slice(1)
                 table_company_sector[i].innerHTML = allBuyerRequests[i]["companySector"][0].toUpperCase() + allBuyerRequests[i]["companySector"].slice(1)
                 table_company_price[i].innerHTML = allBuyerRequests[i]["companyPrice"]
@@ -280,7 +283,7 @@ async function returnCompnaySectors() {
         <td class="table_company_quantity"></td>
         <td class="table_company_date"></td>
         <td class="table_company_userpremium"></td>
-        <td><button class="table-trade-btn btn"><a href="seller_wanted.html">Exchange</a></button></td>
+        <td><button class="table-trade-btn btn">Exchange</button></td>
     </tr>`
 
         const table_company_number = document.getElementsByClassName("table_company_number")
@@ -311,7 +314,10 @@ async function returnCompnaySectors() {
                 })
 
                 for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
-                    table_username[i].innerHTML = allBuyerRequestsNofilter[i]['username']
+                    var fullUsername = allBuyerRequestsNofilter[i]['username']
+                    const strlen = fullUsername.length - 3
+                    var cutUsername = fullUsername.substring(0, strlen) + "***"
+                    table_username[i].innerHTML = cutUsername
                     table_company_name[i].innerHTML = allBuyerRequestsNofilter[i]['companyName'][0].toUpperCase() + allBuyerRequestsNofilter[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsNofilter[i]["companySector"][0].toUpperCase() + allBuyerRequestsNofilter[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsNofilter[i]["companyPrice"]
@@ -388,7 +394,10 @@ async function returnCompnaySectors() {
                 })
 
                 for (var i = 0; i < allBuyerRequestsFinance.length; i++) {
-                    table_username[i].innerHTML = allBuyerRequestsFinance[i]['username']
+                    var fullUsername = allBuyerRequestsFinance[i]['username']
+                    const strlen = fullUsername.length - 3
+                    var cutUsername = fullUsername.substring(0, strlen) + "***"
+                    table_username[i].innerHTML = cutUsername
                     table_company_name[i].innerHTML = allBuyerRequestsFinance[i]['companyName'][0].toUpperCase() + allBuyerRequestsFinance[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsFinance[i]["companySector"][0].toUpperCase() + allBuyerRequestsFinance[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsFinance[i]["companyPrice"]
@@ -462,7 +471,10 @@ async function returnCompnaySectors() {
                 })
 
                 for (var i = 0; i < allBuyerRequestsResource.length; i++) {
-                    table_username[i].innerHTML = allBuyerRequestsResource[i]['username']
+                    var fullUsername = allBuyerRequestsResource[i]['username']
+                    const strlen = fullUsername.length - 3
+                    var cutUsername = fullUsername.substring(0, strlen) + "***"
+                    table_username[i].innerHTML = cutUsername
                     table_company_name[i].innerHTML = allBuyerRequestsResource[i]['companyName'][0].toUpperCase() + allBuyerRequestsResource[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsResource[i]["companySector"][0].toUpperCase() + allBuyerRequestsResource[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsResource[i]["companyPrice"]
@@ -537,7 +549,10 @@ async function returnCompnaySectors() {
                 })
 
                 for (var i = 0; i < allBuyerRequestsOther.length; i++) {
-                    table_username[i].innerHTML = allBuyerRequestsOther[i]['username']
+                    var fullUsername = allBuyerRequestsOther[i]['username']
+                    const strlen = fullUsername.length - 3
+                    var cutUsername = fullUsername.substring(0, strlen) + "***"
+                    table_username[i].innerHTML = cutUsername
                     table_company_name[i].innerHTML = allBuyerRequestsOther[i]['companyName'][0].toUpperCase() + allBuyerRequestsOther[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsOther[i]["companySector"][0].toUpperCase() + allBuyerRequestsOther[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsOther[i]["companyPrice"]
@@ -571,15 +586,15 @@ const buysellSearchCompanies = async searchText => {
     resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
     other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
 
-    buy_sell_input_field.addEventListener("input", () => {
-        const fieldValue = buy_sell_input_field.value
-        const fieldBool = /^[a-zA-Z]+$/.test(fieldValue)
-        // console.log(fieldBool)
-        if (!(fieldBool)) {
-            var modifiedVal = fieldValue.slice(0, -1)
-            buy_sell_input_field.value = modifiedVal
-        }
-    })
+    // buy_sell_input_field.addEventListener("input", () => {
+    //     const fieldValue = buy_sell_input_field.value
+    //     const fieldBool = /^[a-zA-Z]+$/.test(fieldValue)
+    //     // console.log(fieldBool)
+    //     if (!(fieldBool)) {
+    //         var modifiedVal = fieldValue.slice(0, -1)
+    //         buy_sell_input_field.value = modifiedVal
+    //     }
+    // })
     // TODO: The search field value is taking the old value before modfication
     console.log(buy_sell_input_field.value)
     dbf.collection('buyers_requests').get().then((snapshot) => {
@@ -638,7 +653,10 @@ const buysellSearchCompanies = async searchText => {
                     })
 
                     for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
-                        table_username[i].innerHTML = allBuyerRequestsNofilter[i]['username']
+                        var fullUsername = allBuyerRequestsNofilter[i]['username']
+                        const strlen = fullUsername.length - 3
+                        var cutUsername = fullUsername.substring(0, strlen) + "***"
+                        table_username[i].innerHTML = cutUsername
                         table_company_name[i].innerHTML = allBuyerRequestsNofilter[i]['companyName'][0].toUpperCase() + allBuyerRequestsNofilter[i]['companyName'].slice(1)
                         table_company_sector[i].innerHTML = allBuyerRequestsNofilter[i]["companySector"][0].toUpperCase() + allBuyerRequestsNofilter[i]["companySector"].slice(1)
                         table_company_price[i].innerHTML = allBuyerRequestsNofilter[i]["companyPrice"]
@@ -659,9 +677,12 @@ const buysellSearchCompanies = async searchText => {
 
         }
         for (var i = 0; i < matches.length; i++) {
+            var fullUsername = matches[i]['username']
+            const strlen = fullUsername.length - 3
+            var cutUsername = fullUsername.substring(0, strlen) + "***"
             const HTML = `<tr>
                 <td class="table_company_number">${i + 1}</td>
-                <td class="table_username">${matches[i]['username']}</td>
+                <td class="table_username">${cutUsername}</td>
                 <td><span>
                                 <div class="table-company-logo"></div>
                                 </span></td>
