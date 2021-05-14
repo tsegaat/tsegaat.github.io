@@ -1005,10 +1005,10 @@ tr td a{
 
 /* Buy sell */
 .buy-sell-title-container{
-    display: flex;
-    justify-content: space-between;
     margin-top: 30px;
     margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
 }
 
 .buy-sell-title{
@@ -1019,7 +1019,7 @@ tr td a{
 
 .buy-sell-searchbar{
     display: flex;
-    width: 300px;
+    width: 350px;
     margin: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -1041,6 +1041,7 @@ tr td a{
     border: none;
     font-size: 18px;
     font-weight: 400;
+    width: 320px;
     color: rgb(5, 15, 25);
 }
 

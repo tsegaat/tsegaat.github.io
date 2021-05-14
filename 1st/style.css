@@ -32,7 +32,7 @@ nav ul li{
 }
 
 .header{
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .sign-in-btn{
@@ -112,6 +112,12 @@ nav ul li{
 .share-price-table-container{
     padding-top: 52px;
     padding-bottom: 52px;
+}
+
+.share-price-table-company-types{
+    font-size: 20px;
+    font-family: "News Cycle";
+    margin-bottom: 15px;
 }
 
 .table-company-logo{

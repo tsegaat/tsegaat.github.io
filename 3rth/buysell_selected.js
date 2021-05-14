@@ -55,6 +55,26 @@ more_options_btn.addEventListener("click", () => {
         }
     })
 })
+
+var seller;
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        // console.log(firebase.auth().currentUser)
+        dbf.collection("users").doc(user.uid).get().then((doc) => {
+            seller = doc.data().seller
+            if (seller) {
+                const newListElement = document.createElement("li")
+                newListElement.innerHTML = "Buyers Requests"
+
+                more_options_container.insertBefore(newListElement, more_options_container.children[1])
+                newListElement.addEventListener("click", () => {
+                    window.location.href = "../3rth/buyer_requests.html"
+                })
+            }
+        })
+    }
+});
+
 // End of More Options
 
 // Start email
