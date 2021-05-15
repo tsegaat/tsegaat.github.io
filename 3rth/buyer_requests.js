@@ -181,23 +181,6 @@ profile_settings_li_normal.addEventListener("click", () => {
 const table_row_container = document.getElementById("table-row-container")
 
 async function getRequests() {
-    const HTML = `<tr>
-            <td class="table_company_number"></td>
-            <td class="table_username"></td>
-            <td><span>
-                    <div class="table-company-logo"></div>
-                </span></td>
-            <td>
-                <span class="table-company-name"></span>
-            </td>
-            <td class="table_company_sector"></td>
-            <td class="table_company_price"></td>
-            <td class="table_company_quantity"></td>
-            <td class="table_company_date"></td>
-            <td class="table_company_userpremium"></td>
-            <td><button class="table-trade-btn btn">Exchange</button></td>
-        </tr>`
-
     const table_company_number = document.getElementsByClassName("table_company_number")
     const table_username = document.getElementsByClassName("table_username")
     const table_company_logo = document.getElementsByClassName("table-company-logo")
@@ -211,10 +194,6 @@ async function getRequests() {
     dbf.collection('buyers_requests').get().then((snapshot) => {
         const allBuyerRequests = snapshot.docs.map(doc => doc.data())
         // console.log(allBuyerRequests)
-        for (var i = 0; i < allBuyerRequests.length; i++) {
-            table_row_container.innerHTML += HTML
-        }
-
         async function getJson() {
             const res = await fetch("../2nd/companies.json")
             const companies = await res.json()
@@ -222,6 +201,26 @@ async function getRequests() {
             let matches = companies.filter(company => {
                 return company
             })
+
+            for (var i = 0; i < allBuyerRequests.length; i++) {
+                const HTML = `<tr>
+                    <td class="table_company_number"></td>
+                    <td class="table_username"></td>
+                    <td><span>
+                            <div class="table-company-logo"></div>
+                        </span></td>
+                    <td>
+                        <span class="table-company-name" id="company_name_${i}"></span>
+                    </td>
+                    <td class="table_company_sector"></td>
+                    <td class="table_company_price" id="company_price_${i}"></td>
+                    <td class="table_company_quantity" id="company_quantity_${i}"></td>
+                    <td class="table_company_date"></td>
+                    <td class="table_company_userpremium"></td>
+                    <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
+                </tr>`
+                table_row_container.innerHTML += HTML
+            }
 
             for (var i = 0; i < allBuyerRequests.length; i++) {
                 var fullUsername = allBuyerRequests[i]['username']
@@ -240,6 +239,21 @@ async function getRequests() {
                 const ref = dbs.ref()
                 ref.child("company_logos/" + allBuyerRequests[i]['companyName'] + ".png").getDownloadURL().then((url) => {
                     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
+                })
+            }
+
+            for (var i = 0; i < allBuyerRequests.length; i++) {
+                const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                const companyName = document.getElementById(`company_name_${i}`)
+                const companyPrice = document.getElementById(`company_price_${i}`)
+                const companyQuantity = document.getElementById(`company_quantity_${i}`)
+                exchangeBtn.addEventListener("click", () => {
+                    const compName = companyName.innerHTML
+                    const compPrice = companyPrice.innerHTML
+                    const compQuantity = companyQuantity.innerHTML
+
+                    localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                    window.location.href = "seller_wanted.html"
                 })
             }
         }
@@ -269,23 +283,6 @@ async function returnCompnaySectors() {
         resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
         other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
 
-        const HTML = `<tr>
-        <td class="table_company_number"></td>
-        <td class="table_username"></td>
-        <td><span>
-                <div class="table-company-logo"></div>
-            </span></td>
-        <td>
-            <span class="table-company-name"></span>
-        </td>
-        <td class="table_company_sector"></td>
-        <td class="table_company_price"></td>
-        <td class="table_company_quantity"></td>
-        <td class="table_company_date"></td>
-        <td class="table_company_userpremium"></td>
-        <td><button class="table-trade-btn btn">Exchange</button></td>
-    </tr>`
-
         const table_company_number = document.getElementsByClassName("table_company_number")
         const table_username = document.getElementsByClassName("table_username")
         const table_company_logo = document.getElementsByClassName("table-company-logo")
@@ -301,6 +298,22 @@ async function returnCompnaySectors() {
             const allBuyerRequests = snapshot.docs.map(doc => doc.data())
 
             for (var i = 0; i < allBuyerRequests.length; i++) {
+                const HTML = `<tr>
+                <td class="table_company_number"></td>
+                <td class="table_username"></td>
+                <td><span>
+                        <div class="table-company-logo"></div>
+                    </span></td>
+                <td>
+                    <span class="table-company-name" id="company_name_${i}"></span>
+                </td>
+                <td class="table_company_sector"></td>
+                <td class="table_company_price" id="company_price_${i}"></td>
+                <td class="table_company_quantity" id="company_quantity_${i}"></td>
+                <td class="table_company_date"></td>
+                <td class="table_company_userpremium"></td>
+                <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
+            </tr>`
                 table_row_container.innerHTML += HTML
                 allBuyerRequestsNofilter.push(allBuyerRequests[i])
             }
@@ -372,14 +385,14 @@ async function returnCompnaySectors() {
                             <div class="table-company-logo"></div>
                         </span></td>
                     <td>
-                        <span class="table-company-name"></span>
+                        <span class="table-company-name" id="company_name_${i}"></span>
                     </td>
                     <td class="table_company_sector"></td>
-                    <td class="table_company_price"></td>
-                    <td class="table_company_quantity"></td>
+                    <td class="table_company_price" id="company_price_${i}"></td>
+                    <td class="table_company_quantity" id="company_quantity_${i}"></td>
                     <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
-                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                    <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
                     table_row_container.innerHTML += HTML
                 }
@@ -449,14 +462,14 @@ async function returnCompnaySectors() {
                             <div class="table-company-logo"></div>
                         </span></td>
                     <td>
-                        <span class="table-company-name"></span>
+                        <span class="table-company-name" id="company_name_${i}"></span>
                     </td>
                     <td class="table_company_sector"></td>
-                    <td class="table_company_price"></td>
-                    <td class="table_company_quantity"></td>
+                    <td class="table_company_price" id="company_price_${i}"></td>
+                    <td class="table_company_quantity" id="company_quantity_${i}"></td>
                     <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
-                    <td><button class="table-trade-btn btn">Exchange</button></td>
+                    <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
                     table_row_container.innerHTML += HTML
                 }
@@ -520,21 +533,21 @@ async function returnCompnaySectors() {
 
                 if (allBuyerRequests[i]["companySector"] == "other") {
                     const HTML = `<tr>
-                            <td class="table_company_number"></td>
-                            <td class="table_username"></td>
-                            <td><span>
-                                    <div class="table-company-logo"></div>
-                                </span></td>
-                            <td>
-                                <span class="table-company-name"></span>
-                            </td>
-                            <td class="table_company_sector"></td>
-                            <td class="table_company_price"></td>
-                            <td class="table_company_quantity"></td>
-                            <td class="table_company_date"></td>
-                            <td class="table_company_userpremium"></td>
-                            <td><button class="table-trade-btn btn">Exchange</button></td>
-                        </tr>`
+                    <td class="table_company_number"></td>
+                    <td class="table_username"></td>
+                    <td><span>
+                            <div class="table-company-logo"></div>
+                        </span></td>
+                    <td>
+                        <span class="table-company-name" id="company_name_${i}"></span>
+                    </td>
+                    <td class="table_company_sector"></td>
+                    <td class="table_company_price" id="company_price_${i}"></td>
+                    <td class="table_company_quantity" id="company_quantity_${i}"></td>
+                    <td class="table_company_date"></td>
+                    <td class="table_company_userpremium"></td>
+                    <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
+                </tr>`
                     table_row_container.innerHTML += HTML
                     allBuyerRequestsOther.push(allBuyerRequests[i])
                 }
@@ -609,21 +622,21 @@ const buysellSearchCompanies = async searchText => {
 
         if (buy_sell_input_field.value == "") {
             const HTML = `<tr>
-                <td class="table_company_number"></td>
-                <td class="table_username"></td>
-                <td><span>
-                        <div class="table-company-logo"></div>
-                    </span></td>
-                <td>
-                    <span class="table-company-name"></span>
-                </td>
-                <td class="table_company_sector"></td>
-                <td class="table_company_price"></td>
-                <td class="table_company_quantity"></td>
-                <td class="table_company_date"></td>
-                <td class="table_company_userpremium"></td>
-                <td><button class="table-trade-btn btn">Exchange</button></td>
-            </tr>`
+            <td class="table_company_number"></td>
+            <td class="table_username"></td>
+            <td><span>
+                    <div class="table-company-logo"></div>
+                </span></td>
+            <td>
+                <span class="table-company-name" id="company_name_${i}"></span>
+            </td>
+            <td class="table_company_sector"></td>
+            <td class="table_company_price" id="company_price_${i}"></td>
+            <td class="table_company_quantity" id="company_quantity_${i}"></td>
+            <td class="table_company_date"></td>
+            <td class="table_company_userpremium"></td>
+            <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
+        </tr>`
 
             const table_company_number = document.getElementsByClassName("table_company_number")
             const table_username = document.getElementsByClassName("table_username")
