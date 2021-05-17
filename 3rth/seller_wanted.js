@@ -193,3 +193,16 @@ seller_wanted_compnay_quantity.innerHTML = compQuantity
 
 total_price_text.innerHTML = Number(compPrice) * Number(compQuantity)
 // setting up the seller wanted page to be dynamic end
+
+// Checking if the check box is pressed start 
+const create_acc_content_form_checkbox_button = document.getElementsByClassName("create-acc-content-form-checkbox-button")[0]
+const create_acc_confirm_button = document.getElementsByClassName("create-acc-confirm-button")[0]
+create_acc_confirm_button.addEventListener("click", () => {
+    if (create_acc_content_form_checkbox_button.checked == true) {
+        swal("Offer accepted", "The buyer will be notifed", "success")
+    } else {
+        swal("Check the checkbox", "The checkbox must be checked", "error")
+    }
+})
+
+// Checking if the check box is pressed end
