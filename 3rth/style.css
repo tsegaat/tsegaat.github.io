@@ -471,7 +471,6 @@ Create Account CSS
     border: 2px solid rgb(179, 184, 187);
     background-color: rgb(255, 255, 255);
     margin-right: 10px;
-    margin-top: 13px;
 }
 
 .create-acc-confirm-button-container{
@@ -692,14 +691,25 @@ h4{
     transform: translateY(-5px);
 }
 
-.exclusive-product{
-    background: radial-gradient(#fff, #ffd6d6);
-    margin-top: 80px;
-    padding: 30px 0;
-}
-
 .col-2 .exclusive-product-img{
     padding: 50px;
+}
+
+/* Seller wanted page css */
+.seller_wanted_compnay_name{
+    font-size: 30px;  
+    text-align: center; 
+    transform: translateY(-30px);
+}
+
+.seller_wanted_compnay_price{
+    font-size: 20px
+}
+
+.seller_wanted_details_container{
+    border: 1px solid rgba(0, 0, 0, 0.651);
+    padding: 40px;
+    border-radius: 5px;
 }
 
 /* Footer */

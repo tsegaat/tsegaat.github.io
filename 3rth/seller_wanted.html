@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
+
+    <title>Exchange Ethiopian Shares – Ehtioshare</title>
+</head>
+
+<body>
+    <div>
+        <div class="navbar-container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="../2nd/main-page.html">Ethioshare</a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li class="more-options-btn">
+                            <div></div>
+                        </li>
+                        <li class="profile-picture">
+                            <div id="profile-picture-nav"></div>
+                        </li>
+                    </ul>
+                    <div class="more-options-container">
+                        <li>Active Clients</li>
+                        <li>My Shares</li>
+                        <li>Add Shares</li>
+                    </div>
+                    <div class="profile-settings-container">
+                        <li class="profile-settings-li">
+                            <div class="home-btn"><i class="fa fa-home"></i></i></div>
+                            <div class="proflie-settings-profilepicture-container">
+                                <div class="proflie-settings-profilepicture"></div><i
+                                    class="fa fa-camera profile-settings-camera-icon"></i>
+                                <input type="file" id="profile-settings-profilepicture-input" class="hidden"
+                                    multiple="false" accept="image/x-png,image/gif,image/jpeg">
+                            </div>
+                            <div class=" profile-settings-name"></div>
+                            <div class="profile-settings-email"></div>
+                            <div class="profile-settings-manage">Manage Your Account</div>
+                        </li>
+                        <li class="profile-settings-li profile-settings-li-normal"><i
+                                class="fa fa-exclamation-circle"></i>Verify me
+                        </li>
+                        <li class="profile-settings-li profile-settings-li-normal">Sign out</li>
+                    </div>
+                </nav>
+                <img src="images/menu.png" class='menu-icon' width='28px' onclick="menutoggle()">
+
+            </div>
+        </div>
+        <hr style="color: #000;">
+    </div>
+    <div class="create-acc-mainbody row">
+        <div class="create-acc-title-container">
+            <div class="create-acc-title">
+                Confirm to take the order
+            </div>
+        </div>
+        <div class="create-acc-content-form-container">
+
+            <form action="" class="seller_wanted_details_container">
+                <div class="create-acc-content-form"></div>
+                <div class="create-acc-content">
+                    <div class="seller_wanted_compnay_name">Zemen Bank</div>
+                </div>
+                <div class="create-acc-content">
+                    <div class="seller_wanted_compnay_price">Price: 200<span id="currency-text">ETB</span></div>
+                </div>
+                <div class="create-acc-content">
+                    <div class="seller_wanted_compnay_price">Quantity: 2</div>
+                </div>
+                <div class="create-acc-content password">
+                    <div id="total-price">
+                        <span id="total-text">Total</span> <span id="total-price-text">400</span> <span
+                            id="currency-text">ETB</span>
+                    </div>
+                </div>
+                <div class="create-acc-content">
+                    <p id="create-acc-empty-field"></p>
+                </div>
+                <div class="create-acc-2col create-acc-content">
+                    <div>
+                        <input class="create-acc-content-form-checkbox-button" type="checkbox">
+                    </div>
+
+                    <div>
+                        <p class="create-acc-content-form-end-text">Our terms and conditions about the exchange</p>
+                    </div>
+                </div>
+                <div class="create-acc-confirm-button-container">
+                    <div class="create-acc-confirm-button">Accept Offer
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="seller_wanted.js"></script>
+
+</html>

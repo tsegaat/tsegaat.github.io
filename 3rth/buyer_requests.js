@@ -345,6 +345,21 @@ async function returnCompnaySectors() {
                     //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                     // })
                 }
+
+                for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
+                    const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const companyName = document.getElementById(`company_name_${i}`)
+                    const companyPrice = document.getElementById(`company_price_${i}`)
+                    const companyQuantity = document.getElementById(`company_quantity_${i}`)
+                    exchangeBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_wanted.html"
+                    })
+                }
             }
             getJson()
         })
@@ -355,11 +370,10 @@ async function returnCompnaySectors() {
     finance_buy_sell_sector.addEventListener("click", () => {
         table_row_container.innerHTML = ''
         buy_sell_input_field.value = ""
-        finance_buy_sell_sector.classList.add("buy-sell-sector-selected")
-        all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
         resource_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        all_comp_buy_sell_sector.classList.remove("buy-sell-sector-selected")
+        finance_buy_sell_sector.classList.add("buy-sell-sector-selected")
         other_buy_sell_sector.classList.remove("buy-sell-sector-selected")
-
 
         const table_company_number = document.getElementsByClassName("table_company_number")
         const table_username = document.getElementsByClassName("table_username")
@@ -378,6 +392,7 @@ async function returnCompnaySectors() {
             for (var i = 0; i < allBuyerRequests.length; i++) {
                 if (allBuyerRequests[i]["companySector"] == "finance") {
                     allBuyerRequestsFinance.push(allBuyerRequests[i])
+                    console.log(allBuyerRequestsFinance[i])
                     const HTML = `<tr>
                     <td class="table_company_number"></td>
                     <td class="table_username"></td>
@@ -414,8 +429,8 @@ async function returnCompnaySectors() {
                     table_company_name[i].innerHTML = allBuyerRequestsFinance[i]['companyName'][0].toUpperCase() + allBuyerRequestsFinance[i]['companyName'].slice(1)
                     table_company_sector[i].innerHTML = allBuyerRequestsFinance[i]["companySector"][0].toUpperCase() + allBuyerRequestsFinance[i]["companySector"].slice(1)
                     table_company_price[i].innerHTML = allBuyerRequestsFinance[i]["companyPrice"]
-                    table_company_date[i].innerHTML = allBuyerRequestsFinance[i]['requestedDate']
                     table_company_quantity[i].innerHTML = allBuyerRequestsFinance[i]['shareQuantity']
+                    table_company_date[i].innerHTML = allBuyerRequestsFinance[i]['requestedDate']
                     table_company_userpremium[i].innerHTML = allBuyerRequestsFinance[i]['userPremium'] + " " + "ETB"
                     table_company_number[i].innerHTML = i + 1
 
@@ -425,9 +440,25 @@ async function returnCompnaySectors() {
                     //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                     // })
                 }
+
+                for (var i = 0; i < allBuyerRequestsFinance.length; i++) {
+                    const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const companyName = document.getElementById(`company_name_${i}`)
+                    const companyPrice = document.getElementById(`company_price_${i}`)
+                    const companyQuantity = document.getElementById(`company_quantity_${i}`)
+                    exchangeBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_wanted.html"
+                    })
+                }
             }
             getJson()
         })
+
     })
 
     resource_buy_sell_sector.addEventListener("click", () => {
@@ -501,6 +532,21 @@ async function returnCompnaySectors() {
                     // ref.child("company_logos/" + allBuyerRequestsNofilter[i]['companyName'] + ".png").getDownloadURL().then((url) => {
                     //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                     // })
+                }
+
+                for (var i = 0; i < allBuyerRequestsResource.length; i++) {
+                    const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const companyName = document.getElementById(`company_name_${i}`)
+                    const companyPrice = document.getElementById(`company_price_${i}`)
+                    const companyQuantity = document.getElementById(`company_quantity_${i}`)
+                    exchangeBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_wanted.html"
+                    })
                 }
             }
             getJson()
@@ -579,6 +625,20 @@ async function returnCompnaySectors() {
                     // ref.child("company_logos/" + allBuyerRequestsNofilter[i]['companyName'] + ".png").getDownloadURL().then((url) => {
                     //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                     // })
+                }
+                for (var i = 0; i < allBuyerRequestsOther.length; i++) {
+                    const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const companyName = document.getElementById(`company_name_${i}`)
+                    const companyPrice = document.getElementById(`company_price_${i}`)
+                    const companyQuantity = document.getElementById(`company_quantity_${i}`)
+                    exchangeBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_wanted.html"
+                    })
                 }
             }
             getJson()
@@ -683,6 +743,20 @@ const buysellSearchCompanies = async searchText => {
                         // ref.child("company_logos/" + allBuyerRequestsNofilter[i]['companyName'] + ".png").getDownloadURL().then((url) => {
                         //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                         // })
+                    }
+                    for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
+                        const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                        const companyName = document.getElementById(`company_name_${i}`)
+                        const companyPrice = document.getElementById(`company_price_${i}`)
+                        const companyQuantity = document.getElementById(`company_quantity_${i}`)
+                        exchangeBtn.addEventListener("click", () => {
+                            const compName = companyName.innerHTML
+                            const compPrice = companyPrice.innerHTML
+                            const compQuantity = companyQuantity.innerHTML
+
+                            localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                            window.location.href = "seller_wanted.html"
+                        })
                     }
                 }
                 getJson()

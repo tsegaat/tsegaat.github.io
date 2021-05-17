@@ -50,12 +50,25 @@ const searchCompanies = async searchText => {
 
     outputToHtml(matches)
 }
+
+window.addEventListener('keypress', (e) => {
+    if (e.keyCode == 13) {
+        searchBtn.click()
+    }
+})
+
+searchBar.addEventListener("keypress", (e) => {
+    if (e.keyCode === 13) {
+        searchBtn.click()
+        e.preventDefault()
+    }
+})
+
 searchBtn.addEventListener('click', () => {
 
-    searchBtn.innerHTML = "Searching"
-    searchBtn.style.backgroundColor = "rgb(55, 109, 247)"
-
     if (searchBar.value != "") {
+        searchBtn.innerHTML = "Searching"
+        searchBtn.style.backgroundColor = "rgb(55, 109, 247)"
         var val = searchBar.value;
         var nonEmptyOptionsArray = []
         for (var i = 0; i < options.length; i++) {
