@@ -440,7 +440,7 @@ async function returnCompnaySectors() {
                     //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                     // })
                 }
-
+                // TODO: the onclink listener says undefined for the finance 
                 for (var i = 0; i < allBuyerRequestsFinance.length; i++) {
                     const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
                     const companyName = document.getElementById(`company_name_${i}`)
@@ -669,7 +669,6 @@ const buysellSearchCompanies = async searchText => {
     //     }
     // })
     // TODO: The search field value is taking the old value before modfication
-    console.log(buy_sell_input_field.value)
     dbf.collection('buyers_requests').get().then((snapshot) => {
         const allBuyerRequests = snapshot.docs.map(doc => doc.data())
         let matches = allBuyerRequests.filter(company => {
@@ -744,6 +743,7 @@ const buysellSearchCompanies = async searchText => {
                         //     table_company_logo[i].setAttribute("style", `background-image: url(${url})`)
                         // })
                     }
+                    // TODO:The onclick listener is not working
                     for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
                         const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
                         const companyName = document.getElementById(`company_name_${i}`)
@@ -785,6 +785,21 @@ const buysellSearchCompanies = async searchText => {
                         </tr>`
 
             table_row_container.innerHTML += HTML
+        }
+        // TODO: the onclick listener is not working
+        for (var i = 0; i < matches.length; i++) {
+            const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+            const companyName = document.getElementById(`company_name_${i}`)
+            const companyPrice = document.getElementById(`company_price_${i}`)
+            const companyQuantity = document.getElementById(`company_quantity_${i}`)
+            exchangeBtn.addEventListener("click", () => {
+                const compName = companyName.innerHTML
+                const compPrice = companyPrice.innerHTML
+                const compQuantity = companyQuantity.innerHTML
+
+                localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                window.location.href = "seller_wanted.html"
+            })
         }
     })
 
