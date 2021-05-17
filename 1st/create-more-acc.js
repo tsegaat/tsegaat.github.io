@@ -75,7 +75,6 @@ function submit() {
     }
 
 
-    // TODO: The month can go more than 12 fix that 
     // TODO: Check for the username to be unique and phonenumber to be also unique 
 
     var userGender = ""
@@ -109,51 +108,65 @@ function submit() {
         create_acc_empty_field.innerHTML = "Invalid phone number"
         create_acc_confirm_button.innerHTML = "Save"
         create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
-        phoneCheck = false;
+        return 1
     }
 
     if (create_acc_content_form_input.value[1].toString() != "9" && create_acc_content_form_input.value[1].toString() != "1") {
         create_acc_empty_field.innerHTML = "Invalid phone number"
         create_acc_confirm_button.innerHTML = "Save"
         create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
-        phoneCheck = false;
+        return 1
     }
 
     const phone = create_acc_content_form_input.value
-
-    firebase.auth().createUserWithEmailAndPassword(email, pass)
-        .then((c) => {
-            // console.log(c)
-            firebase.firestore().collection('users').doc(c.user.uid).set({
-                firstName: firstName,
-                lastName: lastName,
-                username: username,
-                phone: phone,
-                birthday: birthday,
-                gender: userGender
-
-            }).then(() => {
-                create_acc_empty_field.innerHTML = ""
-                c.user.sendEmailVerification()
-                firebase.auth().signInWithEmailAndPassword(email, pass)
-                    .then(() => {
-                        window.location.href = "../2nd/main-page.html";
-                    })
-            })
-
-        }).catch((error) => {
-            if (error.code == "auth/network-request-failed") {
-                create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
-                create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
-                create_acc_empty_field.innerHTML = "Network failed please try agin"
-            }
-
-            if (error.code == "auth/email-already-in-use") {
-                create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
-                create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
-                create_acc_empty_field.innerHTML = "Email already exists"
-            }
+    var phoneExistCheck = false
+    firebase.firestore().collection("users").where("phone", "==", phone).get().then((q) => {
+        q.forEach(() => {
+            create_acc_empty_field.innerHTML = "Phone number already exits"
+            create_acc_confirm_button.innerHTML = "Save"
+            create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+            phoneExistCheck = true
         })
+        if (!phoneExistCheck) {
+            const month = Number(dateObj.getMonth()) + 1
+            const date = dateObj.getDate() + "/" + month + "/" + dateObj.getFullYear()
+            firebase.auth().createUserWithEmailAndPassword(email, pass)
+                .then((c) => {
+                    firebase.firestore().collection('users').doc(c.user.uid).set({
+                        firstName: firstName,
+                        lastName: lastName,
+                        username: username,
+                        phone: phone,
+                        birthday: birthday,
+                        gender: userGender,
+                        createdDate: date
+
+                    }).then(() => {
+                        create_acc_empty_field.innerHTML = ""
+                        c.user.sendEmailVerification()
+                        firebase.auth().signInWithEmailAndPassword(email, pass)
+                            .then(() => {
+                                window.location.href = "../2nd/main-page.html";
+                            })
+                    })
+
+                }).catch((error) => {
+                    if (error.code == "auth/network-request-failed") {
+                        create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
+                        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+                        create_acc_empty_field.innerHTML = "Network failed please try agin"
+                    }
+
+                    if (error.code == "auth/email-already-in-use") {
+                        create_acc_confirm_button.innerHTML = "Finish Creating Your Account"
+                        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+                        create_acc_empty_field.innerHTML = "Email already exists"
+                    }
+                })
+        }
+    })
+
+
 
 
 }

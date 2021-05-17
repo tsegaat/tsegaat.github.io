@@ -19,5 +19,12 @@
         "price": "250 ETB",
         "exchangescore": "15%",
         "altLogo": "AwshLogo"
+    },
+    {
+        "name": "coffee",
+        "sector": "resource",
+        "price": "300 ETB",
+        "exchangescore": "8%",
+        "altLogo": "CoffeeLogo"
     }
 ]

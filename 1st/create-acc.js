@@ -22,7 +22,7 @@ var hide_icon = document.getElementsByClassName("hide")
 
 var firstName = create_acc_content_form_input[0]
 var lastName = create_acc_content_form_input[1]
-var username = create_acc_content_form_input[2]
+var username_ = create_acc_content_form_input[2]
 var email = create_acc_content_form_input[3]
 var password = create_acc_content_form_input[4]
 var repeat_password = create_acc_content_form_input[5]
@@ -67,88 +67,105 @@ if (localStorage["gmail_from_homepage"]) {
 
 
 function submit() {
+    create_acc_confirm_button.innerHTML = "Creating Account ..."
+    create_acc_confirm_button.style.backgroundColor = "rgb(55, 109, 247)"
     if (firstName.value == "" || lastName.value == "" || email.value == "" || password.value == "") {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "None of the fields can be empty"
         return 1
     }
 
     if (!(/^[a-zA-Z]+$/.test(firstName.value))) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Name can only contain letters"
         return 1
     }
 
     if (!(/^[a-zA-Z]+$/.test(lastName.value))) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Name can only contain letters"
         return 1
     }
 
     const emailValue = email.value
     if (emailValue.includes("@") == false) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Enter a valid email"
         return 1
     }
 
     if (emailValue.includes(".") == false) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Enter a valid email"
         return 1
     }
 
-    const userName = username.value.toLowerCase()
-    const dbf = firebase.firestore()
-    dbf.collection("users").where("username", "==", userName).get().then((q) => {
-        console.log(q)
-        q.forEach(() => {
-
-            create_acc_empty_field.innerHTML = "Username already exits"
-            return 1
-        })
-    }).catch((err) => {
-        if (err.code == "auth/network-request-failed") {
-            create_acc_empty_field.innerHTML = "Network failed please try again"
-            return 1
-        }
-    })
-
-    // return 1
-    if (!(/[a-z]/.test(userName))) {
+    if (!(/[a-z]/.test(username_.value.toLowerCase()))) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Username must have at least on letter"
         return 1
     }
 
-    if (userName.includes("@") || userName.includes("?") || userName.includes(">") || userName.includes("<") || userName.includes("\\") || userName.includes("/")) {
+    if (username_.value.toLowerCase().includes("@") || username_.value.toLowerCase().includes("?") || username_.value.toLowerCase().includes(">") || username_.value.toLowerCase().includes("<") || username_.value.toLowerCase().includes("\\") || username_.value.toLowerCase().includes("/")) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Invalid username"
         return 1
     }
 
     if (password.value != repeat_password.value) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Passwords don't match"
         return 1
     }
 
     if (password.value.length < 6) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Password must be at least 6 characters"
         return 1
     }
 
     if (create_acc_content_form_checkbox_button.checked == false) {
+        create_acc_confirm_button.innerHTML = "Create Account"
+        create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
         create_acc_empty_field.innerHTML = "Must check the confirmation checkbox"
         return 1
     }
 
-    var fixed_firstName = firstName.value.toLowerCase()
-    var fixed_lastName = lastName.value.toLowerCase()
+    const fixed_username = username_.value.toLowerCase()
+    var usernameExistCheck = false
+    firebase.firestore().collection("users").where("username", "==", fixed_username).get().then((q) => {
+        q.forEach(() => {
+            create_acc_empty_field.innerHTML = "Username already exits"
+            usernameExistCheck = true
+            create_acc_confirm_button.innerHTML = "Create Account"
+            create_acc_confirm_button.style.backgroundColor = "rgb(22, 82, 240)"
+        })
+        if (!(usernameExistCheck)) {
+            var fixed_firstName = firstName.value.toLowerCase()
+            var fixed_lastName = lastName.value.toLowerCase()
 
-    fixed_firstName = fixed_firstName.charAt(0).toUpperCase() + fixed_firstName.slice(1);
-    fixed_lastName = fixed_lastName.charAt(0).toUpperCase() + fixed_lastName.slice(1);
+            fixed_firstName = fixed_firstName.charAt(0).toUpperCase() + fixed_firstName.slice(1);
+            fixed_lastName = fixed_lastName.charAt(0).toUpperCase() + fixed_lastName.slice(1);
+            fixed_email = email.value.trim().toLowerCase();
+            create_acc_confirm_button.innerHTML = "Creating Account ..."
+            create_acc_confirm_button.style.backgroundColor = "rgb(55, 109, 247)"
 
-    create_acc_confirm_button.innerHTML = "Creating Account ..."
-    create_acc_confirm_button.style.backgroundColor = "rgb(55, 109, 247)"
+            localStorage["userInfo"] = [fixed_firstName, fixed_lastName, username_.value.toLowerCase(), fixed_email, password.value]
+            window.location.href = "create-more-acc.html"
+        }
+    })
 
 
-    fixed_email = email.value.trim().toLowerCase();
 
-    localStorage["userInfo"] = [fixed_firstName, fixed_lastName, userName, fixed_email, password.value]
-    window.location.href = "create-more-acc.html"
 
     // TODO: Make the firebase checking here and show the user
 
