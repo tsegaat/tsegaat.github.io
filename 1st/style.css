@@ -309,6 +309,12 @@ Create Account CSS
     color: rgb(156, 38, 38);
 }
 
+#create-acc-empty-field-username{
+    color: rgb(156, 38, 38);
+    font-size: 13px;
+    text-align: center;
+}
+
 .password{
     position: relative;
     display: block;
