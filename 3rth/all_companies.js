@@ -182,54 +182,6 @@ profile_settings_li_normal.addEventListener("click", () => {
 })
 // End of signout option
 
-// Making the search bar value the main thing in the page start
-
-const selectedCompanies = localStorage["company"].toLowerCase()
-
-const searchCompanies = async searchText => {
-    const res = await fetch("../2nd/companies.json")
-    const companies = await res.json()
-
-    let matches = companies.filter(company => {
-        const regex = new RegExp(`^${searchText}`, 'gi')
-        return company.name.match(regex)
-    })
-
-    const companyName = matches[0]["name"][0].toUpperCase() + matches[0]["name"].slice(1)
-    const companySector = matches[0]["sector"][0].toUpperCase() + matches[0]["sector"].slice(1)
-    const companyPrice = matches[0]["price"]
-    const companyExchangescore = matches[0]["exchangescore"]
-    const companyAltLogo = matches[0]["altLogo"]
-    const rawCompanyName = matches[0]["name"]
-
-    const selected_table_company_name = document.getElementById("selected_table_company_name")
-    const selected_table_company_sector = document.getElementById("selected_table_company_sector")
-    const selected_table_company_price = document.getElementById("selected_table_company_price")
-    const selected_table_company_exchangescore = document.getElementById("selected_table_company_exchangescore")
-    const selected_table_company_logo = document.getElementById("selected_table_company_logo")
-
-
-    ref.child("company_logos/" + rawCompanyName + ".png").getDownloadURL().then((url) => {
-        selected_table_company_logo.setAttribute("style", `background-image: url(${url})`)
-    }).catch(() => {
-        selected_table_company_logo.innerHTML = companyAltLogo
-        selected_table_company_logo.setAttribute("style", "transform: translateY(18px)")
-    })
-
-    selected_table_company_name.innerHTML = companyName
-    selected_table_company_sector.innerHTML = companySector
-    selected_table_company_price.innerHTML = companyPrice
-    selected_table_company_exchangescore.innerHTML = companyExchangescore
-    selectd_trade_btn.addEventListener("click", () => {
-        localStorage['selectedCompany'] = [companyName, companyPrice]
-        window.location.href = "buysell_selected.html"
-    })
-}
-
-searchCompanies(selectedCompanies)
-
-// Making the search bar value the main thing in the page end
-
 // Taking to the selected-buy/sell page start
 const selectd_trade_btn = document.getElementsByClassName("selectd-trade-btn")[0]
 // Taking to the selected-buy/sell page end
