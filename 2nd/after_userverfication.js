@@ -54,6 +54,12 @@ more_options_btn.addEventListener("click", () => {
         }
     })
 })
+
+const all_companies = more_options_container.children[0]
+all_companies.addEventListener("click", () => {
+    window.location.href = "../3rth/all_companies.html"
+})
+
 // End of More Options
 
 // Start email
