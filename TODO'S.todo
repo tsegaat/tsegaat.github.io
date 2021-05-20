@@ -19,3 +19,12 @@
 3. Build the content once clicked the photo (Done)
 4. Build the page and links inside the photo container
 5. Build the pages in the more-options container
+
+
+        -------------------Last Phase---------------------
+1. All companies page create the page. Add a page link to more options in the main page
+2. Remove verify me for the sellers 
+3. Counter offer coloumn in Buyers Request page
+4. While the page is loading when searching make a spinning indicator
+5. If the search is empty make some sort of indicator saying so
+6. Make the footer stick to the bottom
