@@ -253,6 +253,7 @@ async function getRequests() {
 
             for (var i = 0; i < allBuyerRequests.length; i++) {
                 const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                const counterBtn = document.getElementById(`counter_btn_${i}`)
                 const companyName = document.getElementById(`company_name_${i}`)
                 const companyPrice = document.getElementById(`company_price_${i}`)
                 const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -263,6 +264,15 @@ async function getRequests() {
 
                     localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                     window.location.href = "seller_wanted.html"
+                })
+
+                counterBtn.addEventListener("click", () => {
+                    const compName = companyName.innerHTML
+                    const compPrice = companyPrice.innerHTML
+                    const compQuantity = companyQuantity.innerHTML
+
+                    localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                    window.location.href = "seller_request.html"
                 })
             }
         }
@@ -358,6 +368,7 @@ async function returnCompnaySectors() {
 
                 for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
                     const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const counterBtn = document.getElementById(`counter_btn_${i}`)
                     const companyName = document.getElementById(`company_name_${i}`)
                     const companyPrice = document.getElementById(`company_price_${i}`)
                     const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -368,6 +379,14 @@ async function returnCompnaySectors() {
 
                         localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                         window.location.href = "seller_wanted.html"
+                    })
+                    counterBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_request.html"
                     })
                 }
             }
@@ -454,6 +473,7 @@ async function returnCompnaySectors() {
                 // TODO: the onclink listener says undefined for the finance 
                 for (var i = 0; i < allBuyerRequestsFinance.length; i++) {
                     const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const counterBtn = document.getElementById(`counter_btn_${i}`)
                     const companyName = document.getElementById(`company_name_${i}`)
                     const companyPrice = document.getElementById(`company_price_${i}`)
                     const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -464,6 +484,14 @@ async function returnCompnaySectors() {
 
                         localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                         window.location.href = "seller_wanted.html"
+                    })
+                    counterBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_request.html"
                     })
                 }
             }
@@ -548,6 +576,7 @@ async function returnCompnaySectors() {
 
                 for (var i = 0; i < allBuyerRequestsResource.length; i++) {
                     const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const counterBtn = document.getElementById(`counter_btn_${i}`)
                     const companyName = document.getElementById(`company_name_${i}`)
                     const companyPrice = document.getElementById(`company_price_${i}`)
                     const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -558,6 +587,15 @@ async function returnCompnaySectors() {
 
                         localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                         window.location.href = "seller_wanted.html"
+                    })
+
+                    counterBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_request.html"
                     })
                 }
             }
@@ -641,6 +679,7 @@ async function returnCompnaySectors() {
                 }
                 for (var i = 0; i < allBuyerRequestsOther.length; i++) {
                     const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                    const counterBtn = document.getElementById(`counter_btn_${i}`)
                     const companyName = document.getElementById(`company_name_${i}`)
                     const companyPrice = document.getElementById(`company_price_${i}`)
                     const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -651,6 +690,15 @@ async function returnCompnaySectors() {
 
                         localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                         window.location.href = "seller_wanted.html"
+                    })
+
+                    counterBtn.addEventListener("click", () => {
+                        const compName = companyName.innerHTML
+                        const compPrice = companyPrice.innerHTML
+                        const compQuantity = companyQuantity.innerHTML
+
+                        localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                        window.location.href = "seller_request.html"
                     })
                 }
             }
@@ -760,6 +808,7 @@ const buysellSearchCompanies = async searchText => {
                     // TODO:The onclick listener is not working
                     for (var i = 0; i < allBuyerRequestsNofilter.length; i++) {
                         const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+                        const counterBtn = document.getElementById(`counter_btn_${i}`)
                         const companyName = document.getElementById(`company_name_${i}`)
                         const companyPrice = document.getElementById(`company_price_${i}`)
                         const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -770,6 +819,15 @@ const buysellSearchCompanies = async searchText => {
 
                             localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                             window.location.href = "seller_wanted.html"
+                        })
+
+                        counterBtn.addEventListener("click", () => {
+                            const compName = companyName.innerHTML
+                            const compPrice = companyPrice.innerHTML
+                            const compQuantity = companyQuantity.innerHTML
+
+                            localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                            window.location.href = "seller_request.html"
                         })
                     }
                 }
@@ -804,6 +862,7 @@ const buysellSearchCompanies = async searchText => {
         // TODO: the onclick listener is not working
         for (var i = 0; i < matches.length; i++) {
             const exchangeBtn = document.getElementById(`exchange_btn_${i}`)
+            const counterBtn = document.getElementById(`counter_btn_${i}`)
             const companyName = document.getElementById(`company_name_${i}`)
             const companyPrice = document.getElementById(`company_price_${i}`)
             const companyQuantity = document.getElementById(`company_quantity_${i}`)
@@ -814,6 +873,15 @@ const buysellSearchCompanies = async searchText => {
 
                 localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
                 window.location.href = "seller_wanted.html"
+            })
+
+            counterBtn.addEventListener("click", () => {
+                const compName = companyName.innerHTML
+                const compPrice = companyPrice.innerHTML
+                const compQuantity = companyQuantity.innerHTML
+
+                localStorage["sellerCompnay"] = [compName, compPrice, compQuantity]
+                window.location.href = "seller_request.html"
             })
         }
     })
