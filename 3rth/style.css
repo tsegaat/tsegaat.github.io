@@ -308,6 +308,11 @@ option {
     padding-right: 25px;
 }
 
+.all-share-price-table-container{
+    padding-top: 0px;
+    padding-bottom: 52px;
+}
+
 .share-price-table-container{
     padding-top: 40px;
     padding-bottom: 52px;
