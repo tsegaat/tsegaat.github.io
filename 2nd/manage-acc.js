@@ -71,6 +71,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                 newListElement.addEventListener("click", () => {
                     window.location.href = "../3rth/buyer_requests.html"
                 })
+
+                const verify_me_tab = document.getElementsByClassName("profile-settings-li profile-settings-li-normal")[0]
+                verify_me_tab.remove()
             }
         })
     }
