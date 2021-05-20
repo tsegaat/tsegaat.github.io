@@ -225,6 +225,7 @@ async function getRequests() {
                     <td class="table_company_quantity" id="company_quantity_${i}"></td>
                     <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
+                    <td><button class="table-trade-btn btn" id="counter_btn_${i}">Request</button></td>
                     <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
                 table_row_container.innerHTML += HTML
@@ -320,6 +321,7 @@ async function returnCompnaySectors() {
                 <td class="table_company_quantity" id="company_quantity_${i}"></td>
                 <td class="table_company_date"></td>
                 <td class="table_company_userpremium"></td>
+                <td><button class="table-trade-btn btn" id="counter_btn_${i}">Request</button></td>
                 <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
             </tr>`
                 table_row_container.innerHTML += HTML
@@ -415,6 +417,7 @@ async function returnCompnaySectors() {
                     <td class="table_company_quantity" id="company_quantity_${i}"></td>
                     <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
+                    <td><button class="table-trade-btn btn" id="counter_btn_${i}">Request</button></td>
                     <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
                     table_row_container.innerHTML += HTML
@@ -508,6 +511,7 @@ async function returnCompnaySectors() {
                     <td class="table_company_quantity" id="company_quantity_${i}"></td>
                     <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
+                    <td><button class="table-trade-btn btn" id="counter_btn_${i}">Request</button></td>
                     <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
                     table_row_container.innerHTML += HTML
@@ -600,6 +604,7 @@ async function returnCompnaySectors() {
                     <td class="table_company_quantity" id="company_quantity_${i}"></td>
                     <td class="table_company_date"></td>
                     <td class="table_company_userpremium"></td>
+                    <td><button class="table-trade-btn btn" id="counter_btn_${i}">Request</button></td>
                     <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
                 </tr>`
                     table_row_container.innerHTML += HTML
@@ -702,6 +707,7 @@ const buysellSearchCompanies = async searchText => {
             <td class="table_company_quantity" id="company_quantity_${i}"></td>
             <td class="table_company_date"></td>
             <td class="table_company_userpremium"></td>
+            <td><button class="table-trade-btn btn" id="counter_btn_${i}">Request</button></td>
             <td><button class="table-trade-btn btn" id="exchange_btn_${i}">Exchange</button></td>
         </tr>`
 
@@ -789,6 +795,7 @@ const buysellSearchCompanies = async searchText => {
                             <td class="table_company_quantity">${matches[i]["shareQuantity"]}</td>
                             <td class="table_company_date">${matches[i]["requestedDate"]}</td>
                             <td class="table_company_userpremium">${matches[i]['userPremium'] + " " + "ETB"}</td>
+                            <td><button class="table-trade-btn btn">Request</button></td>
                             <td><button class="table-trade-btn btn">Exchange</button></td>
                         </tr>`
 

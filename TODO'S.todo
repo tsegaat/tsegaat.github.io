@@ -22,8 +22,8 @@
 
 
         -------------------Last Phase---------------------
-1. All companies page create the page. Add a page link to more options in the main page
-2. Remove verify me for the sellers 
+1. All companies page create the page. Add a page link to more options in the main page (Done)
+2. Remove verify me for the sellers (Done)
 3. Counter offer column in Buyers Request page
 4. While the page is loading when searching make a spinning indicator
 5. If the search is empty make some sort of indicator saying so
