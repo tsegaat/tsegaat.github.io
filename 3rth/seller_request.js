@@ -189,7 +189,7 @@ profile_settings_li_normal.addEventListener("click", () => {
 
 // Getting the selected company and putting out there start
 
-const selectedCompany = localStorage['selectedCompany'].split(",");
+const selectedCompany = localStorage['sellerCompany'].split(",");
 
 const companyName = selectedCompany[0]
 const companyPrice = selectedCompany[1]
@@ -241,7 +241,7 @@ quantity.addEventListener("input", () => {
 const submitOfferBtn = document.getElementById("submitBtn")
 // TODO: Make the quantity input bar not accept negative or 0
 submitOfferBtn.addEventListener("click", () => {
-    submitOfferBtn.innerHTML = "Submiting..."
+    submitOfferBtn.innerHTML = "Submitting..."
     submitOfferBtn.style.backgroundColor = "#dbdbdb"
     if (quantity.value < "1") {
         swal("Invalid Shares", "Shares can't be negative or 0", "error")

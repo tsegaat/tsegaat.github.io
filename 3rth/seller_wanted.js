@@ -186,17 +186,20 @@ profile_settings_li_normal.addEventListener("click", () => {
 // End of signout option
 
 // setting up the seller wanted page to be dynamic start
-const seller_selected_company = localStorage["sellerCompnay"].split(",")
+const seller_selected_company = localStorage["sellerCompany"].split(",")
 const compName = seller_selected_company[0]
 const compPrice = seller_selected_company[1].split(" ")[0]
-const compQuantity = seller_selected_company[2]
+const compPremium = seller_selected_company[2]
+const compQuantity = seller_selected_company[3]
 const seller_wanted_compnay_name = document.getElementsByClassName("seller_wanted_compnay_name")[0]
 const seller_wanted_compnay_price = document.getElementsByClassName("seller_wanted_compnay_price_actual")[0]
+const seller_wanted_compnay_premium = document.getElementsByClassName("seller_wanted_compnay_price_premium")[0]
 const seller_wanted_compnay_quantity = document.getElementsByClassName("seller_wanted_compnay_quantity_actual")[0]
 const total_price_text = document.getElementById("total-price-text")
 
 seller_wanted_compnay_name.innerHTML = compName
 seller_wanted_compnay_price.innerHTML = compPrice
+seller_wanted_compnay_premium.innerHTML = compPremium
 seller_wanted_compnay_quantity.innerHTML = compQuantity
 
 total_price_text.innerHTML = Number(compPrice) * Number(compQuantity)
@@ -207,7 +210,7 @@ const create_acc_content_form_checkbox_button = document.getElementsByClassName(
 const create_acc_confirm_button = document.getElementsByClassName("create-acc-confirm-button")[0]
 create_acc_confirm_button.addEventListener("click", () => {
     if (create_acc_content_form_checkbox_button.checked == true) {
-        swal("Offer accepted", "The buyer will be notifed", "success")
+        swal("Offer accepted", "The buyer will be notified", "success")
     } else {
         swal("Check the checkbox", "The checkbox must be checked", "error")
     }

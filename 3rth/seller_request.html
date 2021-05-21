@@ -3,21 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehtioshare – Exchange Ethiopian Shares</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=News+Cycle&family=Prata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap"
+        rel="stylesheet">
 
+    <title>Ehtioshare – Exchange Ethiopian Shares</title>
 </head>
 
 <body>
     <div class="navbar-container">
         <div class="navbar">
             <div class="logo">
-                <a href="manage-acc.html">Ethioshare</a>
+                <div id="ethiosharelogo">Ethioshare</div>
+                <script>
+                    document.getElementById("ethiosharelogo").style.cursor = "pointer"
+                    document.getElementById("ethiosharelogo").addEventListener("click", () => {
+                        window.location.href = "../2nd/main-page.html"
+                    })
+                </script>
             </div>
             <nav>
                 <ul id="MenuItems">
@@ -57,64 +62,47 @@
         </div>
     </div>
     <hr style="color: #000">
-    <div class="buy-sell-title-container container">
-        <div class="buy-sell-title">
-            Companies List
-        </div>
-        <div class="buy-sell-searchbar-container">
-            <div class="buy-sell-searchbar">
-                <i class="fa fa-search buy-sell-input-icon"></i>
-                <input class="buy-sell-input-field" type="name" placeholder="Search company...">
-            </div>
-        </div>
-    </div>
-    <div class="buy-sell-selected-company-container container">
-        <div class="buy-sell-selected-company">
-            <div><span>
-                    <div id="selected_table_company_logo"></div>
-                </span></div>
-            <div>
-                <span id="selected_table_company_name"></span>
-            </div>
-            <div id="selected_table_company_sector"></div>
-            <div id="selected_table_company_price"></div>
-            <div id="selected_table_company_exchangescore"></div>
-            <div><button class="table-trade-btn selectd-trade-btn btn">Exchange</button></div>
-        </div>
-    </div>
-    <div class="share-price-table-container container">
-        <div class="buy-sell-sector-filter-container">
-            <div class="buy-sell-sector-filter">
-                <div class="buy-sell-sector buy-sell-sector-selected">All Companies</div>
-            </div>
-            <div class="buy-sell-sector-filter">
-                <div class="buy-sell-sector">Finance</div>
+    <!-- ------ product deatils -------- -->
+    <div class="product_deatils">
+
+        <div class="small-container single-product">
+            <div class="buysell-row">
+                <div class="col-2">
+                    <div id="changeImg" style="background-image: url('images\zemen bank.png')"></div>
+                </div>
+                <div class="col-2">
+                    <div id="changeName"></div>
+                    <div>
+                        <div id="changePrice"><span id="total-text">Par Price</span> <span id="actualPrice"></span><span
+                                id="currency-text">ETB</span></div>
+                        <div class="premium-container">
+                            <div id="premium"><span id="total-text">Premium</span><input id="premium-input"
+                                    type="number" placeholder="____"><span id="currency-text">ETB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quantity-total-price-container">
+                        <div class="quantity-container">
+                            <div class="quantity">
+                                <span id="shares-text">Shares</span>
+                                <input id="quantity" type="number" value="1" min="1">
+                            </div>
+                        </div>
+                        <div id="total-price">
+                            <span id="total-text">Total</span> <span id="total-price-text"></span> <span
+                                id="currency-text">ETB</span>
+                        </div>
+                    </div>
+
+                    <div class="btn buy-sell-btn" id="submitBtn">Submit Offer</div>
+                </div>
+
             </div>
 
-            <div class="buy-sell-sector-filter">
-                <div class="buy-sell-sector">Resource</div>
-            </div>
-
-            <div class="buy-sell-sector-filter">
-                <div class="buy-sell-sector">Other</div>
-            </div>
         </div>
-        <table class="share-price-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Logo</th>
-                    <th>Name</th>
-                    <th>Sector</th>
-                    <th>Price</th>
-                    <th>Exchange Score</th>
-                    <th>Exchange</th>
-                </tr>
-            </thead>
-            <tbody id="table-row-container">
-            </tbody>
-        </table>
     </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -142,12 +130,27 @@
             </div>
         </div>
     </footer>
+    <script>
+        // For the menu dropdown
+        var MenuItems = document.getElementById('MenuItems')
+
+        MenuItems.style.maxHeight = "0px"
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            } else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="seller_request.js"></script>
 </body>
-<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="buysell_page.js"></script>
+
+
 
 </html>
