@@ -189,7 +189,8 @@ profile_settings_li_normal.addEventListener("click", () => {
 
 // Getting the selected company and putting out there start
 
-const selectedCompany = localStorage['sellerCompany'].split(",");
+const selectedCompany = localStorage['sellerCompnay'].split(",");
+console.log(selectedCompany)
 
 const companyName = selectedCompany[0]
 const companyPrice = selectedCompany[1]
@@ -223,6 +224,7 @@ premium_input.addEventListener("input", () => {
     domCompTotal.innerHTML = premiumCompPrice
 })
 
+// TODO: There is a bug here with the maths
 quantity.addEventListener("input", () => {
     var quantityAmount = Number(quantity.value)
     var premiumAmount = Number(premium_input.value)
@@ -245,6 +247,8 @@ submitOfferBtn.addEventListener("click", () => {
     submitOfferBtn.style.backgroundColor = "#dbdbdb"
     if (quantity.value < "1") {
         swal("Invalid Shares", "Shares can't be negative or 0", "error")
+        submitOfferBtn.innerHTML = "Request Offer"
+        submitOfferBtn.style.backgroundColor = "#e7ebf5;"
     } else {
         var aboutRequestInfo = {}
         const userId = auth.currentUser.uid
@@ -273,13 +277,14 @@ submitOfferBtn.addEventListener("click", () => {
 
                 aboutRequestInfo['companyPrice'] = matches[0]['price']
                 aboutRequestInfo['companySector'] = matches[0]['sector']
-                dbf.collection("buyers_requests").doc().set(aboutRequestInfo).then(() => {
-                    submitOfferBtn.innerHTML = "Submit Offer"
-                    submitOfferBtn.style.backgroundColor = "#e7ebf5"
-                    swal("Your offer has been submitted", "Interested person will contact if your request is accepted", "success").then(() => {
-                        window.location.href = "../2nd/main-page.html"
-                    })
+                submitOfferBtn.innerHTML = "Request Offer"
+                submitOfferBtn.style.backgroundColor = "#e7ebf5"
+                swal("Your request has been submitted", "An email was sent to the buyer notifying him/her about the request", "success").then(() => {
+                    // TODO: send an email to the buyer
+                    // TODO: company info is in the about request info hash list
+                    window.location.href = "../2nd/main-page.html"
                 })
+
             })
 
         }

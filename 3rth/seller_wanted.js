@@ -186,20 +186,21 @@ profile_settings_li_normal.addEventListener("click", () => {
 // End of signout option
 
 // setting up the seller wanted page to be dynamic start
-const seller_selected_company = localStorage["sellerCompany"].split(",")
+const seller_selected_company = localStorage["sellerCompnay"].split(",")
+console.log(seller_selected_company)
 const compName = seller_selected_company[0]
 const compPrice = seller_selected_company[1].split(" ")[0]
-const compPremium = seller_selected_company[2]
-const compQuantity = seller_selected_company[3]
+// const compPremium = seller_selected_company[2]
+const compQuantity = seller_selected_company[2]
 const seller_wanted_compnay_name = document.getElementsByClassName("seller_wanted_compnay_name")[0]
 const seller_wanted_compnay_price = document.getElementsByClassName("seller_wanted_compnay_price_actual")[0]
-const seller_wanted_compnay_premium = document.getElementsByClassName("seller_wanted_compnay_price_premium")[0]
+// const seller_wanted_compnay_premium = document.getElementsByClassName("seller_wanted_compnay_price_premium")[0]
 const seller_wanted_compnay_quantity = document.getElementsByClassName("seller_wanted_compnay_quantity_actual")[0]
 const total_price_text = document.getElementById("total-price-text")
 
 seller_wanted_compnay_name.innerHTML = compName
 seller_wanted_compnay_price.innerHTML = compPrice
-seller_wanted_compnay_premium.innerHTML = compPremium
+// seller_wanted_compnay_premium.innerHTML = compPremium
 seller_wanted_compnay_quantity.innerHTML = compQuantity
 
 total_price_text.innerHTML = Number(compPrice) * Number(compQuantity)

@@ -1108,6 +1108,17 @@ tr td a{
 .buysell-row{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#shareContainer{
+    border: 1px solid rgb(219, 219, 219);
+    font-size: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-style: italic;
 }
 
 #changePrice{
@@ -1127,7 +1138,6 @@ tr td a{
 }
 
 #quantity{
-    width: 50px;
     height: 40px;
     padding-left: 10px;
     display: block;
@@ -1168,7 +1178,7 @@ tr td a{
   -webkit-appearance: none; 
 }
 
-#premium > input[type=number] {
+.premium_input[type=number] {
   -moz-appearance: textfield;
 }
 
@@ -1193,7 +1203,8 @@ tr td a{
 }
 
 .quantity-container{
-    display: inline-block;
+    display: block;
+    margin-bottom: 20px;
 }
 
 #total-price{

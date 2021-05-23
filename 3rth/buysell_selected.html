@@ -62,13 +62,13 @@
         </div>
     </div>
     <hr style="color: #000">
-    <!-- ------ product deatils -------- -->
+    <!-- ------ product details -------- -->
     <div class="product_deatils">
 
         <div class="small-container single-product">
             <div class="buysell-row">
                 <div class="col-2">
-                    <div id="changeImg" style="background-image: url('images\zemen bank.png')"></div>
+                    <div id="changeImg"></div>
                 </div>
                 <div class="col-2">
                     <div id="changeName"></div>
@@ -76,8 +76,9 @@
                         <div id="changePrice"><span id="total-text">Par Price</span> <span id="actualPrice"></span><span
                                 id="currency-text">ETB</span></div>
                         <div class="premium-container">
-                            <div id="premium"><span id="total-text">Premium</span><input id="premium-input"
-                                    type="number" placeholder="____"><span id="currency-text">ETB</span>
+                            <div id="premium"><span id="total-text">Premium</span><input class="premium_input"
+                                    id="premium-input" type="number" placeholder="____"><span
+                                    id="currency-text">ETB</span>
                             </div>
                         </div>
                     </div>
@@ -85,8 +86,11 @@
                     <div class="quantity-total-price-container">
                         <div class="quantity-container">
                             <div class="quantity">
-                                <span id="shares-text">Shares</span>
-                                <input id="quantity" type="number" value="1" min="1">
+                                <div id="shareContainer"><span id="shares-text">Shares</span> <input id="quantity"
+                                        type="number" value="1" min="1" placeholder="____"></span>
+                                </div>
+                                <!-- <span id="shares-text"></span> -->
+                                <!-- <input id="quantity" type="number" value="1" min="1"> -->
                             </div>
                         </div>
                         <div id="total-price">
