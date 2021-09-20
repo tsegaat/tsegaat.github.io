@@ -183,10 +183,169 @@ Create Account CSS
 
 
 */
+.navbar-container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.create-acc-mainbody{
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-acc-title{
+    margin-bottom: 40px;
+    height: 34px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.13;
+    text-align: center;
+    color: #000;
+}
+
+.create-acc-content-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    box-shadow: rgb(17 51 83 / 2%) 0px 4px 12px 0px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.create-acc-2col{
+    display: flex;
+    flex-direction: row;
+}
+
+.create-acc-content-form-input{
+    z-index: 0;
+    margin: 0px;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px;
+    border-collapse: collapse;
+    background: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(5, 15, 25);
+}
+
+.create-acc-content{
+    margin-top: 20px;
+}
+
+.create-acc-content-form-checkbox-button{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    width: 26px;
+    min-width: 24px;
+    height: 26px;
+    border-radius: 4px;
+    border: 2px solid rgb(179, 184, 187);
+    background-color: rgb(255, 255, 255);
+    margin-right: 10px;
+    margin-top: 13px;
+}
+
+.create-acc-confirm-button-container{
+    margin-top: 20px;    
+}
+
+.create-acc-confirm-button{
+    display: flex;
+    width: 100%;    
+    color: #fff;
+    margin: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid rgb(22, 82, 240);
+    background-color: rgb(22, 82, 240);
+    justify-content: center;
+}
+
+
+
+.create-acc-sign-in{
+    font-size: 14px;
+}
+
+.create-acc-sign-in > a{
+    color:rgb(22, 82, 240);
+}
+
+.sign-in-page-checkbox{
+    margin-right: 10px;
+    margin-top: 0px;
+}
+
+.sign-in-content-form-input{
+    width: 400px;
+}
+
+.sign-in-end-links{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+#create-acc-empty-field{
+    color: rgb(156, 38, 38);
+}
+
+#create-acc-empty-field-username{
+    color: rgb(156, 38, 38);
+    font-size: 13px;
+    text-align: center;
+}
 
 .password{
     position: relative;
     display: block;
+}
+
+.field-icon {
+    position: absolute;
+    right: 15px;
+    transform: translateX(-80%);
+    top: 20px;
+    cursor: pointer;
+}
+
+.create-acc-content > h3 {
+    font-weight: 200;
+    margin-left: 5px;
+}
+
+.create-acc-content-checkbox{
+    display: flex;
+    justify-content: space-around;
+}
+
+.gender-indicator-checkbox{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.gender-indicator-text{
+    text-align: center;
+}
+
+.create-acc-content-form-input-date{
+    width: 400px;
 }
 
 
@@ -221,6 +380,23 @@ Create Account CSS
     flex-direction: row;
 }
 
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+
+.col-2 img{
+    max-width: 90%;
+    padding: 50px 0;
+    padding-left: 40px;
+}
+
+.col-2 h1{
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+}
+
 .btn{
     display: inline-block;
     background: #1652f0;
@@ -244,6 +420,10 @@ Create Account CSS
 
 .footer{
     background: linear-gradient(to left, #fff, #1652f0);
+}
+
+.categories{
+    margin: 70px 0;
 }
 
 .col-3{
@@ -285,6 +465,40 @@ Create Account CSS
     line-height: 30px;
 }
 
+.small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    font-size: 14px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: .5s;
+}
+
+.col-4 img{
+    width: 100%;
+    cursor: pointer;
+}
+
+.services-img{
+    flex-basis: 33%;
+    font-size: 14px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.services-img img{
+    height: 200px;
+    width: 300px;
+}
+
 .title{
     text-align: center;
     margin: 0 auto 80px;
@@ -305,7 +519,42 @@ Create Account CSS
     transform: translateX(-50%);
 }
 
+h4{
+    color: #555;
+    font-weight: normal;
+}
+
+.rating .fa{
+    color: #ff523b;
+}
+
+.col-4:hover{
+    transform: translateY(-5px);
+}
+
+.exclusive-product{
+    background: radial-gradient(#fff, #ffd6d6);
+    margin-top: 80px;
+    padding: 30px 0;
+}
+
+.col-2 .exclusive-product-img{
+    padding: 50px;
+}
+
 /* Map */
+.map{
+    margin-top: 80px;
+}
+
+.col-2 h2{
+    font-size: 40px;
+}
+
+.col-2 iframe{
+    height: 400px;
+    width: 400px;
+}
 
 /* Footer */
 footer{
@@ -363,12 +612,24 @@ footer{
         cursor: pointer;
     }
 
+    .col-2 h1{
+        font-size: 20px;
+    }
+
+    .col-2 p{
+        font-size: 15px;
+    }
+
     .row{
         text-align: center;
     }
 
-     .col-3{
+    .col-1, .col-2, .col-3, .col-4{
         flex-basis: 100%;
+    }
+
+    .featured-cat::after{
+        display: none;
     }
 
     .head-title{
@@ -390,18 +651,145 @@ footer{
         font-size: 18px;
     }
 
+    .fe-cat{
+        display: none;
+    }
+
+    .map .small-container .row .col-2 iframe{
+        width: fit-content;
+    }
+
+    .single-product .row{
+        text-align: left;
+    }
+
+    .single-product .col-2{
+        padding: 20px 0;
+    }
+
+    .single-product .row .col-2 h1{
+        font-size: 25px;
+        line-height: 22px;
+    }
+
+    .services-img img{
+        height: 200px;
+        width: 210px;
+    }
+
+    .col-2 h2{
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+
+    .mapouter{
+        padding: 10px;
+    }
+
+    .col-2 iframe{
+        height: 200px;
+        width: 100%;
+    }
+
+    .cart-info p, .cart-info small{
+        display: none;
+    }
+
+    .explanation small{
+        display: none;
+    }
+
 }
 /* All products Page */
 
+.row-2{
+    justify-content: space-between;
+    margin: 20px auto 50px;
+}
+
+select{
+    border: 1px solid #333;
+    padding: 5px;
+}
+
+select:focus{
+    outline: none;
+}
+
+.product-btn{
+    margin: 0 auto 80px;
+    text-align: right;
+}
+
+.product-btn span{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    padding: 7px;
+    border: 1px solid #ff523b;
+    text-align: center;
+    cursor: pointer;
+}
+
+.product-btn span:hover{
+    background: #ff523b;
+    color: #fff;
+}
+
 /* single product page */
 
+.single-product{
+    margin-top: 50px;
+}
+
+.single-product .row .col-2 img{
+    padding: 0;
+}
+
+.single-product .row .col-2{
+    padding: 20px;
+}
+
+.single-product .row .col-2 h4{
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.single-product .row .col-2 input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    margin-right: 20px;
+    font-size: 20;
+}
+
+.small-img-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
 /* cart page */
+.cart-page{
+    margin: 80px auto;
+}
 
 table{
     width: 100%;
     /* border: 0.1px solid rgba(0, 0, 0, 0.884);     */
     border: 0.1px solid rgba(223, 211, 211, 0.884);
     border-collapse: collapse;
+}
+
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 15px;
 }
 
 th{
@@ -431,4 +819,38 @@ tr td a{
     color: #ff523b;
 }
 
+.cart-info img{
+    height: 80px;
+    width: 80px;
+}
+
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-price table{
+    border-top: 3px solid #ff523b;
+    width: 100%;
+    max-width: 400px;
+}
+
+.purchase-btn-container{
+    align-items: flex-end;
+}
+
+.client .row-2 img{
+    width: 100px;
+    height: 100px;
+}
+
 /* About Page */
+.explanation small{
+    line-height: 2;
+    font-size: 17px;
+}
+
+.client > .client-logo > img{
+    height: 50px;
+    width: 100px;
+}
